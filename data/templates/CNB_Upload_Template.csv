@@ -1,0 +1,2 @@
+entity_code,employee_id,grade,basic_salary_idrm,fixed_allowance_idrm,variable_allowance_idrm,annual_bonus_months,thr_months,currency
+KSNI,KSNI-001001,5A,40.00,5.00,2.00,1.0,1.0,IDR

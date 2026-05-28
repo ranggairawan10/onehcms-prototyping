@@ -1,0 +1,17 @@
+grade_code,grade_label,band,salary_min_idrm,salary_max_idrm,salary_mid_idrm,total_hc_group,total_lc_monthly_idrm,pct_of_total_hc
+6B,C-Level,Executive,80,150,115,3,345.0,0.0
+5C,Vice President,Senior Leadership,70,100,85,21,1785.0,0.2
+5B,Senior Manager,Management,50,70,60,205,10987.2,2.3
+5A,Manager,Management,25,55,40,626,22720.0,7.0
+4C,Asst. Manager,Supervisory,15,25,20,910,16628.4,10.1
+4B,Supervisor,Supervisory,10,17,13.5,1395,17321.4,15.5
+4A,Officer,Professional,7,12,9.5,1806,15879.2,20.1
+3C,Senior Staff,Professional,5.5,9,7.25,1316,8811.9,14.6
+3B,Staff/Foreman,Semi-Prof,4,6.5,5.25,1306,6440.4,14.5
+3A,Junior Staff,Entry Level,3.2,5,4.1,739,2873.3,8.2
+2C,Contract Sr.,Contract,3,4,3.5,208,707.0,2.3
+2B,Contract Mid,Contract,2.8,3.5,3.15,250,774.3,2.8
+2A,Contract Jr.,Contract,2.5,3.2,2.85,164,427.6,1.8
+1C,Operator Sr.,Operator,3,4.5,3.75,6,9.0,0.1
+1B,Operator,Operator,2.5,3.5,3.0,41,112.2,0.5
+1A,General Worker,Operator,2.2,3,2.6,4,4.2,0.0

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talent Acquisition  |  'ONE' GLOBAL HCMS</title>
+<link rel="stylesheet" href="../assets/css/ds.css">
+</head>
+<body data-page="m04">
+
+<div class="app-shell">
+
+  <!-- ============ TOPBAR ============ -->
+  <header class="topbar">
+    <a class="brand" href="../dashboard.html">
+      <img src="../assets/img/nabati-logo.png" alt="Nabati">
+      <span class="brand-name">'ONE' GLOBAL HCMS<small>Nabati HCMS 2.0 Project</small></span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-actions">
+      <button class="icon-btn" aria-label="Cari" onclick="hcToast('Pencarian global tersedia pada build berikutnya.')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Notifikasi" onclick="hcToast('Pusat notifikasi tersedia pada build berikutnya.')">
+        <span class="dot"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z"/><path d="M10 21h4"/></svg>
+      </button>
+      <button class="user-chip">
+        <span class="avatar">RI</span>
+        <span class="who"><b>Rangga Irawan</b><span>HCMS Consultant</span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <nav class="nav-scroll">
+      <div class="nav-group">
+        <a class="nav-item" data-nav="hcai" href="../dashboard.html" data-tooltip="HC AI">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+          <span>HC AI</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">MODUL INTI</div>
+        <a class="nav-item" data-nav="m01" data-module="m01" href="m01-rbac.html" data-tooltip="Role & Access (RBAC)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z"/><path d="M9.5 12l1.8 1.8 3.4-3.6"/></svg>
+          <span>Role &amp; Access</span><span class="code">RBAC</span>
+        </a>
+        <a class="nav-item" data-nav="m02" data-module="m02" href="m02-eam.html" data-tooltip="Employee Admin (EAM)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.5 16.4c.6-1.7 2-2.4 3.5-2.4s2.9.7 3.5 2.4M15 10h4M15 14h4"/></svg>
+          <span>Employee Admin</span><span class="code">EAM</span>
+        </a>
+        <a class="nav-item" data-nav="m03" data-module="m03" href="m03-ess.html" data-tooltip="Self-Service (ESS)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 18c1-2.4 3-3.4 5.5-3.4s4.5 1 5.5 3.4"/></svg>
+          <span>Self-Service</span><span class="code">ESS</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">TALENT &amp; KINERJA</div>
+        <a class="nav-item" data-nav="m04" data-module="m04" href="m04-ta.html" data-tooltip="Talent Acquisition (TA)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19c.7-3 3-4.5 5.5-4.5"/><path d="M16 11v6M13 14h6"/></svg>
+          <span>Talent Acquisition</span><span class="code">TA</span>
+        </a>
+        <a class="nav-item" data-nav="m05" data-module="m05" href="m05-org.html" data-tooltip="Organization Design (ORG)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-2h12v2"/></svg>
+          <span>Organization Design</span><span class="code">ORG</span>
+        </a>
+        <a class="nav-item" data-nav="m06" data-module="m06" href="m06-cnb.html" data-tooltip="Compensation & Benefit (CNB)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a2 2 0 0 1 2-2h12v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M17 6V5a2 2 0 0 0-2-2H6"/><circle cx="16" cy="12" r="1.4"/></svg>
+          <span>Compensation &amp; Benefit</span><span class="code">CNB</span>
+        </a>
+        <a class="nav-item" data-nav="m07" data-module="m07" href="m07-pms.html" data-tooltip="Performance (PMS)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19a9 9 0 1 1 16 0"/><path d="M12 14l4-3.5"/><circle cx="12" cy="14" r="1.4"/></svg>
+          <span>Performance</span><span class="code">PMS</span>
+        </a>
+        <a class="nav-item" data-nav="m08" data-module="m08" href="m08-cm.html" data-tooltip="Career Management (CM)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+          <span>Career Management</span><span class="code">CM</span>
+        </a>
+        <a class="nav-item" data-nav="m09" data-module="m09" href="m09-lms.html" data-tooltip="Learning Management (LMS)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2z"/><path d="M4 18a2 2 0 0 1 2-2h13"/><path d="M9 8h6"/></svg>
+          <span>Learning Management</span><span class="code">LMS</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">ORGANISASI &amp; ANALITIK</div>
+        <a class="nav-item" data-nav="m10" data-module="m10" href="m10-od.html" data-tooltip="Org Development (OD)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M10.5 6.8 6.4 15.9M13.5 6.8l4.1 9.1M7.4 18h9.2"/></svg>
+          <span>Org Development</span><span class="code">OD</span>
+        </a>
+        <a class="nav-item" data-nav="m11" data-module="m11" href="m11-ir.html" data-tooltip="Industrial Relationship (IR)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16M4 20h16"/><path d="M7 7 4 13a3 3 0 0 0 6 0L7 7M17 7l-3 6a3 3 0 0 0 6 0l-3-6M5 7h14"/></svg>
+          <span>Industrial Relationship</span><span class="code">IR</span>
+        </a>
+        <a class="nav-item" data-nav="m12" data-module="m12" href="m12-pa.html" data-tooltip="People Analytics (PA)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V11M10 20V5M16 20v-6M20 20H3"/></svg>
+          <span>People Analytics</span><span class="code">PA</span>
+        </a>
+      </div>
+    </nav>
+    <div class="sidebar-foot">
+      <a class="nav-item" href="#" onclick="hcToast('Layar pengaturan tersedia pada build berikutnya.');return false;" data-tooltip="Pengaturan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+        <span>Pengaturan</span>
+      </a>
+      <a class="nav-item" href="../index.html" data-tooltip="Keluar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 17l5-5-5-5M21 12H9M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
+        <span>Keluar</span>
+      </a>
+      <p class="t-caption" style="padding:8px 12px 2px">Prototype v5.5  ·  12 modul lengkap</p>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+    <div class="main-inner">
+
+      <div class="breadcrumb">
+        <a href="../dashboard.html">'ONE' GLOBAL HCMS</a>
+        <span class="sep">/</span>
+        <span class="here">Talent Acquisition</span>
+      </div>
+
+      <div class="proto-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        <span><b>Modul spec UI target.</b> Prototype mendefinisikan UI, alur, dan state acuan untuk dibangun Ego Eimi. Mengikat layout, alur, state, dan copy. Tidak mengikat tech stack.</span>
+      </div>
+
+      <div class="page-header">
+        <div class="mod-titlebar">
+          <h1 class="t-page">Talent Acquisition</h1>
+          <span class="mod-code">TA  ·  m04</span>
+          <span class="badge badge--neutral"><span class="tick"></span>Spec UI Target</span>
+        </div>
+        <p>Sistem rekrutmen dan Applicant Tracking yang menyatu, dari requisition sampai onboarding handoff. Volume 8.000 sampai 12.000 perekrutan per tahun di 9 negara, dipercepat HC AI Recruiter.</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab is-active" data-tab="ringkasan">Ringkasan</button>
+        <button class="tab" data-tab="requisition">Requisition</button>
+        <button class="tab" data-tab="pipeline">Kandidat &amp; Pipeline</button>
+        <button class="tab" data-tab="screening">Screening HC AI</button>
+        <button class="tab" data-tab="interview">Interview &amp; Penilaian</button>
+        <button class="tab" data-tab="offer">Offer Management</button>
+      </div>
+
+      <!-- ===== TAB 1 : RINGKASAN ===== -->
+      <section data-panel="ringkasan">
+        <div class="fr-row">
+          <span class="fr-chip">-JANE-001</span>
+          <span class="fr-chip">-REQ-001</span>
+          <span class="fr-chip">-RA-001</span>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Funnel Rekrutmen</span><span class="t-caption">Contoh: Senior Sales Manager</span></div>
+            <div class="card-body">
+              <div class="funnel">
+                <div class="funnel-row"><div class="funnel-bar" style="width:100%"><span>Pelamar</span><b>1.240</b></div></div>
+                <div class="funnel-row"><div class="funnel-bar" style="width:80%"><span>Lolos Screening</span><b>312</b></div></div>
+                <div class="funnel-row"><div class="funnel-bar" style="width:58%"><span>Interview</span><b>86</b></div></div>
+                <div class="funnel-row"><div class="funnel-bar" style="width:38%"><span>Offer</span><b>24</b></div></div>
+                <div class="funnel-row"><div class="funnel-bar" style="width:24%"><span>Diterima</span><b>19</b></div></div>
+              </div>
+              <p class="t-caption" style="margin-top:14px">Setiap tahap dapat di-drill down ke daftar kandidat. HC AI menghitung konversi antar tahap dan menandai titik bottleneck.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">HC AI sebagai Recruiter</span></div>
+            <div class="card-body" style="padding-top:8px;padding-bottom:8px">
+              <div class="insight">
+                <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h8l6 6v14H6z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></span>
+                <span class="it"><b>Resume parsing.</b> Membaca CV dari format apa pun dalam hitungan detik, mengekstrak pengalaman, pendidikan, dan skill.</span>
+              </div>
+              <div class="insight">
+                <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
+                <span class="it"><b>Screening dan ranking.</b> Mencocokkan kandidat ke kebutuhan posisi, memberi match score, dan menyusun peringkat.</span>
+              </div>
+              <div class="insight">
+                <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H4z"/><path d="M9 20h6M12 16v4"/></svg></span>
+                <span class="it"><b>Interview intelligence.</b> Transkripsi dan analisis interview, agregasi feedback panel jadi satu rekomendasi.</span>
+              </div>
+              <div class="insight">
+                <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19a9 9 0 1 1 16 0"/><path d="M12 14l4-3.5"/></svg></span>
+                <span class="it"><b>Predictive success.</b> Memprediksi kemungkinan sukses dan risiko turnover sebelum keputusan hire diambil.</span>
+              </div>
+              <div class="insight">
+                <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></span>
+                <span class="it"><b>Diversity intelligence.</b> Blind screening, deteksi bias, dan penjagaan diverse slate sepanjang proses.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-4" style="margin-top:16px">
+          <div class="card stat"><div class="num">8.000 - 12.000</div><div class="lbl">Perekrutan per tahun</div></div>
+          <div class="card stat"><div class="num accent">&lt;25 hari</div><div class="lbl">Target time-to-hire</div></div>
+          <div class="card stat"><div class="num">9</div><div class="lbl">Negara cakupan</div></div>
+          <div class="card stat"><div class="num">40 - 60</div><div class="lbl">Recruiter</div></div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 2 : REQUISITION ===== -->
+      <section data-panel="requisition" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-REQ-001</span>
+          <span class="fr-chip">-REQ-002</span>
+          <span class="fr-chip">-REQ-003</span>
+        </div>
+
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-head"><span class="t-section" style="font-size:15px">Daftar Requisition</span><button class="btn btn--primary btn--sm" onclick="hcToast('Membuka pembuatan requisition dengan bantuan HC AI.')">Buat Requisition</button></div>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Posisi</th><th>Lokasi</th><th>Tipe</th><th>Recruiter</th><th>Hari Terbuka</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>Senior Sales Manager</td><td>Jakarta, Indonesia</td><td>Permanen</td><td>Dewi Kartika</td><td>18 hari</td><td><span class="badge badge--ok">Aktif</span></td></tr>
+                <tr><td>Production Supervisor</td><td>Subang, Indonesia</td><td>Permanen</td><td>Bayu Pratama</td><td>9 hari</td><td><span class="badge badge--ok">Aktif</span></td></tr>
+                <tr><td>Area Sales Executive</td><td>Kuala Lumpur, Malaysia</td><td>Permanen</td><td>Dewi Kartika</td><td>4 hari</td><td><span class="badge badge--high">Menunggu Persetujuan</span></td></tr>
+                <tr><td>Finance Analyst</td><td>Ho Chi Minh, Vietnam</td><td>Kontrak</td><td>Belum ditugaskan</td><td>2 hari</td><td><span class="badge badge--high">Menunggu Persetujuan</span></td></tr>
+                <tr><td>Warehouse Staff (12 posisi)</td><td>Bekasi, Indonesia</td><td>Permanen</td><td>Bayu Pratama</td><td>25 hari</td><td><span class="badge badge--neutral">Ditahan</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Alur Persetujuan Requisition</span></div>
+            <div class="card-body">
+              <div class="wf">
+                <div class="wf-step done">
+                  <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
+                  <div class="wf-lbl">Manager</div><div class="wf-sub">Verifikasi headcount</div>
+                </div>
+                <div class="wf-step done">
+                  <div class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
+                  <div class="wf-lbl">HRBP</div><div class="wf-sub">Selaras workforce plan</div>
+                </div>
+                <div class="wf-step active">
+                  <div class="dot">3</div>
+                  <div class="wf-lbl">Finance</div><div class="wf-sub">Cek ketersediaan budget</div>
+                </div>
+                <div class="wf-step">
+                  <div class="dot">4</div>
+                  <div class="wf-lbl">Dept Head</div><div class="wf-sub">Posisi strategis</div>
+                </div>
+              </div>
+              <p class="t-caption" style="margin-top:16px">Routing persetujuan dapat dikonfigurasi paralel atau berurutan. Eskalasi otomatis bila tidak ada aksi dalam 2 hari kerja.</p>
+            </div>
+          </div>
+
+          <div class="card card-soft">
+            <div class="card-body">
+              <div class="flex gap-3" style="align-items:flex-start">
+                <span class="hcai-mark" style="width:40px;height:40px;border-radius:11px;box-shadow:none;flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
+                <div>
+                  <b style="font-size:14px">HC AI Pre-Fill</b>
+                  <p style="font-size:13px;color:var(--nabati-text-secondary);margin-top:6px">Saat hiring manager memulai requisition, HC AI menyusun draf job description, kualifikasi, dan rentang gaji berdasarkan posisi serupa di masa lalu. Bahasa dicek bebas bias sebelum diposting.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 3 : KANDIDAT & PIPELINE ===== -->
+      <section data-panel="pipeline" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-CAND-001</span>
+          <span class="fr-chip">-CAND-002</span>
+          <span class="fr-chip">-SOURCE-001</span>
+        </div>
+
+        <p class="t-label" style="margin-bottom:12px">Pipeline requisition: Senior Sales Manager - Jakarta</p>
+        <div class="kanban" style="margin-bottom:20px">
+          <div class="kan-col">
+            <div class="kan-col-head"><b>Pelamar</b><span class="kan-count">5</span></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Ahmad Fauzi</div><div class="kc-sub">8 thn FMCG sales</div></div><span class="score-badge sm exc">94</span></div></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Putri Lestari</div><div class="kc-sub">6 thn regional sales</div></div><span class="score-badge sm strong">82</span></div></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Hendra Wijaya</div><div class="kc-sub">5 thn distribusi</div></div><span class="score-badge sm strong">78</span></div></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Sari Indah</div><div class="kc-sub">4 thn B2C sales</div></div><span class="score-badge sm mod">66</span></div></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Rizky Aditya</div><div class="kc-sub">3 thn retail</div></div><span class="score-badge sm weak">54</span></div></div>
+          </div>
+          <div class="kan-col">
+            <div class="kan-col-head"><b>Screening</b><span class="kan-count">3</span></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Maya Anggraini</div><div class="kc-sub">Tes aptitude</div></div><span class="score-badge sm exc">91</span></div></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Doni Saputra</div><div class="kc-sub">Tes aptitude</div></div><span class="score-badge sm strong">84</span></div></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Lina Marlina</div><div class="kc-sub">Phone screen</div></div><span class="score-badge sm strong">79</span></div></div>
+          </div>
+          <div class="kan-col">
+            <div class="kan-col-head"><b>Interview</b><span class="kan-count">3</span></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Agus Setiawan</div><div class="kc-sub">Final round</div></div><span class="score-badge sm exc">93</span></div></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Nadia Putri</div><div class="kc-sub">Round 2</div></div><span class="score-badge sm exc">90</span></div></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Bambang Hartono</div><div class="kc-sub">Round 1</div></div><span class="score-badge sm strong">81</span></div></div>
+          </div>
+          <div class="kan-col">
+            <div class="kan-col-head"><b>Offer</b><span class="kan-count">2</span></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Agus Setiawan</div><div class="kc-sub">Offer terkirim</div></div><span class="score-badge sm exc">93</span></div></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Nadia Putri</div><div class="kc-sub">Negosiasi</div></div><span class="score-badge sm exc">90</span></div></div>
+          </div>
+          <div class="kan-col">
+            <div class="kan-col-head"><b>Diterima</b><span class="kan-count">1</span></div>
+            <div class="kan-card"><div class="flex-between"><div><div class="kc-name">Agus Setiawan</div><div class="kc-sub">Mulai 1 Juli 2026</div></div><span class="score-badge sm exc">93</span></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><span class="t-section" style="font-size:15px">Talent Pool</span></div>
+          <div class="card-body">
+            <div class="grid grid-3" style="gap:12px">
+              <div class="card" style="padding:14px"><div class="flex-between"><b style="font-size:13px">Silver Medalist</b><span class="badge badge--neutral">142</span></div><p class="t-caption" style="margin-top:6px">Finalis berkualitas yang belum terpilih</p></div>
+              <div class="card" style="padding:14px"><div class="flex-between"><b style="font-size:13px">Passive Candidate</b><span class="badge badge--neutral">318</span></div><p class="t-caption" style="margin-top:6px">Hasil sourcing, belum melamar aktif</p></div>
+              <div class="card" style="padding:14px"><div class="flex-between"><b style="font-size:13px">Alumni</b><span class="badge badge--neutral">67</span></div><p class="t-caption" style="margin-top:6px">Mantan karyawan layak rehire</p></div>
+            </div>
+            <p class="t-caption" style="margin-top:14px">Saat requisition baru dibuka, HC AI mencari talent pool lebih dulu dan menyarankan kandidat yang cocok.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 4 : SCREENING HC AI ===== -->
+      <section data-panel="screening" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-JANE-001</span>
+          <span class="fr-chip">-JANE-002</span>
+          <span class="fr-chip">-JANE-006</span>
+          <span class="fr-chip">-JANE-007</span>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+          <div>
+            <div class="card" style="margin-bottom:16px">
+              <div class="card-head"><span class="t-section" style="font-size:15px">Screening HC AI</span></div>
+              <div class="card-body">
+                <div class="msg msg--user" style="margin-bottom:14px">
+                  <div class="msg-avatar">DK</div>
+                  <div class="msg-body"><div class="msg-who">Dewi Kartika, Recruiter</div><div class="msg-text"><p>Screening semua pelamar untuk posisi Senior Sales Manager.</p></div></div>
+                </div>
+                <div class="msg msg--ai">
+                  <div class="msg-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></div>
+                  <div class="msg-body"><div class="msg-who">HC AI</div><div class="msg-text">
+                    <p>Selesai menganalisis 247 CV dalam 8 menit. 15 kandidat teratas sudah diranking dengan match score. 3 kandidat luar biasa ditandai untuk review segera.</p>
+                  </div></div>
+                </div>
+              </div>
+            </div>
+            <div class="card card-soft">
+              <div class="card-body">
+                <b style="font-size:14px">Mitigasi bias</b>
+                <p style="font-size:13px;color:var(--nabati-text-secondary);margin-top:6px">Mode blind screening dapat menyembunyikan nama, foto, dan tanggal lulus selama penilaian. HC AI memantau pola bias dan menjaga diverse slate pada peringkat teratas.</p>
+                <div class="flex gap-2" style="margin-top:12px;align-items:center">
+                  <span class="badge badge--neutral">Blind screening: aktif</span>
+                  <span class="badge badge--ok">Diverse slate terpenuhi</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Kandidat Terangkat HC AI</span><span class="t-caption">Top 5 dari 247</span></div>
+            <div class="card-body" style="padding-top:4px;padding-bottom:4px">
+              <div class="rank-row">
+                <span class="rank-no">1</span>
+                <div class="rk-body"><b>Ahmad Fauzi</b><p>8 thn pengalaman FMCG sales, kepemimpinan tim regional terbukti, fasih Mandarin untuk ekspansi China.</p></div>
+                <span class="score-badge exc">94</span>
+              </div>
+              <div class="rank-row">
+                <span class="rank-no">2</span>
+                <div class="rk-body"><b>Maya Anggraini</b><p>Pertumbuhan karier konsisten, skor aptitude persentil 91, indikator cultural fit kuat.</p></div>
+                <span class="score-badge exc">91</span>
+              </div>
+              <div class="rank-row">
+                <span class="rank-no">3</span>
+                <div class="rk-body"><b>Doni Saputra</b><p>Rekam jejak target tercapai, pengalaman lintas kanal, perlu pendalaman pengalaman B2B.</p></div>
+                <span class="score-badge strong">84</span>
+              </div>
+              <div class="rank-row">
+                <span class="rank-no">4</span>
+                <div class="rk-body"><b>Putri Lestari</b><p>6 thn regional sales, jejak ekspansi pasar, ekspektasi gaji dalam rentang budget.</p></div>
+                <span class="score-badge strong">82</span>
+              </div>
+              <div class="rank-row">
+                <span class="rank-no">5</span>
+                <div class="rk-body"><b>Lina Marlina</b><p>Latar distribusi solid, indikator kepemimpinan baik, pengalaman lintas negara terbatas.</p></div>
+                <span class="score-badge strong">79</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 5 : INTERVIEW & PENILAIAN ===== -->
+      <section data-panel="interview" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-INT-001</span>
+          <span class="fr-chip">-INT-002</span>
+          <span class="fr-chip">-INT-003</span>
+          <span class="fr-chip">-JANE-004</span>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Jadwal Interview</span></div>
+            <div class="card-body" style="padding-top:6px;padding-bottom:6px">
+              <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span><div class="pt">Agus Setiawan - Final Round<span>28 Mei, 14.00 WIB · Panel 3 orang</span></div><span class="badge badge--ok">Terkonfirmasi</span></div>
+              <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span><div class="pt">Nadia Putri - Round 2<span>29 Mei, 10.00 WIB · Hiring Manager</span></div><span class="badge badge--ok">Terkonfirmasi</span></div>
+              <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span><div class="pt">Bambang Hartono - Round 1<span>30 Mei, 15.30 WIB · Technical Assessor</span></div><span class="badge badge--high">Menunggu kandidat</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Scorecard Interview</span><span class="t-caption">Agus Setiawan</span></div>
+            <div class="card-body">
+              <div class="score-row"><span>Kepemimpinan tim</span><span class="rating"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+              <div class="score-row"><span>Problem solving</span><span class="rating"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+              <div class="score-row"><span>Komunikasi</span><span class="rating"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+              <div class="score-row"><span>Cultural fit</span><span class="rating"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+              <div class="kv mt-4" style="border:none"><span class="k">Rekomendasi panel</span><span class="v"><span class="badge badge--ok">Strong Hire</span></span></div>
+              <div class="card card-soft" style="margin-top:12px">
+                <div class="card-body" style="padding:12px">
+                  <span class="t-caption">Ringkasan HC AI</span>
+                  <p style="font-size:12.5px;margin-top:4px">Tiga interviewer sepakat pada rating tinggi. HC AI mengagregasi feedback dan menandai konsistensi penilaian antar panel.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 6 : OFFER MANAGEMENT ===== -->
+      <section data-panel="offer" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-OFFER-001</span>
+          <span class="fr-chip">-OFFER-002</span>
+          <span class="fr-chip">-OFFER-003</span>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Penyusunan Offer</span><span class="t-caption">Agus Setiawan</span></div>
+            <div class="card-body">
+              <div class="kv"><span class="k">Posisi</span><span class="v">Senior Sales Manager</span></div>
+              <div class="kv"><span class="k">Lokasi</span><span class="v">Jakarta, Indonesia</span></div>
+              <div class="kv"><span class="k">Gaji Pokok</span><span class="v">IDR 32.000.000 / bulan</span></div>
+              <div class="kv"><span class="k">Tunjangan dan Bonus</span><span class="v">Skema komisi sales</span></div>
+              <div class="kv"><span class="k">Tanggal Mulai</span><span class="v">1 Juli 2026</span></div>
+
+              <p class="t-label" style="margin-top:18px;margin-bottom:0">Benchmark Pasar HC AI</p>
+              <div class="bench-track">
+                <div class="bench-range" style="left:28%;width:44%"></div>
+                <div class="bench-pin" style="left:58%"></div>
+              </div>
+              <div class="flex-between"><span class="t-caption">Persentil 25</span><span class="t-caption">Persentil 75</span></div>
+              <p class="t-caption" style="margin-top:10px">Offer berada di sekitar persentil 60 pasar untuk peran ini. HC AI memperkirakan probabilitas penerimaan tinggi dan tidak ada kompresi gaji internal.</p>
+              <p class="t-caption" style="margin-top:8px">Angka di atas adalah data contoh untuk prototype.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Status Offer</span></div>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>Kandidat</th><th>Posisi</th><th>Dikirim</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>Agus Setiawan</td><td>Senior Sales Manager</td><td>24 Mei 2026</td><td><span class="badge badge--ok">Diterima</span></td></tr>
+                  <tr><td>Nadia Putri</td><td>Senior Sales Manager</td><td>25 Mei 2026</td><td><span class="badge badge--high">Negosiasi</span></td></tr>
+                  <tr><td>Maya Anggraini</td><td>Area Sales Executive</td><td>23 Mei 2026</td><td><span class="badge badge--ok">Diterima</span></td></tr>
+                  <tr><td>Doni Saputra</td><td>Production Supervisor</td><td>20 Mei 2026</td><td><span class="badge badge--neutral">Ditolak</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-body">
+              <p class="t-caption">Offer dikirim digital dengan tanda tangan elektronik. Setelah diterima, data kandidat mengalir ke modul Employee Admin tanpa input ulang, memicu workflow onboarding.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- module cover annotation -->
+      <div class="mod-cover">
+        <b>m04 Talent Acquisition</b>  ·  Prototype v5.5  ·  26 Mei 2026  ·  Fidelity: High  ·  Modul spec UI target<br>
+        Prototype mengikat layout, alur navigasi, state, dan copy. Tidak mengikat tech stack, struktur database, maupun arsitektur backend vendor.<br>
+        Acuan: PRD Talent Acquisition &amp; ATS v1.5. Penyebutan agen Jane, Raya, dan Sonya pada PRD telah diharmonkan ke HC AI, dan nama ONE HRMS ke 'ONE' GLOBAL HCMS. Cakupan negara mengikuti 9 negara baku.
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<!-- ============ HC AI FLOATING LAUNCHER ============ -->
+<button class="hcai-fab" id="hcaiFab">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+  Tanya HC AI
+</button>
+
+<div class="hcai-panel" id="hcaiPanel">
+  <div class="hcai-panel-head">
+    <span class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
+    <div style="flex:1"><b>HC AI</b><span>Modul Talent Acquisition</span></div>
+    <button class="icon-btn" id="hcaiPanelClose" aria-label="Tutup">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="messages" id="hcai-messages">
+    <div class="date-label" id="hcai-date-lbl"></div>
+    <div class="msg-row" id="hcai-welcome-msg">
+      <div class="msg-avatar ai-av">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px">
+          <circle cx="12" cy="12" r="9"/><path d="M9 9h.01M15 9h.01"/><path d="M9 13c.5 1 1.5 2 3 2s2.5-1 3-2"/>
+        </svg>
+      </div>
+      <div class="msg-content">
+        <div class="msg-bubble ai">
+          Selamat datang, <b>Rangga</b>! Saya HC AI. Saya bisa bantu seputar cuti, absensi, slip gaji, kebijakan, dan informasi HR lainnya.
+        </div>
+        <div class="btn-grid">
+          <button class="chat-btn" onclick="handleMenu('shift')"><span class="btn-icon">🗓️</span> Jadwal &amp; Shift</button>
+          <button class="chat-btn" onclick="handleMenu('leave')"><span class="btn-icon">🏖️</span> Cuti &amp; Izin</button>
+          <button class="chat-btn" onclick="handleMenu('payslip')"><span class="btn-icon">💰</span> Slip Gaji</button>
+          <button class="chat-btn" onclick="handleMenu('bpjs')"><span class="btn-icon">🏥</span> BPJS &amp; Benefits</button>
+          <button class="chat-btn" onclick="handleMenu('policy')"><span class="btn-icon">📋</span> Kebijakan &amp; FAQ</button>
+          <button class="chat-btn" onclick="handleMenu('emergency')"><span class="btn-icon">🚨</span> Bantuan Darurat</button>
+        </div>
+        <div class="msg-time" id="hcai-welcome-time"></div>
+      </div>
+    </div>
+  </div>
+  <div class="input-area">
+    <div class="input-wrap">
+      <input type="text" id="hcai-input" placeholder="Ketik pertanyaan atau pilih menu..." onkeydown="handleHcAiInput(event)">
+      <div class="input-actions">
+        <button class="send-btn" onclick="sendHcAiText()" title="Kirim">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/core.js"></script>
+
+<style id="wm-style">
+.sim-watermark {
+  position: fixed; bottom: 14px; left: 14px; z-index: 9999;
+  background: rgba(15,23,42,.82); color: rgba(255,255,255,.85);
+  font-size: 10.5px; font-weight: 600; letter-spacing: .04em;
+  padding: 5px 11px; border-radius: 999px;
+  pointer-events: none; user-select: none;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.12);
+  font-family: system-ui, sans-serif;
+}
+</style>
+<div class="sim-watermark">⚠ DATA SIMULASI — Bukan data aktual Nabati</div>
+
+</body>
+</html>

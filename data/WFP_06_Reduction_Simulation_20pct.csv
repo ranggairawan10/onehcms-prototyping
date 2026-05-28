@@ -1,0 +1,13 @@
+entity_code,entity_name,country,hc_jun2026,target_reduction_20pct,reduction_jul2026_50pct,reduction_aug2026_50pct,hc_after_aug2026,lc_saving_monthly_idrm,lc_saving_annual_idrm,notes
+KSNI,Kaldu Sari Nabati Indonesia,Indonesia,1000,200,100,100,800,3342.0,40104.0,Contract end + PHK sesuai UU 13/2003
+PMA,Pinus Merah Abadi,Indonesia,4000,800,400,400,3200,9263.4,111160.8,Contract end + PHK sesuai UU 13/2003
+RKI,Richeese Kuliner Indonesia,Indonesia,2000,400,200,200,1600,4652.0,55824.0,Contract end + PHK sesuai UU 13/2003
+EL-CN,Enerlife China,China,550,110,55,55,440,1932.4,23188.8,Per labour law China
+EL-IN,Enerlife India,India,480,96,48,48,384,530.6,6367.2,Per labour law India
+EL-MY,Enerlife Malaysia,Malaysia,200,40,20,20,160,496.6,5959.2,Per labour law Malaysia
+EL-VN,Enerlife Vietnam,Vietnam,180,36,18,18,144,185.6,2227.2,Per labour law Vietnam
+EL-MM,Enerlife Myanmar,Myanmar,110,22,11,11,88,91.0,1092.0,Per labour law Myanmar
+EL-TH,Enerlife Thailand,Thailand,170,34,17,17,136,329.2,3950.4,Per labour law Thailand
+EL-PH,Enerlife Philippines,Philippines,160,32,16,16,128,212.2,2546.4,Per labour law Philippines
+EL-KH,Enerlife Cambodia,Cambodia,150,30,15,15,120,129.8,1557.6,Per labour law Cambodia
+ALL,TOTAL NABATI GROUP,9 Countries,9000,1800,900,900,7200,21164.8,253977.6,See per-entity notes

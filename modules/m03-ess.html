@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Employee Self-Service  |  'ONE' GLOBAL HCMS</title>
+<link rel="stylesheet" href="../assets/css/ds.css">
+</head>
+<body data-page="m03">
+
+<div class="app-shell">
+
+  <!-- ============ TOPBAR ============ -->
+  <header class="topbar">
+    <a class="brand" href="../dashboard.html">
+      <img src="../assets/img/nabati-logo.png" alt="Nabati">
+      <span class="brand-name">'ONE' GLOBAL HCMS<small>Nabati HCMS 2.0 Project</small></span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-actions">
+      <button class="icon-btn" aria-label="Cari" onclick="hcToast('Pencarian global tersedia pada build berikutnya.')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Notifikasi" onclick="hcToast('Pusat notifikasi tersedia pada build berikutnya.')">
+        <span class="dot"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z"/><path d="M10 21h4"/></svg>
+      </button>
+      <button class="user-chip">
+        <span class="avatar">RI</span>
+        <span class="who"><b>Rangga Irawan</b><span>HCMS Consultant</span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <nav class="nav-scroll">
+      <div class="nav-group">
+        <a class="nav-item" data-nav="hcai" href="../dashboard.html" data-tooltip="HC AI">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+          <span>HC AI</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">MODUL INTI</div>
+        <a class="nav-item" data-nav="m01" data-module="m01" href="m01-rbac.html" data-tooltip="Role & Access (RBAC)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z"/><path d="M9.5 12l1.8 1.8 3.4-3.6"/></svg>
+          <span>Role &amp; Access</span><span class="code">RBAC</span>
+        </a>
+        <a class="nav-item" data-nav="m02" data-module="m02" href="m02-eam.html" data-tooltip="Employee Admin (EAM)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.5 16.4c.6-1.7 2-2.4 3.5-2.4s2.9.7 3.5 2.4M15 10h4M15 14h4"/></svg>
+          <span>Employee Admin</span><span class="code">EAM</span>
+        </a>
+        <a class="nav-item" data-nav="m03" data-module="m03" href="m03-ess.html" data-tooltip="Self-Service (ESS)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 18c1-2.4 3-3.4 5.5-3.4s4.5 1 5.5 3.4"/></svg>
+          <span>Self-Service</span><span class="code">ESS</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">TALENT &amp; KINERJA</div>
+        <a class="nav-item" data-nav="m04" data-module="m04" href="m04-ta.html" data-tooltip="Talent Acquisition (TA)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19c.7-3 3-4.5 5.5-4.5"/><path d="M16 11v6M13 14h6"/></svg>
+          <span>Talent Acquisition</span><span class="code">TA</span>
+        </a>
+        <a class="nav-item" data-nav="m05" data-module="m05" href="m05-org.html" data-tooltip="Organization Design (ORG)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-2h12v2"/></svg>
+          <span>Organization Design</span><span class="code">ORG</span>
+        </a>
+        <a class="nav-item" data-nav="m06" data-module="m06" href="m06-cnb.html" data-tooltip="Compensation & Benefit (CNB)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a2 2 0 0 1 2-2h12v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M17 6V5a2 2 0 0 0-2-2H6"/><circle cx="16" cy="12" r="1.4"/></svg>
+          <span>Compensation &amp; Benefit</span><span class="code">CNB</span>
+        </a>
+        <a class="nav-item" data-nav="m07" data-module="m07" href="m07-pms.html" data-tooltip="Performance (PMS)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19a9 9 0 1 1 16 0"/><path d="M12 14l4-3.5"/><circle cx="12" cy="14" r="1.4"/></svg>
+          <span>Performance</span><span class="code">PMS</span>
+        </a>
+        <a class="nav-item" data-nav="m08" data-module="m08" href="m08-cm.html" data-tooltip="Career Management (CM)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+          <span>Career Management</span><span class="code">CM</span>
+        </a>
+        <a class="nav-item" data-nav="m09" data-module="m09" href="m09-lms.html" data-tooltip="Learning Management (LMS)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2z"/><path d="M4 18a2 2 0 0 1 2-2h13"/><path d="M9 8h6"/></svg>
+          <span>Learning Management</span><span class="code">LMS</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">ORGANISASI &amp; ANALITIK</div>
+        <a class="nav-item" data-nav="m10" data-module="m10" href="m10-od.html" data-tooltip="Org Development (OD)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M10.5 6.8 6.4 15.9M13.5 6.8l4.1 9.1M7.4 18h9.2"/></svg>
+          <span>Org Development</span><span class="code">OD</span>
+        </a>
+        <a class="nav-item" data-nav="m11" data-module="m11" href="m11-ir.html" data-tooltip="Industrial Relationship (IR)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16M4 20h16"/><path d="M7 7 4 13a3 3 0 0 0 6 0L7 7M17 7l-3 6a3 3 0 0 0 6 0l-3-6M5 7h14"/></svg>
+          <span>Industrial Relationship</span><span class="code">IR</span>
+        </a>
+        <a class="nav-item" data-nav="m12" data-module="m12" href="m12-pa.html" data-tooltip="People Analytics (PA)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V11M10 20V5M16 20v-6M20 20H3"/></svg>
+          <span>People Analytics</span><span class="code">PA</span>
+        </a>
+      </div>
+    </nav>
+    <div class="sidebar-foot">
+      <a class="nav-item" href="#" onclick="hcToast('Layar pengaturan tersedia pada build berikutnya.');return false;" data-tooltip="Pengaturan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+        <span>Pengaturan</span>
+      </a>
+      <a class="nav-item" href="../index.html" data-tooltip="Keluar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 17l5-5-5-5M21 12H9M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
+        <span>Keluar</span>
+      </a>
+      <p class="t-caption" style="padding:8px 12px 2px">Prototype v5.5  ·  12 modul lengkap</p>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+    <div class="main-inner">
+
+      <div class="breadcrumb">
+        <a href="../dashboard.html">'ONE' GLOBAL HCMS</a>
+        <span class="sep">/</span>
+        <span class="here">Employee Self-Service</span>
+      </div>
+
+      <div class="proto-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        <span><b>Modul warisan Scenario C.</b> Prototype berfungsi sebagai feature checklist verifikasi terhadap build Ego Eimi. Mengikat layout, alur, state, dan copy. Tidak mengikat tech stack.</span>
+      </div>
+
+      <div class="page-header">
+        <div class="mod-titlebar">
+          <h1 class="t-page">Employee Self-Service</h1>
+          <span class="mod-code">ESS  ·  m03</span>
+          <span class="badge badge--neutral"><span class="tick"></span>Modul Warisan</span>
+        </div>
+        <p>Antarmuka utama bagi 32.000 karyawan untuk mengakses layanan HR secara mandiri. Mobile-first, didampingi HC AI, dirancang tanpa kebutuhan pelatihan formal.</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab is-active" data-tab="ringkasan">Ringkasan</button>
+        <button class="tab" data-tab="dashboard">Dashboard Karyawan</button>
+        <button class="tab" data-tab="kehadiran">Kehadiran</button>
+        <button class="tab" data-tab="cuti">Cuti</button>
+        <button class="tab" data-tab="dokumen">Dokumen &amp; Payslip</button>
+        <button class="tab" data-tab="checklist">Feature Checklist</button>
+      </div>
+
+      <!-- ===== TAB 1 : RINGKASAN ===== -->
+      <section data-panel="ringkasan">
+        <div class="fr-row">
+          <span class="fr-chip">-RAYESS-001</span>
+          <span class="fr-chip">-RAYESS-005</span>
+          <span class="fr-chip">MOB-ESS-001</span>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+          <div>
+            <div class="card" style="margin-bottom:16px">
+              <div class="card-head"><span class="t-section" style="font-size:15px">Empat prinsip ESS</span></div>
+              <div class="card-body" style="padding-top:8px;padding-bottom:8px">
+                <div class="insight">
+                  <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M21 12a9 9 0 1 1-6.2-8.5"/></svg></span>
+                  <span class="it"><b>Tanpa pelatihan.</b> Karyawan langsung memakai ESS di hari pertama. HC AI menangani kompleksitas di balik percakapan.</span>
+                </div>
+                <div class="insight">
+                  <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
+                  <span class="it"><b>Mobile-first.</b> 80 persen transaksi HR dapat diselesaikan lewat ponsel, termasuk untuk 12.800 karyawan deskless.</span>
+                </div>
+                <div class="insight">
+                  <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
+                  <span class="it"><b>Didampingi HC AI.</b> Tanya jawab kebijakan, ajukan transaksi, dan dapat bantuan proaktif dalam 8 bahasa.</span>
+                </div>
+                <div class="insight">
+                  <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>
+                  <span class="it"><b>Omnichannel.</b> Akses lewat aplikasi mobile, web, WhatsApp, dan suara, dengan riwayat percakapan yang menyatu.</span>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-3">
+              <div class="card stat"><div class="num">32.000</div><div class="lbl">Karyawan pengguna</div></div>
+              <div class="card stat"><div class="num accent">90%</div><div class="lbl">Target self-service</div></div>
+              <div class="card stat"><div class="num">8</div><div class="lbl">Bahasa didukung</div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Tampilan Aplikasi Karyawan</span><span class="t-caption">Mobile-first</span></div>
+            <div class="card-body">
+              <div class="phone">
+                <div class="phone-screen">
+                  <div class="phone-notch"></div>
+                  <div class="ph-head">
+                    <div class="flex-between">
+                      <div><span class="t-caption">Selamat pagi</span><br><b style="font-size:14px">Andini</b></div>
+                      <span class="avatar" style="width:32px;height:32px">AR</span>
+                    </div>
+                  </div>
+                  <div class="ph-body">
+                    <div class="m-card accent">
+                      <div class="flex gap-2" style="align-items:center;margin-bottom:6px">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+                        <b style="font-size:12px">HC AI</b>
+                      </div>
+                      <span style="font-size:12px">Apa yang bisa saya bantu hari ini?</span>
+                    </div>
+                    <div class="m-card">
+                      <span class="t-caption">Status kehadiran</span>
+                      <div class="flex-between" style="margin-top:6px">
+                        <b style="font-size:13px">Sudah clock in</b>
+                        <span class="badge badge--ok">08.14</span>
+                      </div>
+                    </div>
+                    <div class="m-card">
+                      <span class="t-caption">Saldo cuti tahunan</span>
+                      <div class="flex-between" style="margin-top:4px">
+                        <b style="font-size:18px">8 hari</b><span class="t-caption">dari 12</span>
+                      </div>
+                      <div class="pbar" style="margin-top:8px"><span style="width:66%"></span></div>
+                    </div>
+                    <div class="m-quick">
+                      <a><span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span>Cuti</a>
+                      <a><span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h8l6 6v14H6z"/><path d="M14 2v6h6"/></svg></span>Payslip</a>
+                      <a><span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 8 8 6M12 8l4-2"/><rect x="4" y="8" width="16" height="13" rx="2"/></svg></span>Klaim</a>
+                      <a><span class="qi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></span>Lembur</a>
+                    </div>
+                  </div>
+                  <div class="ph-nav">
+                    <span class="pn on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11l8-7 8 7M6 10v9h12v-9"/></svg>Beranda</span>
+                    <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Hadir</span>
+                    <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2"/></svg>HC AI</span>
+                    <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h8l6 6v14H6z"/></svg>Permintaan</span>
+                    <span class="pn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="3.2"/><path d="M6 20c1-3.2 3.4-4.6 6-4.6s5 1.4 6 4.6"/></svg>Profil</span>
+                  </div>
+                </div>
+              </div>
+              <p class="t-caption" style="text-align:center;margin-top:12px">Mockup beranda aplikasi karyawan. Navigasi satu ibu jari, dengan HC AI selalu dalam jangkauan.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 2 : DASHBOARD KARYAWAN ===== -->
+      <section data-panel="dashboard" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-DASH-001</span>
+          <span class="fr-chip">-DASH-002</span>
+          <span class="fr-chip">-DASH-003</span>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Tindakan Tertunda</span><span class="badge badge--critical">4</span></div>
+            <div class="card-body" style="padding-top:6px;padding-bottom:6px">
+              <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2z"/></svg></span><div class="pt">Training wajib K3 belum selesai<span>Tenggat 30 Mei 2026</span></div><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka training wajib.')">Buka</button></div>
+              <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/></svg></span><div class="pt">3 dari 5 goal kinerja belum di-update<span>Siklus Q2 2026</span></div><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka goal kinerja.')">Buka</button></div>
+              <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h8l6 6v14H6z"/></svg></span><div class="pt">Kebijakan Data Privacy perlu persetujuan<span>Acknowledgment</span></div><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka acknowledgment kebijakan.')">Buka</button></div>
+              <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/></svg></span><div class="pt">Kontak darurat perlu diperbarui<span>Profil belum lengkap</span></div><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka editor profil.')">Buka</button></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Metrik Pribadi</span></div>
+            <div class="card-body">
+              <div class="grid grid-2" style="gap:14px">
+                <div><div class="flex-between"><span class="t-caption">Cuti tahunan</span><b style="font-size:12px">8 / 12 hari</b></div><div class="pbar" style="margin-top:6px"><span style="width:66%"></span></div></div>
+                <div><div class="flex-between"><span class="t-caption">Kehadiran Mei</span><b style="font-size:12px">96%</b></div><div class="pbar ok" style="margin-top:6px"><span style="width:96%"></span></div></div>
+                <div><div class="flex-between"><span class="t-caption">Goal tercapai</span><b style="font-size:12px">2 / 5</b></div><div class="pbar warn" style="margin-top:6px"><span style="width:40%"></span></div></div>
+                <div><div class="flex-between"><span class="t-caption">Jam belajar</span><b style="font-size:12px">18 jam</b></div><div class="pbar ok" style="margin-top:6px"><span style="width:72%"></span></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Aksi Cepat</span></div>
+            <div class="card-body">
+              <div class="grid grid-2" style="gap:10px">
+                <button class="btn btn--secondary" onclick="document.querySelector('[data-tab=cuti]').click()">Ajukan Cuti</button>
+                <button class="btn btn--secondary" onclick="document.querySelector('[data-tab=kehadiran]').click()">Clock In / Out</button>
+                <button class="btn btn--secondary" onclick="document.querySelector('[data-tab=dokumen]').click()">Lihat Payslip</button>
+                <button class="btn btn--secondary" onclick="hcToast('Membuka formulir klaim.')">Submit Klaim</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Agenda Mendatang</span></div>
+            <div class="card-body" style="padding-top:6px;padding-bottom:6px">
+              <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span><div class="pt">1-on-1 dengan manager<span>28 Mei, 10.00</span></div></div>
+              <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2z"/></svg></span><div class="pt">Sesi training Product Strategy<span>2 Juni, 14.00</span></div></div>
+              <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></span><div class="pt">Hari libur nasional<span>6 Juni 2026</span></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-soft" style="margin-top:16px">
+          <div class="card-body flex gap-3" style="align-items:center">
+            <span class="hcai-mark" style="width:40px;height:40px;border-radius:11px;box-shadow:none"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
+            <span style="font-size:13px">Dashboard ini dikurasi HC AI. Widget yang sering dipakai naik ke atas, konten menyesuaikan peran, lokasi, dan pola penggunaan tiap karyawan.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 3 : KEHADIRAN ===== -->
+      <section data-panel="kehadiran" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-ATT-001</span>
+          <span class="fr-chip">-ATT-002</span>
+          <span class="fr-chip">MOB-ESS-002</span>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Clock In dengan Face Recognition</span></div>
+            <div class="card-body" style="text-align:center">
+              <div class="clockin">
+                <div class="inner">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="11" r="2.6"/><path d="M8.5 16c.7-1.6 2-2.3 3.5-2.3s2.8.7 3.5 2.3"/></svg>
+                  <b>Clock In</b>
+                </div>
+              </div>
+              <div style="margin-top:16px">
+                <span class="geo-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                  Lokasi terverifikasi: Jakarta Head Office
+                </span>
+              </div>
+              <p class="t-caption" style="margin-top:14px">Wajah dipindai dengan liveness detection. Lokasi GPS dicek terhadap geofence kantor. Berfungsi offline, tersinkron saat kembali daring.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Ringkasan Kehadiran</span><span class="t-caption">Mei 2026</span></div>
+            <div class="card-body">
+              <div class="grid grid-3" style="gap:12px;margin-bottom:16px">
+                <div class="card stat" style="padding:14px"><div class="num" style="font-size:22px">19</div><div class="lbl">Hari hadir</div></div>
+                <div class="card stat" style="padding:14px"><div class="num" style="font-size:22px">1</div><div class="lbl">Cuti</div></div>
+                <div class="card stat" style="padding:14px"><div class="num accent" style="font-size:22px">2</div><div class="lbl">Terlambat</div></div>
+              </div>
+              <div class="kv"><span class="k">Clock in hari ini</span><span class="v">08.14, Jakarta Head Office</span></div>
+              <div class="kv"><span class="k">Jam kerja terkumpul</span><span class="v">152 jam 30 menit</span></div>
+              <div class="kv"><span class="k">Lembur bulan ini</span><span class="v">6 jam 15 menit</span></div>
+              <div class="kv"><span class="k">Tingkat kehadiran</span><span class="v">96%</span></div>
+              <button class="btn btn--secondary btn--sm btn--block mt-4" onclick="hcToast('Membuka formulir koreksi kehadiran.')">Ajukan Koreksi Kehadiran</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <div class="card-head"><span class="t-section" style="font-size:15px">Catatan Kehadiran Terakhir</span></div>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Tanggal</th><th>Clock In</th><th>Clock Out</th><th>Jam Kerja</th><th>Lokasi</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>26 Mei 2026</td><td>08.14</td><td>Berlangsung</td><td>Berjalan</td><td>Jakarta Head Office</td><td><span class="badge badge--ok">Hadir</span></td></tr>
+                <tr><td>23 Mei 2026</td><td>08.02</td><td>17.20</td><td>8j 18m</td><td>Jakarta Head Office</td><td><span class="badge badge--ok">Hadir</span></td></tr>
+                <tr><td>22 Mei 2026</td><td>08.41</td><td>17.05</td><td>7j 24m</td><td>Jakarta Head Office</td><td><span class="badge badge--high">Terlambat</span></td></tr>
+                <tr><td>21 Mei 2026</td><td>Cuti</td><td>Cuti</td><td>-</td><td>-</td><td><span class="badge badge--neutral">Cuti</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 4 : CUTI ===== -->
+      <section data-panel="cuti" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-LEAVE-001</span>
+          <span class="fr-chip">-LEAVE-002</span>
+          <span class="fr-chip">-LEAVE-003</span>
+          <span class="fr-chip">-LEAVE-004</span>
+        </div>
+
+        <p class="t-label" style="margin-bottom:12px">Saldo Cuti</p>
+        <div class="grid grid-4" style="margin-bottom:20px">
+          <div class="card" style="padding:16px"><span class="t-caption">Cuti Tahunan</span><div class="flex-between" style="margin:4px 0 8px"><b style="font-size:20px">8</b><span class="t-caption">dari 12 hari</span></div><div class="pbar"><span style="width:66%"></span></div></div>
+          <div class="card" style="padding:16px"><span class="t-caption">Cuti Sakit</span><div class="flex-between" style="margin:4px 0 8px"><b style="font-size:20px">12</b><span class="t-caption">dari 12 hari</span></div><div class="pbar ok"><span style="width:100%"></span></div></div>
+          <div class="card" style="padding:16px"><span class="t-caption">Cuti Haid</span><div class="flex-between" style="margin:4px 0 8px"><b style="font-size:20px">2</b><span class="t-caption">per bulan</span></div><div class="pbar ok"><span style="width:100%"></span></div></div>
+          <div class="card" style="padding:16px"><span class="t-caption">Cuti Pengganti (TOIL)</span><div class="flex-between" style="margin:4px 0 8px"><b style="font-size:20px">1,5</b><span class="t-caption">hari</span></div><div class="pbar warn"><span style="width:30%"></span></div></div>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Ajukan Cuti lewat HC AI</span></div>
+            <div class="card-body">
+              <div class="msg msg--user" style="margin-bottom:14px">
+                <div class="msg-avatar">A</div>
+                <div class="msg-body"><div class="msg-who">Andini</div><div class="msg-text"><p>Saya butuh cuti 3 hari dari 10 sampai 12 Juni.</p></div></div>
+              </div>
+              <div class="msg msg--ai">
+                <div class="msg-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></div>
+                <div class="msg-body"><div class="msg-who">HC AI</div><div class="msg-text">
+                  <p>Saldo cuti tahunan Anda 8 hari. Tanggal 11 Juni adalah hari libur nasional, jadi pengajuan ini memakai 2 hari cuti. Atasan Anda akan menerima notifikasi setelah dikirim.</p>
+                </div></div>
+              </div>
+              <button class="btn btn--primary btn--block mt-4" onclick="hcToast('Pengajuan cuti dikirim ke atasan.')">Kirim Pengajuan</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Kalender Cuti</span><span class="t-caption">Juni 2026</span></div>
+            <div class="card-body">
+              <div class="cal" style="margin-bottom:8px">
+                <div class="cal-head">S</div><div class="cal-head">S</div><div class="cal-head">R</div><div class="cal-head">K</div><div class="cal-head">J</div><div class="cal-head">S</div><div class="cal-head">M</div>
+              </div>
+              <div class="cal">
+                <div class="cal-cell muted"></div><div class="cal-cell">1</div><div class="cal-cell">2</div><div class="cal-cell">3</div><div class="cal-cell">4</div><div class="cal-cell">5</div><div class="cal-cell holiday">6</div>
+                <div class="cal-cell">7</div><div class="cal-cell">8</div><div class="cal-cell">9</div><div class="cal-cell leave">10</div><div class="cal-cell holiday">11</div><div class="cal-cell leave">12</div><div class="cal-cell">13</div>
+                <div class="cal-cell">14</div><div class="cal-cell">15</div><div class="cal-cell">16</div><div class="cal-cell">17</div><div class="cal-cell">18</div><div class="cal-cell">19</div><div class="cal-cell">20</div>
+                <div class="cal-cell">21</div><div class="cal-cell">22</div><div class="cal-cell">23</div><div class="cal-cell">24</div><div class="cal-cell">25</div><div class="cal-cell">26</div><div class="cal-cell">27</div>
+                <div class="cal-cell">28</div><div class="cal-cell">29</div><div class="cal-cell">30</div><div class="cal-cell muted"></div><div class="cal-cell muted"></div><div class="cal-cell muted"></div><div class="cal-cell muted"></div>
+              </div>
+              <div class="flex gap-3" style="margin-top:14px;flex-wrap:wrap">
+                <span class="flex gap-2" style="align-items:center"><span style="width:12px;height:12px;border-radius:4px;background:var(--nabati-red)"></span><span class="t-caption">Cuti diajukan</span></span>
+                <span class="flex gap-2" style="align-items:center"><span style="width:12px;height:12px;border-radius:4px;background:var(--status-wait-soft)"></span><span class="t-caption">Libur nasional</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 5 : DOKUMEN & PAYSLIP ===== -->
+      <section data-panel="dokumen" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-DOC-001</span>
+          <span class="fr-chip">-DOC-002</span>
+          <span class="fr-chip">-DOC-003</span>
+          <span class="fr-chip">-DOC-005</span>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+          <div>
+            <div class="payslip" style="margin-bottom:16px">
+              <div class="payslip-head">
+                <b>Payslip Mei 2026</b>
+                <span>Andini Rahmawati Putri  ·  NBT-ID-004821  ·  Dibayar 25 Mei 2026</span>
+              </div>
+              <div class="payslip-sec">
+                <p class="t-label" style="margin-bottom:6px">Penghasilan</p>
+                <div class="kv"><span class="k">Gaji Pokok</span><span class="v">IDR 18.000.000</span></div>
+                <div class="kv"><span class="k">Tunjangan Transport</span><span class="v">IDR 1.500.000</span></div>
+                <div class="kv"><span class="k">Tunjangan Komunikasi</span><span class="v">IDR 500.000</span></div>
+              </div>
+              <div class="payslip-sec">
+                <p class="t-label" style="margin-bottom:6px">Potongan</p>
+                <div class="kv"><span class="k">PPh 21</span><span class="v">IDR 1.420.000</span></div>
+                <div class="kv"><span class="k">BPJS Kesehatan</span><span class="v">IDR 200.000</span></div>
+                <div class="kv"><span class="k">BPJS Ketenagakerjaan</span><span class="v">IDR 380.000</span></div>
+              </div>
+              <div class="payslip-sec payslip-net">
+                <div class="kv" style="border:none"><span class="k" style="font-weight:700;color:var(--nabati-text-primary)">Gaji Bersih</span><span class="v" style="font-size:15px;color:var(--nabati-red)">IDR 17.600.000</span></div>
+              </div>
+            </div>
+            <p class="t-caption">Angka payslip di atas adalah data contoh untuk prototype. Payslip asli terenkripsi dan tersedia dalam riwayat hingga 7 tahun.</p>
+          </div>
+
+          <div>
+            <div class="card" style="margin-bottom:16px">
+              <div class="card-head"><span class="t-section" style="font-size:15px">Surat &amp; Sertifikat</span></div>
+              <div class="card-body" style="padding-top:6px;padding-bottom:6px">
+                <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h8l6 6v14H6z"/></svg></span><div class="pt">Surat Keterangan Kerja<span>Terbit instan, tanda tangan digital</span></div><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuat surat keterangan kerja.')">Minta</button></div>
+                <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h8l6 6v14H6z"/></svg></span><div class="pt">Surat Keterangan Penghasilan<span>Perlu persetujuan HR</span></div><button class="btn btn--ghost btn--sm" onclick="hcToast('Mengajukan surat keterangan penghasilan.')">Minta</button></div>
+                <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h8l6 6v14H6z"/></svg></span><div class="pt">Bukti Potong Pajak 1721-A1<span>Terbit otomatis Februari</span></div><button class="btn btn--ghost btn--sm" onclick="hcToast('Mengunduh bukti potong pajak.')">Unduh</button></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-head"><span class="t-section" style="font-size:15px">Dokumen &amp; Kebijakan</span></div>
+              <div class="card-body" style="padding-top:6px;padding-bottom:6px">
+                <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h8l6 6v14H6z"/></svg></span><div class="pt">Repositori dokumen pribadi<span>KTP, ijazah, sertifikasi</span></div><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka repositori dokumen.')">Buka</button></div>
+                <div class="pend-row"><span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2z"/></svg></span><div class="pt">Buku Pegangan Karyawan<span>HC AI dapat menjelaskan isinya</span></div><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka buku pegangan karyawan.')">Buka</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 6 : FEATURE CHECKLIST ===== -->
+      <section data-panel="checklist" style="display:none">
+        <div class="card card-soft" style="margin-bottom:20px">
+          <div class="card-body">
+            <b style="font-size:14px">Verifikasi modul warisan Scenario C</b>
+            <p style="font-size:13px;color:var(--nabati-text-secondary);margin-top:6px">
+              ESS adalah modul terbesar dengan 16 grup fungsi dan termasuk yang sudah pernah dibangun Ego Eimi. Checklist ini memetakan seluruh area wajib menurut PRD Employee Self-Service v1.5. Status diisi bersama vendor saat walkthrough verifikasi.
+            </p>
+            <div class="flex gap-3" style="margin-top:14px;flex-wrap:wrap">
+              <span class="flex gap-2" style="align-items:center"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t-caption">Terverifikasi ada</span></span>
+              <span class="flex gap-2" style="align-items:center"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><span class="t-caption">Perlu konfirmasi vendor</span></span>
+              <span class="flex gap-2" style="align-items:center"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><span class="t-caption">Belum terkonfirmasi</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">HC AI Agent untuk ESS</span><span class="fr-chip">-RAYESS</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Penanganan pertanyaan HR natural language</b><p>FR-RAYESS-001</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Eksekusi transaksi otomatis</b><p>FR-RAYESS-002</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Bantuan proaktif dan pengingat cerdas</b><p>FR-RAYESS-003</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Dukungan percakapan 8 bahasa</b><p>FR-RAYESS-004</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Akses omnichannel: app, web, WhatsApp, suara</b><p>FR-RAYESS-005</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Personalisasi dan kesadaran konteks</b><p>FR-RAYESS-006</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Keamanan dan privasi percakapan</b><p>FR-RAYESS-007</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Umpan balik dan perbaikan berkelanjutan</b><p>FR-RAYESS-008</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Dashboard &amp; Portal</span><span class="fr-chip">-DASH</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Dashboard terkurasi AI</b><p>FR-DASH-001</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Navigasi dan arsitektur informasi</b><p>FR-DASH-002</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Notifikasi dan alert cerdas</b><p>FR-DASH-003</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Home screen dan widget aplikasi mobile</b><p>FR-DASH-004</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Profil Karyawan</span><span class="fr-chip">-PROF</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Tampilan profil komprehensif</b><p>FR-PROF-001</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Self-service editing profil</b><p>FR-PROF-002</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Kontrol privasi dan akses data</b><p>FR-PROF-003</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Direktori dan pencarian orang</b><p>FR-PROF-004</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Time &amp; Attendance</span><span class="fr-chip">-ATT</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Clock-in face recognition dan geotagging</b><p>FR-ATT-001</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Pelacakan dan monitoring kehadiran</b><p>FR-ATT-002</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Manajemen shift dan jadwal</b><p>FR-ATT-003</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Manajemen lembur, aturan per negara</b><p>FR-ATT-004</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Manajemen exception kehadiran</b><p>FR-ATT-005</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Pelaporan dan analitik kehadiran</b><p>FR-ATT-006</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Leave Management</span><span class="fr-chip">-LEAVE</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>25+ tipe cuti dan konfigurasi kebijakan</b><p>FR-LEAVE-001</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Pengajuan dan persetujuan cuti</b><p>FR-LEAVE-002</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Manajemen saldo cuti dan akrual</b><p>FR-LEAVE-003</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Kalender cuti dan koordinasi tim</b><p>FR-LEAVE-004</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Pelaporan dan analitik cuti</b><p>FR-LEAVE-005</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Document Center</span><span class="fr-chip">-DOC</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Akses dan pengelolaan payslip</b><p>FR-DOC-001</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Dokumen pajak dan laporan akhir tahun</b><p>FR-DOC-002</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Surat dan sertifikat kepegawaian self-service</b><p>FR-DOC-003</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Repositori dokumen pribadi dengan OCR</b><p>FR-DOC-004</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Kebijakan perusahaan dan handbook</b><p>FR-DOC-005</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Benefits &amp; Claims</span><span class="fr-chip">-BEN</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Enrollment dan manajemen benefit</b><p>FR-BEN-001</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Pengajuan dan pelacakan klaim</b><p>FR-BEN-002</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Rekomendasi benefit berbasis AI</b><p>FR-BEN-003</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Integrasi dengan penyedia benefit</b><p>FR-BEN-004</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Performance, Learning &amp; Career</span><span class="fr-chip">-PERF</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Goal setting dan continuous feedback</b><p>FR-PERF-001, PERF-002</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Self-assessment dan development planning</b><p>FR-PERF-003, PERF-004</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Katalog learning dan sertifikasi</b><p>FR-LEARN-001 sampai 003</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Career path, lowongan internal, suksesi</b><p>FR-CAREER-001 sampai 003</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Directory, Komunikasi, Help &amp; Settings</span><span class="fr-chip">-DIR</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Direktori, networking, penemuan ahli</b><p>FR-DIR-001 sampai 003</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>News feed, event, recognition wall</b><p>FR-COMM-001 sampai 003</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Help HC AI, knowledge base, support ticket</b><p>FR-HELP-001 sampai 003</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Preferensi, keamanan, akun terhubung</b><p>FR-SET-001 sampai 003</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Aplikasi Mobile</span><span class="fr-chip">MOB-ESS</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Autentikasi biometrik dengan liveness detection</b><p>MOB-ESS-001</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Geotagging dan geofencing lokasi</b><p>MOB-ESS-002</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Voice interface multi-bahasa</b><p>MOB-ESS-003</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Kapabilitas offline dan sinkronisasi</b><p>MOB-ESS-004</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Push notification, kamera dan OCR</b><p>MOB-ESS-005, MOB-ESS-006</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Workflow mobile dan target performa</b><p>MOB-ESS-007, MOB-ESS-008</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Integrasi</span><span class="fr-chip">INT-ESS</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Integrasi SAP dan ERP</b><p>INT-ESS-001</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Integrasi kalender Outlook dan Google</b><p>INT-ESS-002</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Integrasi email dan collaboration tools</b><p>INT-ESS-003</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Integrasi penyedia benefit dan verifikasi</b><p>INT-ESS-004, INT-ESS-005</p></div></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- module cover annotation -->
+      <div class="mod-cover">
+        <b>m03 Employee Self-Service</b>  ·  Prototype v5.5  ·  26 Mei 2026  ·  Fidelity: High  ·  Modul warisan Scenario C<br>
+        Prototype mengikat layout, alur navigasi, state, dan copy. Tidak mengikat tech stack, struktur database, maupun arsitektur backend vendor.<br>
+        Acuan: PRD Employee Self-Service v1.5. Penyebutan agen Raya dan nama ONE HRMS pada PRD telah diharmonkan ke HC AI dan 'ONE' GLOBAL HCMS. Cakupan negara mengikuti 9 negara baku.
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<!-- ============ HC AI FLOATING LAUNCHER ============ -->
+<button class="hcai-fab" id="hcaiFab">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+  Tanya HC AI
+</button>
+
+<div class="hcai-panel" id="hcaiPanel">
+  <div class="hcai-panel-head">
+    <span class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
+    <div style="flex:1"><b>HC AI</b><span>Modul Employee Self-Service</span></div>
+    <button class="icon-btn" id="hcaiPanelClose" aria-label="Tutup">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="messages" id="hcai-messages">
+    <div class="date-label" id="hcai-date-lbl"></div>
+    <div class="msg-row" id="hcai-welcome-msg">
+      <div class="msg-avatar ai-av">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px">
+          <circle cx="12" cy="12" r="9"/><path d="M9 9h.01M15 9h.01"/><path d="M9 13c.5 1 1.5 2 3 2s2.5-1 3-2"/>
+        </svg>
+      </div>
+      <div class="msg-content">
+        <div class="msg-bubble ai">
+          Selamat datang, <b>Rangga</b>! Saya HC AI. Saya bisa bantu seputar cuti, absensi, slip gaji, kebijakan, dan informasi HR lainnya.
+        </div>
+        <div class="btn-grid">
+          <button class="chat-btn" onclick="handleMenu('shift')"><span class="btn-icon">🗓️</span> Jadwal &amp; Shift</button>
+          <button class="chat-btn" onclick="handleMenu('leave')"><span class="btn-icon">🏖️</span> Cuti &amp; Izin</button>
+          <button class="chat-btn" onclick="handleMenu('payslip')"><span class="btn-icon">💰</span> Slip Gaji</button>
+          <button class="chat-btn" onclick="handleMenu('bpjs')"><span class="btn-icon">🏥</span> BPJS &amp; Benefits</button>
+          <button class="chat-btn" onclick="handleMenu('policy')"><span class="btn-icon">📋</span> Kebijakan &amp; FAQ</button>
+          <button class="chat-btn" onclick="handleMenu('emergency')"><span class="btn-icon">🚨</span> Bantuan Darurat</button>
+        </div>
+        <div class="msg-time" id="hcai-welcome-time"></div>
+      </div>
+    </div>
+  </div>
+  <div class="input-area">
+    <div class="input-wrap">
+      <input type="text" id="hcai-input" placeholder="Ketik pertanyaan atau pilih menu..." onkeydown="handleHcAiInput(event)">
+      <div class="input-actions">
+        <button class="send-btn" onclick="sendHcAiText()" title="Kirim">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/core.js"></script>
+
+<style id="wm-style">
+.sim-watermark {
+  position: fixed; bottom: 14px; left: 14px; z-index: 9999;
+  background: rgba(15,23,42,.82); color: rgba(255,255,255,.85);
+  font-size: 10.5px; font-weight: 600; letter-spacing: .04em;
+  padding: 5px 11px; border-radius: 999px;
+  pointer-events: none; user-select: none;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.12);
+  font-family: system-ui, sans-serif;
+}
+</style>
+<div class="sim-watermark">⚠ DATA SIMULASI — Bukan data aktual Nabati</div>
+
+</body>
+</html>

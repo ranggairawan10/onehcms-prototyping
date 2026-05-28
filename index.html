@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masuk  |  'ONE' GLOBAL HCMS</title>
+<link rel="stylesheet" href="assets/css/ds.css">
+</head>
+<body>
+
+<div class="auth-topstrip"></div>
+
+<div class="auth">
+
+  <!-- ============ PANEL BRAND ============ -->
+  <aside class="auth-brand">
+    <svg class="leaf-bg" viewBox="0 0 520 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path fill="#ED1B24" d="M30 168C24 96 150 28 318 36c128 6 188 70 162 150-30 92-210 128-330 96C66 256 36 222 30 168Z"/>
+    </svg>
+
+    <div class="topline">
+      <img src="assets/img/nabati-logo.png" alt="Nabati">
+      <span class="nm">Nabati HCMS 2.0 Project</span>
+    </div>
+
+    <div class="core">
+      <h2 data-id="Satu sistem human capital untuk seluruh Nabati Group."
+          data-en="One human capital system for the entire Nabati Group.">
+        Satu sistem human capital untuk seluruh Nabati Group.
+      </h2>
+      <p data-id="'ONE' GLOBAL HCMS menyatukan 12 modul human capital lintas 9 negara dalam satu platform terintegrasi."
+         data-en="'ONE' GLOBAL HCMS unifies 12 human capital modules across 9 countries on a single integrated platform.">
+        'ONE' GLOBAL HCMS menyatukan 12 modul human capital lintas 9 negara dalam satu platform terintegrasi.
+      </p>
+
+      <ul class="auth-feats">
+        <li>
+          <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span data-id="12 modul terintegrasi dalam satu sumber data"
+                data-en="12 integrated modules on a single source of data">12 modul terintegrasi dalam satu sumber data</span>
+        </li>
+        <li>
+          <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span data-id="Cakupan 9 negara, sekitar 32.000 karyawan"
+                data-en="Coverage across 9 countries, around 32,000 employees">Cakupan 9 negara, sekitar 32.000 karyawan</span>
+        </li>
+        <li>
+          <span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span data-id="Didampingi HC AI di setiap modul"
+                data-en="Supported by HC AI in every module">Didampingi HC AI di setiap modul</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footline">
+      UI/UX Guidance Prototype v5.5  |  Disusun oleh Rangga Irawan, HCMS Consultant
+    </div>
+  </aside>
+
+  <!-- ============ PANEL FORM ============ -->
+  <main class="auth-form">
+    <div class="auth-card">
+
+      <div class="flex-between" style="margin-bottom:24px">
+        <img src="assets/img/nabati-logo.png" alt="Nabati" style="height:38px">
+        <div class="lang-toggle">
+          <button data-lang="id" class="is-active">ID</button>
+          <button data-lang="en">EN</button>
+        </div>
+      </div>
+
+      <h3 data-id="Masuk ke Sistem" data-en="Sign in to the System">Masuk ke Sistem</h3>
+      <p class="sub" data-id="Gunakan Employee ID dan kata sandi Anda untuk melanjutkan."
+         data-en="Use your Employee ID and password to continue.">
+        Gunakan Employee ID dan kata sandi Anda untuk melanjutkan.
+      </p>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="empid" data-id="Employee ID" data-en="Employee ID">Employee ID</label>
+          <div class="input-group">
+            <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/>
+              <path d="M5.5 16.5c.6-1.7 2-2.5 3.5-2.5s2.9.8 3.5 2.5M15 9h4M15 13h4"/>
+            </svg>
+            <input class="input" id="empid" type="text" placeholder="NBT-ID-000000" value="NBT-ID-000142" autocomplete="username">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="password" data-id="Kata Sandi" data-en="Password">Kata Sandi</label>
+          <div class="input-group">
+            <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="10" width="16" height="11" rx="2"/>
+              <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+            </svg>
+            <input class="input" id="password" type="password" placeholder="Masukkan kata sandi" value="prototype" autocomplete="current-password">
+            <button type="button" class="ig-btn" id="pwToggle" aria-label="Tampilkan kata sandi">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="auth-row">
+          <label class="check">
+            <input type="checkbox" checked>
+            <span data-id="Ingat perangkat ini" data-en="Remember this device">Ingat perangkat ini</span>
+          </label>
+          <a href="#" onclick="hcToast('Layar pemulihan kata sandi tersedia pada build berikutnya.');return false;"
+             data-id="Lupa kata sandi?" data-en="Forgot password?">Lupa kata sandi?</a>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--lg btn--block"
+                data-id="Masuk ke Sistem" data-en="Sign in to the System">Masuk ke Sistem</button>
+      </form>
+
+      <div class="auth-foot">
+        Nabati HCMS 2.0 Project  |  Prototype panduan UI/UX, bukan sistem produksi.<br>
+        Tidak mengikat tech stack vendor.
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<script src="assets/js/core.js"></script>
+
+<style id="wm-style">
+.sim-watermark {
+  position: fixed; bottom: 14px; left: 14px; z-index: 9999;
+  background: rgba(15,23,42,.82); color: rgba(255,255,255,.85);
+  font-size: 10.5px; font-weight: 600; letter-spacing: .04em;
+  padding: 5px 11px; border-radius: 999px;
+  pointer-events: none; user-select: none;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.12);
+  font-family: system-ui, sans-serif;
+}
+</style>
+<div class="sim-watermark">⚠ DATA SIMULASI — Bukan data aktual Nabati</div>
+
+</body>
+</html>

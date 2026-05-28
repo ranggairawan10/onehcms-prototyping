@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Role &amp; Access Management  |  'ONE' GLOBAL HCMS</title>
+<link rel="stylesheet" href="../assets/css/ds.css">
+</head>
+<body data-page="m01">
+
+<div class="app-shell">
+
+  <!-- ============ TOPBAR ============ -->
+  <header class="topbar">
+    <a class="brand" href="../dashboard.html">
+      <img src="../assets/img/nabati-logo.png" alt="Nabati">
+      <span class="brand-name">'ONE' GLOBAL HCMS
+        <small>Nabati HCMS 2.0 Project</small>
+      </span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-actions">
+      <button class="icon-btn" aria-label="Cari" onclick="hcToast('Pencarian global tersedia pada build berikutnya.')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Notifikasi" onclick="hcToast('Pusat notifikasi tersedia pada build berikutnya.')">
+        <span class="dot"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z"/><path d="M10 21h4"/></svg>
+      </button>
+      <button class="user-chip">
+        <span class="avatar">RI</span>
+        <span class="who"><b>Rangga Irawan</b><span>HCMS Consultant</span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <nav class="nav-scroll">
+      <div class="nav-group">
+        <a class="nav-item" data-nav="hcai" href="../dashboard.html" data-tooltip="HC AI">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+          <span>HC AI</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">MODUL INTI</div>
+        <a class="nav-item" data-nav="m01" data-module="m01" href="m01-rbac.html" data-tooltip="Role & Access (RBAC)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z"/><path d="M9.5 12l1.8 1.8 3.4-3.6"/></svg>
+          <span>Role &amp; Access</span><span class="code">RBAC</span>
+        </a>
+        <a class="nav-item" data-nav="m02" data-module="m02" href="m02-eam.html" data-tooltip="Employee Admin (EAM)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.5 16.4c.6-1.7 2-2.4 3.5-2.4s2.9.7 3.5 2.4M15 10h4M15 14h4"/></svg>
+          <span>Employee Admin</span><span class="code">EAM</span>
+        </a>
+        <a class="nav-item" data-nav="m03" data-module="m03" href="m03-ess.html" data-tooltip="Self-Service (ESS)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 18c1-2.4 3-3.4 5.5-3.4s4.5 1 5.5 3.4"/></svg>
+          <span>Self-Service</span><span class="code">ESS</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">TALENT &amp; KINERJA</div>
+        <a class="nav-item" data-nav="m04" data-module="m04" href="m04-ta.html" data-tooltip="Talent Acquisition (TA)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19c.7-3 3-4.5 5.5-4.5"/><path d="M16 11v6M13 14h6"/></svg>
+          <span>Talent Acquisition</span><span class="code">TA</span>
+        </a>
+        <a class="nav-item" data-nav="m05" data-module="m05" href="m05-org.html" data-tooltip="Organization Design (ORG)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-2h12v2"/></svg>
+          <span>Organization Design</span><span class="code">ORG</span>
+        </a>
+        <a class="nav-item" data-nav="m06" data-module="m06" href="m06-cnb.html" data-tooltip="Compensation & Benefit (CNB)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a2 2 0 0 1 2-2h12v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M17 6V5a2 2 0 0 0-2-2H6"/><circle cx="16" cy="12" r="1.4"/></svg>
+          <span>Compensation &amp; Benefit</span><span class="code">CNB</span>
+        </a>
+        <a class="nav-item" data-nav="m07" data-module="m07" href="m07-pms.html" data-tooltip="Performance (PMS)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19a9 9 0 1 1 16 0"/><path d="M12 14l4-3.5"/><circle cx="12" cy="14" r="1.4"/></svg>
+          <span>Performance</span><span class="code">PMS</span>
+        </a>
+        <a class="nav-item" data-nav="m08" data-module="m08" href="m08-cm.html" data-tooltip="Career Management (CM)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+          <span>Career Management</span><span class="code">CM</span>
+        </a>
+        <a class="nav-item" data-nav="m09" data-module="m09" href="m09-lms.html" data-tooltip="Learning Management (LMS)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2z"/><path d="M4 18a2 2 0 0 1 2-2h13"/><path d="M9 8h6"/></svg>
+          <span>Learning Management</span><span class="code">LMS</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">ORGANISASI &amp; ANALITIK</div>
+        <a class="nav-item" data-nav="m10" data-module="m10" href="m10-od.html" data-tooltip="Org Development (OD)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M10.5 6.8 6.4 15.9M13.5 6.8l4.1 9.1M7.4 18h9.2"/></svg>
+          <span>Org Development</span><span class="code">OD</span>
+        </a>
+        <a class="nav-item" data-nav="m11" data-module="m11" href="m11-ir.html" data-tooltip="Industrial Relationship (IR)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16M4 20h16"/><path d="M7 7 4 13a3 3 0 0 0 6 0L7 7M17 7l-3 6a3 3 0 0 0 6 0l-3-6M5 7h14"/></svg>
+          <span>Industrial Relationship</span><span class="code">IR</span>
+        </a>
+        <a class="nav-item" data-nav="m12" data-module="m12" href="m12-pa.html" data-tooltip="People Analytics (PA)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V11M10 20V5M16 20v-6M20 20H3"/></svg>
+          <span>People Analytics</span><span class="code">PA</span>
+        </a>
+      </div>
+    </nav>
+    <div class="sidebar-foot">
+      <a class="nav-item" href="#" onclick="hcToast('Layar pengaturan tersedia pada build berikutnya.');return false;" data-tooltip="Pengaturan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+        <span>Pengaturan</span>
+      </a>
+      <a class="nav-item" href="../index.html" data-tooltip="Keluar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 17l5-5-5-5M21 12H9M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
+        <span>Keluar</span>
+      </a>
+      <p class="t-caption" style="padding:8px 12px 2px">Prototype v5.5  ·  12 modul lengkap</p>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+    <div class="main-inner">
+
+      <div class="breadcrumb">
+        <a href="../dashboard.html">'ONE' GLOBAL HCMS</a>
+        <span class="sep">/</span>
+        <span class="here">Role &amp; Access Management</span>
+      </div>
+
+      <div class="proto-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        <span><b>Modul warisan Scenario C.</b> Prototype berfungsi sebagai feature checklist verifikasi terhadap build Ego Eimi. Mengikat layout, alur, state, dan copy. Tidak mengikat tech stack.</span>
+      </div>
+
+      <div class="page-header">
+        <div class="mod-titlebar">
+          <h1 class="t-page">Role &amp; Access Management</h1>
+          <span class="mod-code">RBAC  ·  m01</span>
+          <span class="badge badge--neutral"><span class="tick"></span>Modul Warisan</span>
+        </div>
+        <p>Lapisan keamanan dan tata kelola 'ONE' GLOBAL HCMS. Mengatur siapa melihat data apa dan dapat melakukan tindakan apa, lintas 12 modul dan 9 negara.</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab is-active" data-tab="ringkasan">Ringkasan</button>
+        <button class="tab" data-tab="role">Daftar Role</button>
+        <button class="tab" data-tab="designer">Role Designer</button>
+        <button class="tab" data-tab="request">Permintaan Akses</button>
+        <button class="tab" data-tab="audit">Audit &amp; Compliance</button>
+        <button class="tab" data-tab="checklist">Feature Checklist</button>
+      </div>
+
+      <!-- ===== TAB 1 : RINGKASAN ===== -->
+      <section data-panel="ringkasan">
+        <div class="fr-row">
+          <span class="fr-chip">-RAM-RAYA-002</span>
+          <span class="fr-chip">-RAM-ROLE-004</span>
+          <span class="fr-chip">-RAM-AUD-002</span>
+        </div>
+
+        <div class="grid grid-4" style="margin-bottom:24px">
+          <div class="card stat"><div class="num">37</div><div class="lbl">Role aktif di sistem</div></div>
+          <div class="card stat"><div class="num">32.000</div><div class="lbl">Karyawan tercakup, 9 negara</div></div>
+          <div class="card stat"><div class="num accent">14</div><div class="lbl">Permintaan akses tertunda</div></div>
+          <div class="card stat"><div class="num">100%</div><div class="lbl">Skor kepatuhan audit</div></div>
+        </div>
+
+        <div class="card" style="margin-bottom:24px">
+          <div class="card-head">
+            <div class="flex gap-2" style="align-items:center">
+              <span class="avatar" style="width:28px;height:28px;border-radius:8px">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="15" height="15"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+              </span>
+              <span class="t-section">Wawasan HC AI</span>
+            </div>
+            <span class="t-caption">Diperbarui hari ini</span>
+          </div>
+          <div class="card-body" style="padding-top:8px;padding-bottom:8px">
+            <div class="insight">
+              <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2.6 17a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span>
+              <span class="it">5 user memiliki kombinasi role HR Manager dan Payroll Administrator. Berpotensi melanggar prinsip segregation of duties.</span>
+              <a href="#" onclick="hcToast('Membuka analisis konflik role.');return false;">Tinjau</a>
+            </div>
+            <div class="insight">
+              <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span>
+              <span class="it">Role Learning Administrator: 23 persen pemegang tidak memakai izin recruitment selama 6 bulan terakhir.</span>
+              <a href="#" onclick="hcToast('Membuka analisis pola penggunaan.');return false;">Analisis</a>
+            </div>
+            <div class="insight">
+              <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></span>
+              <span class="it">3 role terindikasi over-privileged dibanding pola akses aktual. HC AI menyarankan penyesuaian ke prinsip least privilege.</span>
+              <a href="#" onclick="hcToast('Membuka rekomendasi least privilege.');return false;">Lihat detail</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><span class="t-section">Aktivitas Akses Terbaru</span></div>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Waktu</th><th>User</th><th>Aksi</th><th>Modul</th><th>Risiko</th></tr></thead>
+              <tbody>
+                <tr><td>26 Mei, 09:14</td><td>Aurel Pratama</td><td>Melihat profil karyawan</td><td>Employee Admin</td><td><span class="badge badge--ok"><span class="tick"></span>Rendah</span></td></tr>
+                <tr><td>26 Mei, 08:52</td><td>Kristi Wijaya</td><td>Memberikan role sementara</td><td>RBAC</td><td><span class="badge badge--high"><span class="tick"></span>Sedang</span></td></tr>
+                <tr><td>26 Mei, 08:30</td><td>Mike Lee</td><td>Memproses payroll</td><td>Compensation &amp; Benefit</td><td><span class="badge badge--high"><span class="tick"></span>Sedang</span></td></tr>
+                <tr><td>25 Mei, 23:41</td><td>John Doe</td><td>Akses massal data gaji</td><td>Compensation &amp; Benefit</td><td><span class="badge badge--critical"><span class="tick"></span>Tinggi</span></td></tr>
+                <tr><td>25 Mei, 16:08</td><td>Sarah Chen</td><td>Menyetujui permintaan akses</td><td>RBAC</td><td><span class="badge badge--ok"><span class="tick"></span>Rendah</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 2 : DAFTAR ROLE ===== -->
+      <section data-panel="role" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-RAM-ROLE-001</span>
+          <span class="fr-chip">-RAM-ROLE-002</span>
+          <span class="fr-chip">-RAM-ROLE-004</span>
+        </div>
+
+        <div class="flex-between" style="margin-bottom:16px">
+          <div class="flex gap-2" style="flex:1;max-width:540px">
+            <div class="input-group" style="flex:1">
+              <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              <input class="input" type="text" placeholder="Cari role berdasarkan nama atau kategori">
+            </div>
+            <select class="select" style="width:auto">
+              <option>Semua Risiko</option><option>Rendah</option><option>Sedang</option><option>Tinggi</option>
+            </select>
+          </div>
+          <button class="btn btn--primary" onclick="document.querySelector('[data-tab=designer]').click()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+            Buat Role Baru
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Nama Role</th><th>Kategori</th><th>Cakupan Geografis</th><th>User</th><th>Risiko</th><th>Status</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><b>Employee Standard</b></td><td>Operasional</td><td>Semua negara</td><td>31.184</td><td><span class="badge badge--ok"><span class="tick"></span>Rendah</span></td><td><span class="badge badge--ok">Active</span></td><td><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka pengelolaan role.')">Kelola</button></td></tr>
+                <tr><td><b>Line Manager</b></td><td>Operasional</td><td>Semua negara</td><td>3.420</td><td><span class="badge badge--ok"><span class="tick"></span>Rendah</span></td><td><span class="badge badge--ok">Active</span></td><td><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka pengelolaan role.')">Kelola</button></td></tr>
+                <tr><td><b>HR Manager - Country</b></td><td>HR Administration</td><td>Per negara</td><td>47</td><td><span class="badge badge--high"><span class="tick"></span>Sedang</span></td><td><span class="badge badge--ok">Active</span></td><td><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka pengelolaan role.')">Kelola</button></td></tr>
+                <tr><td><b>Payroll Administrator - Country</b></td><td>Functional</td><td>Per negara</td><td>22</td><td><span class="badge badge--critical"><span class="tick"></span>Tinggi</span></td><td><span class="badge badge--ok">Active</span></td><td><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka pengelolaan role.')">Kelola</button></td></tr>
+                <tr><td><b>Recruiter</b></td><td>Functional</td><td>Regional</td><td>64</td><td><span class="badge badge--high"><span class="tick"></span>Sedang</span></td><td><span class="badge badge--ok">Active</span></td><td><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka pengelolaan role.')">Kelola</button></td></tr>
+                <tr><td><b>Global HR Director</b></td><td>HR Administration</td><td>9 negara</td><td>6</td><td><span class="badge badge--critical"><span class="tick"></span>Tinggi</span></td><td><span class="badge badge--ok">Active</span></td><td><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka pengelolaan role.')">Kelola</button></td></tr>
+                <tr><td><b>IT Security Administrator</b></td><td>System Administration</td><td>Global</td><td>3</td><td><span class="badge badge--critical"><span class="tick"></span>Tinggi</span></td><td><span class="badge badge--ok">Active</span></td><td><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka pengelolaan role.')">Kelola</button></td></tr>
+                <tr><td><b>Compliance Officer</b></td><td>System Administration</td><td>Global</td><td>9</td><td><span class="badge badge--high"><span class="tick"></span>Sedang</span></td><td><span class="badge badge--neutral">Draft</span></td><td><button class="btn btn--ghost btn--sm" onclick="hcToast('Membuka pengelolaan role.')">Kelola</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p class="t-caption mt-4">Menampilkan 8 dari 37 role. Sumber jumlah: data prototype, akan diganti data RBAC matrix sebenarnya saat verifikasi.</p>
+      </section>
+
+      <!-- ===== TAB 3 : ROLE DESIGNER ===== -->
+      <section data-panel="designer" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-RAM-ADMIN-001</span>
+          <span class="fr-chip">-RAM-ROLE-001</span>
+          <span class="fr-chip">-RAM-ROLE-003</span>
+          <span class="fr-chip">-RAM-PERM-001</span>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div style="flex:1;max-width:420px">
+              <input class="input" type="text" value="HR Manager - Southeast Asia" placeholder="Nama role">
+            </div>
+            <span class="badge badge--high"><span class="tick"></span>Estimasi Risiko: Sedang</span>
+          </div>
+
+          <div class="designer">
+            <!-- panel 1 : modul & izin -->
+            <div>
+              <h5>Modul &amp; Izin</h5>
+              <div class="perm-row">
+                <span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/></svg>Employee Admin</span>
+                <div class="seg"><button>None</button><button class="on">Read</button><button>Write</button><button>Full</button></div>
+              </div>
+              <div class="perm-row">
+                <span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><path d="M16 11v6M13 14h6"/></svg>Talent Acquisition</span>
+                <div class="seg"><button>None</button><button>Read</button><button class="on">Write</button><button>Full</button></div>
+              </div>
+              <div class="perm-row">
+                <span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19a9 9 0 1 1 16 0"/><path d="M12 14l4-3.5"/></svg>Performance</span>
+                <div class="seg"><button>None</button><button>Read</button><button class="on">Write</button><button>Full</button></div>
+              </div>
+              <div class="perm-row">
+                <span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a2 2 0 0 1 2-2h12v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Compensation &amp; Benefit</span>
+                <div class="seg"><button class="on">None</button><button>Read</button><button>Write</button><button>Full</button></div>
+              </div>
+              <div class="perm-row">
+                <span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2z"/></svg>Learning Management</span>
+                <div class="seg"><button>None</button><button class="on">Read</button><button>Write</button><button>Full</button></div>
+              </div>
+              <div class="perm-row">
+                <span class="pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V11M10 20V5M16 20v-6M20 20H3"/></svg>People Analytics</span>
+                <div class="seg"><button class="on">None</button><button>Read</button><button>Write</button><button>Full</button></div>
+              </div>
+            </div>
+
+            <!-- panel 2 : pratinjau -->
+            <div>
+              <h5>Pratinjau Role</h5>
+              <div class="preview-line yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg><span>Melihat data karyawan di lingkup yang ditentukan</span></div>
+              <div class="preview-line yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg><span>Membuat requisition dan menyaring kandidat di Talent Acquisition</span></div>
+              <div class="preview-line yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg><span>Melihat dan melaksanakan review kinerja</span></div>
+              <div class="preview-line no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Tidak dapat mengakses data payroll dan gaji</span></div>
+              <div class="preview-line no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Tidak dapat membuat penawaran kerja (offer)</span></div>
+              <div class="divider"></div>
+              <p class="t-caption">HC AI menilai konfigurasi ini memenuhi prinsip least privilege. Tidak ditemukan konflik segregation of duties.</p>
+            </div>
+
+            <!-- panel 3 : cakupan data -->
+            <div>
+              <h5>Cakupan Data</h5>
+              <p class="t-caption" style="margin-bottom:8px">Negara</p>
+              <div class="scope-chips" style="margin-bottom:16px">
+                <label class="check"><input type="checkbox" checked><span>Indonesia</span></label>
+                <label class="check"><input type="checkbox" checked><span>Malaysia</span></label>
+                <label class="check"><input type="checkbox" checked><span>Vietnam</span></label>
+                <label class="check"><input type="checkbox" checked><span>Filipina</span></label>
+                <label class="check"><input type="checkbox" checked><span>Thailand</span></label>
+                <label class="check"><input type="checkbox"><span>China</span></label>
+                <label class="check"><input type="checkbox"><span>India</span></label>
+                <label class="check"><input type="checkbox"><span>Kamboja</span></label>
+                <label class="check"><input type="checkbox"><span>Myanmar</span></label>
+              </div>
+              <div class="field">
+                <label>Lingkup Organisasi</label>
+                <select class="select">
+                  <option>Direct reports + 2 level ke bawah</option>
+                  <option>Direct reports saja</option>
+                  <option>Seluruh departemen</option>
+                  <option>Seluruh legal entity</option>
+                  <option>Global, semua entity</option>
+                </select>
+              </div>
+              <p class="t-caption" style="margin-bottom:8px">Kelompok Karyawan</p>
+              <div class="scope-chips">
+                <label class="check"><input type="checkbox" checked><span>Karyawan tetap</span></label>
+                <label class="check"><input type="checkbox"><span>Kontrak</span></label>
+                <label class="check"><input type="checkbox"><span>Magang</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-foot foot-fab-safe" style="background:var(--nabati-warm-white)">
+            <button class="btn btn--secondary" onclick="hcToast('Menjalankan simulasi role. Pratinjau interaktif tersedia pada build berikutnya.')">Simulasikan Role</button>
+            <button class="btn btn--primary" onclick="hcToast('Role disimpan sebagai draft.')">Simpan Role</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 4 : PERMINTAAN AKSES ===== -->
+      <section data-panel="request" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-RAM-REQ-001</span>
+          <span class="fr-chip">-RAM-REQ-002</span>
+          <span class="fr-chip">-RAM-REQ-003</span>
+        </div>
+
+        <div class="card" style="margin-bottom:24px">
+          <div class="card-head">
+            <span class="t-section">Permintaan AR-2026-0142</span>
+            <span class="badge badge--critical"><span class="tick"></span>Risiko Tinggi</span>
+          </div>
+          <div class="card-body">
+            <div class="grid grid-2" style="margin-bottom:20px">
+              <div><p class="t-caption">Pemohon</p><b>John Wong  ·  Payroll Specialist, Malaysia</b></div>
+              <div><p class="t-caption">Role diminta</p><b>Payroll Administrator - Malaysia (sementara)</b></div>
+            </div>
+            <p class="t-caption">Justifikasi bisnis</p>
+            <p style="font-size:13px;margin-bottom:20px">Pemegang role utama sedang cuti sakit. Akses pemrosesan dibutuhkan untuk menutup siklus payroll Malaysia sebelum tenggat. Approver cadangan ditetapkan untuk menjaga segregation of duties.</p>
+            <p class="t-caption" style="margin-bottom:10px">Alur persetujuan</p>
+            <div class="stepper">
+              <div class="step done"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="12" height="12"><path d="M20 6 9 17l-5-5"/></svg></span><span class="lbl"><b>Manager</b><span>Disetujui</span></span></div>
+              <div class="step-line done"></div>
+              <div class="step current"><span class="dot">2</span><span class="lbl"><b>HR Director</b><span>Menunggu</span></span></div>
+              <div class="step-line"></div>
+              <div class="step todo"><span class="dot">3</span><span class="lbl"><b>IT Security</b><span>Antre</span></span></div>
+              <div class="step-line"></div>
+              <div class="step todo"><span class="dot">4</span><span class="lbl"><b>Compliance</b><span>Antre</span></span></div>
+            </div>
+          </div>
+          <div class="modal-foot foot-fab-safe">
+            <button class="btn btn--danger" onclick="hcToast('Permintaan ditolak. Alasan diminta.')">Tolak</button>
+            <button class="btn btn--primary" onclick="hcToast('Permintaan disetujui pada tahap HR Director.')">Setujui</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <span class="t-section">Antrean Permintaan Lain</span>
+            <button class="btn btn--secondary btn--sm" onclick="hcToast('Membuka formulir permintaan akses.')">Buat Permintaan</button>
+          </div>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>ID</th><th>Pemohon</th><th>Role Diminta</th><th>Risiko</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>AR-2026-0141</td><td>Maria Santos</td><td>Recruiter - APAC</td><td><span class="badge badge--high"><span class="tick"></span>Sedang</span></td><td><span class="badge badge--neutral">Menunggu HR Admin</span></td></tr>
+                <tr><td>AR-2026-0140</td><td>Budi Hartono</td><td>Learning Administrator</td><td><span class="badge badge--ok"><span class="tick"></span>Rendah</span></td><td><span class="badge badge--ok">Disetujui</span></td></tr>
+                <tr><td>AR-2026-0139</td><td>Lisa Tan</td><td>People Analytics Viewer</td><td><span class="badge badge--ok"><span class="tick"></span>Rendah</span></td><td><span class="badge badge--neutral">Menunggu Manager</span></td></tr>
+                <tr><td>AR-2026-0138</td><td>Andre Kurnia</td><td>HR Manager - Indonesia</td><td><span class="badge badge--high"><span class="tick"></span>Sedang</span></td><td><span class="badge badge--critical">Ditolak</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 5 : AUDIT & COMPLIANCE ===== -->
+      <section data-panel="audit" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-RAM-AUD-001</span>
+          <span class="fr-chip">-RAM-AUD-002</span>
+          <span class="fr-chip">-RAM-AUD-003</span>
+          <span class="fr-chip">-RAM-AUD-004</span>
+        </div>
+
+        <div class="grid" style="gap:12px;margin-bottom:24px">
+          <div class="alert-card crit">
+            <span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2.6 17a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span>
+            <div class="at">
+              <b>Kritis  ·  Akses massal data gaji di luar jam kerja</b>
+              <p>John Doe (IT Administrator) mengakses data gaji 50 karyawan pada 25 Mei pukul 23.41 dari IP non-kantor. Skor risiko 95 dari 100. HC AI telah memberi tahu tim IT Security dan CPO.</p>
+            </div>
+          </div>
+          <div class="alert-card warn">
+            <span class="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2.6 17a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span>
+            <div class="at">
+              <b>Perhatian  ·  Role berisiko tinggi diberikan</b>
+              <p>Role Global HR Director diberikan ke user baru tanpa review IT Security tercatat. Disarankan recertification dalam 7 hari.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:24px">
+          <div class="card-head"><span class="t-section">Log Audit</span><span class="t-caption">Retensi 7 tahun  ·  immutable</span></div>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Waktu</th><th>User</th><th>Aksi</th><th>Objek</th><th>IP</th><th>Risiko</th></tr></thead>
+              <tbody>
+                <tr><td>25 Mei, 23:41</td><td>John Doe</td><td>Akses data gaji (massal)</td><td>50 record karyawan</td><td>Non-kantor</td><td><span class="badge badge--critical"><span class="tick"></span>Tinggi</span></td></tr>
+                <tr><td>25 Mei, 16:08</td><td>Sarah Chen</td><td>Setujui permintaan akses</td><td>AR-2026-0140</td><td>Kantor MY</td><td><span class="badge badge--ok"><span class="tick"></span>Rendah</span></td></tr>
+                <tr><td>25 Mei, 11:22</td><td>Kristi Wijaya</td><td>Ubah izin role</td><td>HR Manager - Indonesia</td><td>Kantor ID</td><td><span class="badge badge--high"><span class="tick"></span>Sedang</span></td></tr>
+                <tr><td>24 Mei, 03:45</td><td>Lisa Tan</td><td>Lihat record karyawan</td><td>Karyawan ID 12345</td><td>Non-kantor</td><td><span class="badge badge--high"><span class="tick"></span>Sedang</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="t-label" style="margin-bottom:12px">Laporan Kepatuhan</p>
+        <div class="grid grid-4">
+          <div class="card comp-card" onclick="hcToast('Membuat laporan GDPR Article 30.')">
+            <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z"/></svg></div>
+            <b>GDPR</b><span>Record of Processing Activities</span>
+          </div>
+          <div class="card comp-card" onclick="hcToast('Membuat laporan SOX.')">
+            <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M21 12a9 9 0 1 1-6.2-8.5"/></svg></div>
+            <b>SOX</b><span>Segregation of duties</span>
+          </div>
+          <div class="card comp-card" onclick="hcToast('Membuat laporan ISO 27001.')">
+            <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+            <b>ISO 27001</b><span>Access control evidence</span>
+          </div>
+          <div class="card comp-card" onclick="hcToast('Membuat laporan kepatuhan privasi lokal.')">
+            <div class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+            <b>UU PDP &amp; Privasi Lokal</b><span>9 negara operasi</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 6 : FEATURE CHECKLIST ===== -->
+      <section data-panel="checklist" style="display:none">
+        <div class="card card-soft" style="margin-bottom:20px">
+          <div class="card-body">
+            <b style="font-size:14px">Verifikasi modul warisan Scenario C</b>
+            <p style="font-size:13px;color:var(--nabati-text-secondary);margin-top:6px">
+              RBAC termasuk modul yang sudah pernah dibangun Ego Eimi. Checklist ini memetakan seluruh fitur wajib menurut PRD Role-Based Access Management v1.5, agar tidak ada yang terlewat dari build warisan. Status diisi bersama vendor saat walkthrough verifikasi.
+            </p>
+            <div class="flex gap-3" style="margin-top:14px;flex-wrap:wrap">
+              <span class="flex gap-2" style="align-items:center"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t-caption">Terverifikasi ada</span></span>
+              <span class="flex gap-2" style="align-items:center"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><span class="t-caption">Perlu konfirmasi vendor</span></span>
+              <span class="flex gap-2" style="align-items:center"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><span class="t-caption">Belum terkonfirmasi</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Manajemen Akses Cerdas HC AI</span><span class="fr-chip">-RAM-RAYA</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Konfigurasi role berbasis percakapan</b><p>FR-RAM-RAYA-001</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Rekomendasi izin cerdas dan smart onboarding</b><p>FR-RAM-RAYA-002</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Query akses instan dan troubleshooting</b><p>FR-RAM-RAYA-003</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Bantuan audit dan compliance percakapan</b><p>FR-RAM-RAYA-004</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Manajemen akses darurat</b><p>FR-RAM-RAYA-005</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Manajemen Role</span><span class="fr-chip">-RAM-ROLE</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Definisi dan hirarki role</b><p>FR-RAM-ROLE-001</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Penugasan role: individual, bulk, dinamis</b><p>FR-RAM-ROLE-002</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Simulasi dan pengujian role</b><p>FR-RAM-ROLE-003</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Siklus hidup role: Draft, Active, Deprecated, Archived</b><p>FR-RAM-ROLE-004</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Manajemen Izin</span><span class="fr-chip">-RAM-PERM</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Kerangka izin granular: Modul, Fitur, Field, Aksi</b><p>FR-RAM-PERM-001</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Kontrol akses data: hirarki, geografis, kelompok</b><p>FR-RAM-PERM-002</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Proteksi data sensitif: masking PII, enkripsi field</b><p>FR-RAM-PERM-003</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Delegasi dan proxy access</b><p>FR-RAM-PERM-004</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Manajemen Permintaan Akses</span><span class="fr-chip">-RAM-REQ</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Permintaan akses self-service</b><p>FR-RAM-REQ-001</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Workflow approval berjenjang sesuai risiko</b><p>FR-RAM-REQ-002</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Pelacakan status permintaan</b><p>FR-RAM-REQ-003</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Recertification akses berkala</b><p>FR-RAM-REQ-004</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Audit &amp; Compliance</span><span class="fr-chip">-RAM-AUD</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Audit logging menyeluruh, retensi 7 tahun, immutable</b><p>FR-RAM-AUD-001</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Monitoring real-time dan deteksi anomali</b><p>FR-RAM-AUD-002</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Pelaporan compliance: GDPR, SOX, ISO 27001, UU lokal</b><p>FR-RAM-AUD-003</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Forensik dan investigasi akses</b><p>FR-RAM-AUD-004</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Integrasi &amp; Administrasi</span><span class="fr-chip">-RAM-INT</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Integrasi SSO dan MFA</b><p>FR-RAM-INT-001</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Integrasi SIEM dan IGA</b><p>FR-RAM-INT-002, INT-003</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Integrasi modul HR dan sinkronisasi data karyawan</b><p>FR-RAM-INT-004</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Visual Role Designer no-code</b><p>FR-RAM-ADMIN-001</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Perbandingan dan analisis role</b><p>FR-RAM-ADMIN-002</p></div></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- module cover annotation -->
+      <div class="mod-cover">
+        <b>m01 Role &amp; Access Management</b>  ·  Prototype v5.5  ·  26 Mei 2026  ·  Fidelity: High  ·  Modul warisan Scenario C<br>
+        Prototype mengikat layout, alur navigasi, state, dan copy. Tidak mengikat tech stack, struktur database, maupun arsitektur backend vendor.<br>
+        Acuan: PRD Role-Based Access Management v1.5. Penyebutan agen Raya dan nama ONE HRMS pada PRD telah diharmonkan ke HC AI dan 'ONE' GLOBAL HCMS. Cakupan negara mengikuti 9 negara baku.
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<!-- ============ HC AI FLOATING LAUNCHER ============ -->
+<button class="hcai-fab" id="hcaiFab">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+  Tanya HC AI
+</button>
+
+<div class="hcai-panel" id="hcaiPanel">
+  <div class="hcai-panel-head">
+    <span class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
+    <div style="flex:1"><b>HC AI</b><span>Modul Role &amp; Access Management</span></div>
+    <button class="icon-btn" id="hcaiPanelClose" aria-label="Tutup">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="messages" id="hcai-messages">
+    <div class="date-label" id="hcai-date-lbl"></div>
+    <div class="msg-row" id="hcai-welcome-msg">
+      <div class="msg-avatar ai-av">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px">
+          <circle cx="12" cy="12" r="9"/><path d="M9 9h.01M15 9h.01"/><path d="M9 13c.5 1 1.5 2 3 2s2.5-1 3-2"/>
+        </svg>
+      </div>
+      <div class="msg-content">
+        <div class="msg-bubble ai">
+          Selamat datang, <b>Rangga</b>! Saya HC AI. Saya bisa bantu seputar cuti, absensi, slip gaji, kebijakan, dan informasi HR lainnya.
+        </div>
+        <div class="btn-grid">
+          <button class="chat-btn" onclick="handleMenu('shift')"><span class="btn-icon">🗓️</span> Jadwal &amp; Shift</button>
+          <button class="chat-btn" onclick="handleMenu('leave')"><span class="btn-icon">🏖️</span> Cuti &amp; Izin</button>
+          <button class="chat-btn" onclick="handleMenu('payslip')"><span class="btn-icon">💰</span> Slip Gaji</button>
+          <button class="chat-btn" onclick="handleMenu('bpjs')"><span class="btn-icon">🏥</span> BPJS &amp; Benefits</button>
+          <button class="chat-btn" onclick="handleMenu('policy')"><span class="btn-icon">📋</span> Kebijakan &amp; FAQ</button>
+          <button class="chat-btn" onclick="handleMenu('emergency')"><span class="btn-icon">🚨</span> Bantuan Darurat</button>
+        </div>
+        <div class="msg-time" id="hcai-welcome-time"></div>
+      </div>
+    </div>
+  </div>
+  <div class="input-area">
+    <div class="input-wrap">
+      <input type="text" id="hcai-input" placeholder="Ketik pertanyaan atau pilih menu..." onkeydown="handleHcAiInput(event)">
+      <div class="input-actions">
+        <button class="send-btn" onclick="sendHcAiText()" title="Kirim">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/core.js"></script>
+
+<style id="wm-style">
+.sim-watermark {
+  position: fixed; bottom: 14px; left: 14px; z-index: 9999;
+  background: rgba(15,23,42,.82); color: rgba(255,255,255,.85);
+  font-size: 10.5px; font-weight: 600; letter-spacing: .04em;
+  padding: 5px 11px; border-radius: 999px;
+  pointer-events: none; user-select: none;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.12);
+  font-family: system-ui, sans-serif;
+}
+</style>
+<div class="sim-watermark">⚠ DATA SIMULASI — Bukan data aktual Nabati</div>
+
+</body>
+</html>

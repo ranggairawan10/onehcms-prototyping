@@ -1,0 +1,5 @@
+entity_code,employee_id,full_name,grade,grade_label,directorate,division,salary_mid_idrm,country,employment_type,status,effective_date
+KSNI,KSNI-001001,[Nama Karyawan],5A,Manager,Direktorat Finance & Corporate,Finance & Accounting,40.00,Indonesia,Permanent,Active,01/01/2026
+PMA,PMA-002001,[Nama Karyawan],3B,Staff/Foreman,Direktorat Sales,Regional Sales,5.25,Indonesia,Permanent,Active,01/01/2026
+EL-CN,ELCN-001001,[Nama Karyawan],4B,Supervisor,Sales & Distribution,Country Sales,16.20,China,Permanent,Active,01/01/2026
+EL-IN,ELIN-001001,[Nama Karyawan],3A,Junior Staff,Manufacturing,Production,1.64,India,Permanent,Active,01/01/2026

@@ -1,0 +1,17 @@
+grade,label,sal_min_idrm,sal_mid_idrm,sal_max_idrm,actual_avg_idrm,headcount
+6B,C-Level,80,115,150,0.0,0
+5C,VP,70,85,100,73.71,28
+5B,Sr.Manager,50,60,70,55.06,242
+5A,Manager,25,40,55,36.66,651
+4C,Asst.Mgr,15,20,25,18.42,886
+4B,Supervisor,10,13.5,17,12.47,1364
+4A,Officer,7,9.5,12,8.78,1664
+3C,Sr.Staff,5.5,7.25,9,6.69,1244
+3B,Staff,4,5.25,6.5,4.9,1244
+3A,Jr.Staff,3.2,4.1,5,3.82,778
+2C,Contract Sr,3,3.5,4,3.34,303
+2B,Contract Mid,2.8,3.15,3.5,3.07,201
+2A,Contract Jr,2.5,2.85,3.2,2.71,182
+1C,Op.Sr,3,3.75,4.5,1.5,8
+1B,Operator,2.5,3.0,3.5,2.83,161
+1A,Gen.Worker,2.2,2.6,3.0,2.17,44

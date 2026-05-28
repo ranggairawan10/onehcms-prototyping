@@ -1,0 +1,40 @@
+entity_code,entity_name,country,type,directorate,headcount,pct_of_entity
+KSNI,Kaldu Sari Nabati Indonesia,Indonesia,FMCG,Direktorat Finance & Corporate,167,16.7
+KSNI,Kaldu Sari Nabati Indonesia,Indonesia,FMCG,Direktorat Human Capital,167,16.7
+KSNI,Kaldu Sari Nabati Indonesia,Indonesia,FMCG,Direktorat Supply Chain,167,16.7
+KSNI,Kaldu Sari Nabati Indonesia,Indonesia,FMCG,Direktorat Sales & Marketing,167,16.7
+KSNI,Kaldu Sari Nabati Indonesia,Indonesia,FMCG,Direktorat IT & Digital,167,16.7
+KSNI,Kaldu Sari Nabati Indonesia,Indonesia,FMCG,Direktorat General Affairs,165,16.5
+PMA,Pinus Merah Abadi,Indonesia,Distribution,Direktorat Sales,1000,25.0
+PMA,Pinus Merah Abadi,Indonesia,Distribution,Direktorat Distribution,1000,25.0
+PMA,Pinus Merah Abadi,Indonesia,Distribution,Direktorat Finance,1000,25.0
+PMA,Pinus Merah Abadi,Indonesia,Distribution,Direktorat HC & GA,1000,25.0
+RKI,Richeese Kuliner Indonesia,Indonesia,QSR,Direktorat Operations,500,25.0
+RKI,Richeese Kuliner Indonesia,Indonesia,QSR,Direktorat Supply Chain,500,25.0
+RKI,Richeese Kuliner Indonesia,Indonesia,QSR,Direktorat Marketing,500,25.0
+RKI,Richeese Kuliner Indonesia,Indonesia,QSR,Direktorat Finance & HC,500,25.0
+EL-CN,Enerlife China,China,FMCG,Supply Chain,184,33.5
+EL-CN,Enerlife China,China,FMCG,Sales & Distribution,183,33.3
+EL-CN,Enerlife China,China,FMCG,Finance & HC,183,33.3
+EL-IN,Enerlife India,India,FMCG,Sales & Distribution,120,25.0
+EL-IN,Enerlife India,India,FMCG,Finance & HC,120,25.0
+EL-IN,Enerlife India,India,FMCG,Supply Chain,120,25.0
+EL-IN,Enerlife India,India,FMCG,Manufacturing,120,25.0
+EL-MY,Enerlife Malaysia,Malaysia,FMCG,Sales & Distribution,67,33.5
+EL-MY,Enerlife Malaysia,Malaysia,FMCG,Finance & HC,67,33.5
+EL-MY,Enerlife Malaysia,Malaysia,FMCG,Supply Chain,66,33.0
+EL-VN,Enerlife Vietnam,Vietnam,FMCG,Sales & Distribution,60,33.3
+EL-VN,Enerlife Vietnam,Vietnam,FMCG,Finance & HC,60,33.3
+EL-VN,Enerlife Vietnam,Vietnam,FMCG,Supply Chain,60,33.3
+EL-MM,Enerlife Myanmar,Myanmar,FMCG,Sales & Distribution,37,33.6
+EL-MM,Enerlife Myanmar,Myanmar,FMCG,Finance & HC,37,33.6
+EL-MM,Enerlife Myanmar,Myanmar,FMCG,Supply Chain,36,32.7
+EL-TH,Enerlife Thailand,Thailand,FMCG,Sales & Distribution,57,33.5
+EL-TH,Enerlife Thailand,Thailand,FMCG,Finance & HC,57,33.5
+EL-TH,Enerlife Thailand,Thailand,FMCG,Supply Chain,56,32.9
+EL-PH,Enerlife Philippines,Philippines,FMCG,Supply Chain,54,33.8
+EL-PH,Enerlife Philippines,Philippines,FMCG,Sales & Distribution,53,33.1
+EL-PH,Enerlife Philippines,Philippines,FMCG,Finance & HC,53,33.1
+EL-KH,Enerlife Cambodia,Cambodia,FMCG,Sales & Distribution,50,33.3
+EL-KH,Enerlife Cambodia,Cambodia,FMCG,Finance & HC,50,33.3
+EL-KH,Enerlife Cambodia,Cambodia,FMCG,Supply Chain,50,33.3

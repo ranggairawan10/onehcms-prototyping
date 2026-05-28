@@ -1,0 +1,12 @@
+entity_code,pip_active,pip_inactive,pip_rate_pct
+KSNI,24,976,2.4
+PMA,140,3860,3.5
+RKI,60,1940,3.0
+EL-CN,10,540,1.8
+EL-IN,20,460,4.2
+EL-MY,4,196,2.0
+EL-VN,9,171,5.0
+EL-MM,4,106,3.6
+EL-TH,5,165,2.9
+EL-PH,5,155,3.1
+EL-KH,5,145,3.3

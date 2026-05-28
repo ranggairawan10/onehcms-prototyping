@@ -1,0 +1,12 @@
+entity_code,entity_name,country,type,has_manufacturing,total_hc,labor_cost_monthly_idrm,revenue_annual_idrm,revenue_monthly_idrm,revenue_per_emp_idrm,labor_cost_ratio_pct,target_reduction_20pct
+KSNI,Kaldu Sari Nabati Indonesia,Indonesia,FMCG,Tidak,1000,16710.0,8500000,708333.3,8500.0,2.4,200
+PMA,Pinus Merah Abadi,Indonesia,Distribution,Tidak,4000,46317.0,5200000,433333.3,1300.0,10.7,800
+RKI,Richeese Kuliner Indonesia,Indonesia,QSR,Tidak,2000,23260.0,3800000,316666.7,1900.0,7.3,400
+EL-CN,Enerlife China,China,FMCG,Tidak,550,9662.0,2200000,183333.3,4000.0,5.3,110
+EL-IN,Enerlife India,India,FMCG,Ya,480,2653.0,1800000,150000.0,3750.0,1.8,96
+EL-MY,Enerlife Malaysia,Malaysia,FMCG,Tidak,200,2483.0,800000,66666.7,4000.0,3.7,40
+EL-VN,Enerlife Vietnam,Vietnam,FMCG,Tidak,180,928.0,650000,54166.7,3611.1,1.7,36
+EL-MM,Enerlife Myanmar,Myanmar,FMCG,Tidak,110,455.0,350000,29166.7,3181.8,1.6,22
+EL-TH,Enerlife Thailand,Thailand,FMCG,Tidak,170,1646.0,580000,48333.3,3411.8,3.4,34
+EL-PH,Enerlife Philippines,Philippines,FMCG,Tidak,160,1061.0,520000,43333.3,3250.0,2.4,32
+EL-KH,Enerlife Cambodia,Cambodia,FMCG,Tidak,150,649.0,400000,33333.3,2666.7,1.9,30

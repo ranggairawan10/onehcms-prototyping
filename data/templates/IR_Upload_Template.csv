@@ -1,0 +1,2 @@
+entity_code,employee_id,grade,sanksi_level,sanksi_date,active_pip,absensi_alpha_days,separation_type
+KSNI,KSNI-001001,3B,SP1,15/03/2026,N,2,MSEP_Eligible

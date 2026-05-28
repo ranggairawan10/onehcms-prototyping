@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Organization Design  |  'ONE' GLOBAL HCMS</title>
+<link rel="stylesheet" href="../assets/css/ds.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body data-page="m05">
+
+<div class="app-shell">
+
+  <!-- ============ TOPBAR ============ -->
+  <header class="topbar">
+    <a class="brand" href="../dashboard.html">
+      <img src="../assets/img/nabati-logo.png" alt="Nabati">
+      <span class="brand-name">'ONE' GLOBAL HCMS<small>Nabati HCMS 2.0 Project</small></span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <div class="topbar-actions">
+      <button class="icon-btn" aria-label="Cari" onclick="hcToast('Pencarian global tersedia pada build berikutnya.')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Notifikasi" onclick="hcToast('Pusat notifikasi tersedia pada build berikutnya.')">
+        <span class="dot"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M6 9a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z"/><path d="M10 21h4"/></svg>
+      </button>
+      <button class="user-chip">
+        <span class="avatar">RI</span>
+        <span class="who"><b>Rangga Irawan</b><span>HCMS Consultant</span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <nav class="nav-scroll">
+      <div class="nav-group">
+        <a class="nav-item" data-nav="hcai" href="../dashboard.html" data-tooltip="HC AI">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+          <span>HC AI</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">MODUL INTI</div>
+        <a class="nav-item" data-nav="m01" data-module="m01" href="m01-rbac.html" data-tooltip="Role & Access (RBAC)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z"/><path d="M9.5 12l1.8 1.8 3.4-3.6"/></svg>
+          <span>Role &amp; Access</span><span class="code">RBAC</span>
+        </a>
+        <a class="nav-item" data-nav="m02" data-module="m02" href="m02-eam.html" data-tooltip="Employee Admin (EAM)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.5 16.4c.6-1.7 2-2.4 3.5-2.4s2.9.7 3.5 2.4M15 10h4M15 14h4"/></svg>
+          <span>Employee Admin</span><span class="code">EAM</span>
+        </a>
+        <a class="nav-item" data-nav="m03" data-module="m03" href="m03-ess.html" data-tooltip="Self-Service (ESS)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 18c1-2.4 3-3.4 5.5-3.4s4.5 1 5.5 3.4"/></svg>
+          <span>Self-Service</span><span class="code">ESS</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">TALENT &amp; KINERJA</div>
+        <a class="nav-item" data-nav="m04" data-module="m04" href="m04-ta.html" data-tooltip="Talent Acquisition (TA)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.4"/><path d="M3.5 19c.7-3 3-4.5 5.5-4.5"/><path d="M16 11v6M13 14h6"/></svg>
+          <span>Talent Acquisition</span><span class="code">TA</span>
+        </a>
+        <a class="nav-item" data-nav="m05" data-module="m05" href="m05-org.html" data-tooltip="Organization Design (ORG)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-2h12v2"/></svg>
+          <span>Organization Design</span><span class="code">ORG</span>
+        </a>
+        <a class="nav-item" data-nav="m06" data-module="m06" href="m06-cnb.html" data-tooltip="Compensation & Benefit (CNB)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a2 2 0 0 1 2-2h12v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M17 6V5a2 2 0 0 0-2-2H6"/><circle cx="16" cy="12" r="1.4"/></svg>
+          <span>Compensation &amp; Benefit</span><span class="code">CNB</span>
+        </a>
+        <a class="nav-item" data-nav="m07" data-module="m07" href="m07-pms.html" data-tooltip="Performance (PMS)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19a9 9 0 1 1 16 0"/><path d="M12 14l4-3.5"/><circle cx="12" cy="14" r="1.4"/></svg>
+          <span>Performance</span><span class="code">PMS</span>
+        </a>
+        <a class="nav-item" data-nav="m08" data-module="m08" href="m08-cm.html" data-tooltip="Career Management (CM)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+          <span>Career Management</span><span class="code">CM</span>
+        </a>
+        <a class="nav-item" data-nav="m09" data-module="m09" href="m09-lms.html" data-tooltip="Learning Management (LMS)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2z"/><path d="M4 18a2 2 0 0 1 2-2h13"/><path d="M9 8h6"/></svg>
+          <span>Learning Management</span><span class="code">LMS</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">ORGANISASI &amp; ANALITIK</div>
+        <a class="nav-item" data-nav="m10" data-module="m10" href="m10-od.html" data-tooltip="Org Development (OD)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M10.5 6.8 6.4 15.9M13.5 6.8l4.1 9.1M7.4 18h9.2"/></svg>
+          <span>Org Development</span><span class="code">OD</span>
+        </a>
+        <a class="nav-item" data-nav="m11" data-module="m11" href="m11-ir.html" data-tooltip="Industrial Relationship (IR)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16M4 20h16"/><path d="M7 7 4 13a3 3 0 0 0 6 0L7 7M17 7l-3 6a3 3 0 0 0 6 0l-3-6M5 7h14"/></svg>
+          <span>Industrial Relationship</span><span class="code">IR</span>
+        </a>
+        <a class="nav-item" data-nav="m12" data-module="m12" href="m12-pa.html" data-tooltip="People Analytics (PA)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V11M10 20V5M16 20v-6M20 20H3"/></svg>
+          <span>People Analytics</span><span class="code">PA</span>
+        </a>
+      </div>
+    </nav>
+    <div class="sidebar-foot">
+      <a class="nav-item" href="#" onclick="hcToast('Layar pengaturan tersedia pada build berikutnya.');return false;" data-tooltip="Pengaturan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+        <span>Pengaturan</span>
+      </a>
+      <a class="nav-item" href="../index.html" data-tooltip="Keluar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 17l5-5-5-5M21 12H9M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
+        <span>Keluar</span>
+      </a>
+      <p class="t-caption" style="padding:8px 12px 2px">Prototype v5.5  ·  12 modul lengkap</p>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+    <div class="main-inner">
+
+      <div class="breadcrumb">
+        <a href="../dashboard.html">'ONE' GLOBAL HCMS</a>
+        <span class="sep">/</span>
+        <span class="here">Organization Design</span>
+      </div>
+
+      <div class="proto-banner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        <span><b>Modul warisan Scenario C.</b> Prototype berfungsi sebagai feature checklist verifikasi terhadap build Ego Eimi. Mengikat layout, alur, state, dan copy. Tidak mengikat tech stack.</span>
+      </div>
+
+      <div class="page-header">
+        <div class="mod-titlebar">
+          <h1 class="t-page">Organization Design</h1>
+          <span class="mod-code">ORG  ·  m05</span>
+          <span class="badge badge--neutral"><span class="tick"></span>Modul Warisan</span>
+        </div>
+        <p>Fondasi struktural seluruh HCMS. Mengelola hierarki organisasi, posisi, kerangka jabatan, evaluasi grade, dan perencanaan tenaga kerja yang dirujuk semua modul lain.</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab is-active" data-tab="ringkasan">Ringkasan</button>
+        <button class="tab" data-tab="struktur">Struktur Organisasi</button>
+        <button class="tab" data-tab="posisi">Posisi &amp; Jabatan</button>
+        <button class="tab" data-tab="grading">Job Evaluation &amp; Grading</button>
+        <button class="tab" data-tab="workforce" onclick="wfpSafeRender()">Workforce Planning</button>
+        <button class="tab" data-tab="checklist">Feature Checklist</button>
+      </div>
+
+      <!-- ===== TAB 1 : RINGKASAN ===== -->
+      <section data-panel="ringkasan">
+        <div class="fr-row">
+          <span class="fr-chip">-ORG-001</span>
+          <span class="fr-chip">-ORG-003</span>
+          <span class="fr-chip">-ORG-007</span>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Mengapa modul ini fondasi</span></div>
+            <div class="card-body" style="padding-top:8px;padding-bottom:8px">
+              <div class="insight">
+                <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>
+                <span class="it"><b>Ketergantungan data.</b> Semua modul HR merujuk struktur organisasi: rekrutmen ke posisi, kinerja ke garis pelaporan, kompensasi ke grade.</span>
+              </div>
+              <div class="insight">
+                <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></span>
+                <span class="it"><b>Kelincahan bisnis.</b> Reorganisasi, merger, dan ekspansi cepat membutuhkan pengelolaan struktur yang fleksibel.</span>
+              </div>
+              <div class="insight">
+                <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V11M10 20V5M16 20v-6M20 20H3"/></svg></span>
+                <span class="it"><b>Workforce planning.</b> Keputusan headcount strategis bergantung pada visibilitas organisasi yang akurat.</span>
+              </div>
+              <div class="insight">
+                <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z"/></svg></span>
+                <span class="it"><b>Kepatuhan.</b> Struktur legal entity harus selaras dengan hukum ketenagakerjaan tiap negara dari 9 negara.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Lima Tipe Hierarki</span></div>
+            <div class="card-body" style="padding-top:6px;padding-bottom:6px">
+              <div class="kv"><span class="k">Legal Entity</span><span class="v">Struktur perusahaan untuk pelaporan statutori</span></div>
+              <div class="kv"><span class="k">Management Reporting</span><span class="v">Garis pelaporan aktual, mendukung matriks</span></div>
+              <div class="kv"><span class="k">Cost Center</span><span class="v">Selaras struktur akuntansi dan SAP</span></div>
+              <div class="kv"><span class="k">Geographical</span><span class="v">Berdasarkan lokasi fisik</span></div>
+              <div class="kv"><span class="k">Functional</span><span class="v">Berdasarkan fungsi bisnis lintas entitas</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-4" style="margin-top:16px">
+          <div class="card stat"><div class="num">3.000+</div><div class="lbl">Posisi</div></div>
+          <div class="card stat"><div class="num accent">50+</div><div class="lbl">Job family</div></div>
+          <div class="card stat"><div class="num">15+</div><div class="lbl">Level grade</div></div>
+          <div class="card stat"><div class="num">32.000</div><div class="lbl">Headcount tahunan</div></div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 2 : STRUKTUR ORGANISASI ===== -->
+      <section data-panel="struktur" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-ORG-001</span>
+          <span class="fr-chip">-ORG-002</span>
+        </div>
+
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-head"><span class="t-section" style="font-size:15px">Org Chart</span><span class="t-caption">Hierarki manajemen</span></div>
+          <div class="card-body">
+            <div class="tree">
+              <ul>
+                <li>
+                  <div class="org-node head"><div class="on-av">CEO</div><b>Chief Executive Officer</b><span>Nabati Group</span></div>
+                  <ul>
+                    <li>
+                      <div class="org-node"><div class="on-av">DO</div><b>Director Operasi</b><span>Indonesia</span><div class="rep">2 direct report</div></div>
+                      <ul>
+                        <li><div class="org-node"><div class="on-av">PM</div><b>Plant Manager</b><span>Subang</span></div></li>
+                        <li><div class="org-node"><div class="on-av">PM</div><b>Plant Manager</b><span>Bekasi</span></div></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <div class="org-node"><div class="on-av">DS</div><b>Director Sales</b><span>APAC</span><div class="rep">2 direct report</div></div>
+                      <ul>
+                        <li><div class="org-node"><div class="on-av">CM</div><b>Country Manager</b><span>Indonesia</span></div></li>
+                        <li><div class="org-node"><div class="on-av">CM</div><b>Country Manager</b><span>Malaysia</span></div></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><span class="t-section" style="font-size:15px">Analisis Span of Control</span><span class="t-caption">Rentang optimal 5 - 9</span></div>
+          <div class="card-body" style="padding-top:6px;padding-bottom:6px">
+            <div class="span-row"><span>Director Operasi Indonesia</span><span class="flex gap-3" style="align-items:center"><span class="t-caption">2 direct report</span><span class="badge badge--high">Terlalu sempit</span></span></div>
+            <div class="span-row"><span>Country Manager Indonesia</span><span class="flex gap-3" style="align-items:center"><span class="t-caption">7 direct report</span><span class="badge badge--ok">Optimal</span></span></div>
+            <div class="span-row"><span>VP Finance</span><span class="flex gap-3" style="align-items:center"><span class="t-caption">14 direct report</span><span class="badge badge--high">Terlalu lebar</span></span></div>
+            <div class="span-row"><span>Plant Manager Subang</span><span class="flex gap-3" style="align-items:center"><span class="t-caption">8 direct report</span><span class="badge badge--ok">Optimal</span></span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 3 : POSISI & JABATAN ===== -->
+      <section data-panel="posisi" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-ORG-003</span>
+          <span class="fr-chip">-ORG-004</span>
+        </div>
+
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-head"><span class="t-section" style="font-size:15px">Daftar Posisi</span><button class="btn btn--primary btn--sm" onclick="hcToast('Membuka pembuatan posisi dengan bantuan HC AI.')">Buat Posisi</button></div>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Position ID</th><th>Jabatan</th><th>Grade</th><th>Lokasi</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>POS-ID-001842</td><td>Senior Sales Manager</td><td>Grade 9</td><td>Jakarta</td><td><span class="badge badge--ok">Terisi</span></td></tr>
+                <tr><td>POS-ID-002104</td><td>Production Supervisor</td><td>Grade 7</td><td>Subang</td><td><span class="badge badge--ok">Terisi</span></td></tr>
+                <tr><td>POS-ID-002330</td><td>Finance Analyst</td><td>Grade 6</td><td>Ho Chi Minh</td><td><span class="badge badge--high">Lowong</span></td></tr>
+                <tr><td>POS-ID-002455</td><td>HR Coordinator</td><td>Grade 5</td><td>Kuala Lumpur</td><td><span class="badge badge--high">Lowong</span></td></tr>
+                <tr><td>POS-ID-002501</td><td>Data Analyst</td><td>Grade 7</td><td>Jakarta</td><td><span class="badge badge--neutral">Dibekukan</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+          <div class="card card-soft">
+            <div class="card-body">
+              <b style="font-size:14px">Konsep Posisi vs Orang</b>
+              <p style="font-size:13px;color:var(--nabati-text-secondary);margin-top:6px">Posisi adalah peran terdefinisi yang tetap ada terlepas dari siapa yang mengisinya. Satu posisi diisi satu orang pada satu waktu, namun satu orang dapat memegang beberapa posisi. Posisi lowong dapat langsung direkrut.</p>
+              <div class="flex gap-2" style="margin-top:12px;flex-wrap:wrap">
+                <span class="badge badge--ok">Terisi</span>
+                <span class="badge badge--high">Lowong</span>
+                <span class="badge badge--neutral">Dibekukan</span>
+                <span class="badge badge--neutral">Dihapus</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Job Description</span><span class="badge badge--ok">Health 88%</span></div>
+            <div class="card-body" style="padding-top:6px;padding-bottom:6px">
+              <div class="kv"><span class="k">Identifikasi jabatan</span><span class="v">Lengkap</span></div>
+              <div class="kv"><span class="k">Ringkasan dan tanggung jawab</span><span class="v">Lengkap</span></div>
+              <div class="kv"><span class="k">KPI dan kualifikasi</span><span class="v">Lengkap</span></div>
+              <div class="kv"><span class="k">Kompetensi terkait</span><span class="v">Tertaut library</span></div>
+              <div class="kv"><span class="k">Versi</span><span class="v">v2.1 - 8 bahasa</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 4 : JOB EVALUATION & GRADING ===== -->
+      <section data-panel="grading" style="display:none">
+        <div class="fr-row">
+          <span class="fr-chip">-ORG-005</span>
+          <span class="fr-chip">-ORG-006</span>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Evaluasi Point-Factor</span><span class="t-caption">Senior Sales Manager</span></div>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>Faktor Kompensasi</th><th>Bobot</th><th>Poin</th></tr></thead>
+                <tbody>
+                  <tr><td>Knowledge &amp; Skills</td><td>30%</td><td>160</td></tr>
+                  <tr><td>Problem Solving</td><td>20%</td><td>120</td></tr>
+                  <tr><td>Accountability</td><td>30%</td><td>160</td></tr>
+                  <tr><td>Communication &amp; Influence</td><td>10%</td><td>80</td></tr>
+                  <tr><td>Working Conditions</td><td>10%</td><td>40</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-body">
+              <div class="kv" style="border:none"><span class="k">Total poin</span><span class="v">560 poin</span></div>
+              <div class="kv" style="border:none"><span class="k">Grade hasil evaluasi</span><span class="v"><span class="badge badge--ok">Grade 9</span></span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section" style="font-size:15px">Struktur Grade dan Salary Range</span></div>
+            <div class="card-body">
+              <div class="grade-row"><span class="grade-tag">Grade 10</span><span class="grade-bar"><span class="grade-fill" style="left:58%;width:33%"></span><span class="grade-mid" style="left:73%"></span></span><span class="grade-amt">32 - 50 jt</span></div>
+              <div class="grade-row"><span class="grade-tag">Grade 9</span><span class="grade-bar"><span class="grade-fill" style="left:47%;width:25%"></span><span class="grade-mid" style="left:58%"></span></span><span class="grade-amt">26 - 40 jt</span></div>
+              <div class="grade-row"><span class="grade-tag">Grade 8</span><span class="grade-bar"><span class="grade-fill" style="left:36%;width:22%"></span><span class="grade-mid" style="left:45%"></span></span><span class="grade-amt">20 - 32 jt</span></div>
+              <div class="grade-row"><span class="grade-tag">Grade 7</span><span class="grade-bar"><span class="grade-fill" style="left:27%;width:16%"></span><span class="grade-mid" style="left:35%"></span></span><span class="grade-amt">15 - 24 jt</span></div>
+              <div class="grade-row"><span class="grade-tag">Grade 6</span><span class="grade-bar"><span class="grade-fill" style="left:20%;width:13%"></span><span class="grade-mid" style="left:25%"></span></span><span class="grade-amt">11 - 18 jt</span></div>
+              <div class="grade-row"><span class="grade-tag">Grade 5</span><span class="grade-bar"><span class="grade-fill" style="left:15%;width:9%"></span><span class="grade-mid" style="left:18%"></span></span><span class="grade-amt">8 - 13 jt</span></div>
+              <p class="t-caption" style="margin-top:12px">Garis merah menandai midpoint pasar. Compa-ratio karyawan dihitung terhadap midpoint grade-nya untuk analisis pay equity. Angka adalah data contoh dalam IDR per bulan.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TAB 5 : WORKFORCE PLANNING ===== -->
+      <section data-panel="workforce" style="display:none">
+
+        <!-- FR chips preserved -->
+        <div class="fr-row">
+          <span class="fr-chip">-ORG-007</span>
+          <span class="fr-chip">-ORG-008</span>
+          <span class="fr-chip">-ORG-009</span>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════
+             WORKFORCE PLANNING — embedded inside ORG module
+             Uses ds.css card/table/badge system + Chart.js overlay
+        ═══════════════════════════════════════════════════════════ -->
+        <style>
+        /* WFP overrides — scoped inside .wfp-scope */
+        .wfp-scope { font-family: inherit; }
+        .wfp-subtabs { display:flex; gap:0; border-bottom:1px solid var(--nabati-border); margin-bottom:20px; background:#fff; border-radius:8px 8px 0 0; overflow:hidden; border:1px solid var(--nabati-border); border-bottom:none; }
+        .wfp-subtab { padding:11px 18px; font-size:13px; font-weight:600; color:var(--nabati-text-secondary); cursor:pointer; border-bottom:2px solid transparent; transition:all .15s; white-space:nowrap; background:transparent; border:none; }
+        .wfp-subtab:hover { color:var(--nabati-text-primary); background:var(--nabati-surface); }
+        .wfp-subtab.active { color:var(--nabati-red); border-bottom:2px solid var(--nabati-red); background:#fff; }
+        .wfp-subpanel { display:none; }
+        .wfp-subpanel.active { display:block; }
+
+        .wfp-kpi-row { display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-bottom:18px; }
+        .wfp-kpi { background:#fff; border:1px solid var(--nabati-border); border-radius:var(--r-lg); padding:14px 16px; }
+        .wfp-kpi-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--nabati-text-secondary); margin-bottom:5px; }
+        .wfp-kpi-val { font-size:20px; font-weight:800; color:var(--nabati-text-primary); line-height:1; }
+        .wfp-kpi-val.red { color:var(--nabati-red); }
+        .wfp-kpi-val.green { color:#059669; }
+        .wfp-kpi-val.amber { color:#D97706; }
+        .wfp-kpi-delta { font-size:10.5px; margin-top:4px; color:var(--nabati-text-secondary); }
+        .wfp-kpi-delta.up   { color:#059669; }
+        .wfp-kpi-delta.down { color:var(--nabati-red); }
+
+        .wfp-grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px; }
+        .wfp-grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:16px; }
+        .wfp-chart-card { background:#fff; border:1px solid var(--nabati-border); border-radius:var(--r-lg); padding:16px; }
+        .wfp-chart-title { font-size:13px; font-weight:700; color:var(--nabati-text-primary); margin-bottom:2px; }
+        .wfp-chart-sub   { font-size:11.5px; color:var(--nabati-text-secondary); margin-bottom:12px; }
+
+        .wfp-filter-bar { display:flex; align-items:center; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+        .wfp-filter-label { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--nabati-text-secondary); }
+        .wfp-chip { padding:4px 11px; border-radius:999px; border:1.5px solid var(--nabati-border); background:#fff; font-size:11.5px; font-weight:600; color:var(--nabati-text-secondary); cursor:pointer; transition:all .13s; }
+        .wfp-chip:hover { border-color:var(--nabati-red-pale); color:var(--nabati-red); }
+        .wfp-chip.active { background:var(--nabati-red); border-color:var(--nabati-red); color:#fff; }
+
+        /* Reduction form inside ds.css .card */
+        .wfp-reduction-grid { display:grid; grid-template-columns:320px 1fr; gap:16px; }
+        .wfp-slider { width:100%; -webkit-appearance:none; height:4px; border-radius:2px; background:var(--nabati-border); }
+        .wfp-slider::-webkit-slider-thumb { -webkit-appearance:none; width:15px; height:15px; border-radius:50%; background:var(--nabati-red); cursor:pointer; }
+        .wfp-rl-header { display:grid; grid-template-columns:100px 1fr 70px 60px 65px 80px 36px; gap:6px; padding:7px 14px; background:var(--nabati-surface); font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--nabati-text-secondary); }
+        .wfp-rl-row { display:grid; grid-template-columns:100px 1fr 70px 60px 65px 80px 36px; gap:6px; padding:9px 14px; border-top:1px solid var(--nabati-border); font-size:12px; align-items:center; transition:background .1s; }
+        .wfp-rl-row:hover { background:var(--nabati-surface); }
+        .wfp-rl-del { color:var(--nabati-red); cursor:pointer; text-align:center; font-size:13px; }
+
+        /* Scenario cards */
+        .wfp-scenario-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:12px; }
+        .wfp-scenario-card { border:1.5px solid var(--nabati-border); border-radius:var(--r-lg); padding:14px; cursor:pointer; transition:all .13s; background:#fff; }
+        .wfp-scenario-card:hover { border-color:var(--nabati-red-pale); background:var(--nabati-red-soft); }
+        .wfp-scenario-card.selected { border-color:var(--nabati-red); background:var(--nabati-red-soft); }
+        .sc-people { font-size:22px; font-weight:800; color:var(--nabati-text-primary); margin:4px 0; }
+        .sc-saving { font-size:12px; font-weight:700; color:#059669; margin-top:4px; }
+
+        /* BA comparison */
+        .wfp-ba-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+        .wfp-ba-panel { background:#fff; border:1px solid var(--nabati-border); border-radius:var(--r-lg); overflow:hidden; }
+        .wfp-ba-head { padding:10px 14px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+        .wfp-ba-head.before { background:var(--nabati-surface); color:var(--nabati-text-secondary); }
+        .wfp-ba-head.after  { background:var(--nabati-red); color:#fff; }
+        .wfp-ba-row { display:flex; justify-content:space-between; padding:8px 14px; border-bottom:1px solid var(--nabati-border); font-size:12.5px; }
+        .wfp-ba-row:last-child { border-bottom:none; }
+
+        /* Exec banner */
+        .wfp-exec-banner { background:var(--nabati-text-primary); border-radius:var(--r-lg); padding:22px 28px; color:#fff; display:flex; gap:28px; margin-bottom:16px; }
+        .wfp-exec-metric { flex:1; }
+        .wfp-exec-label { font-size:10.5px; color:rgba(255,255,255,.55); text-transform:uppercase; letter-spacing:.06em; margin-bottom:5px; }
+        .wfp-exec-val   { font-size:26px; font-weight:800; }
+        .wfp-exec-sub   { font-size:11px; color:rgba(255,255,255,.5); margin-top:3px; }
+
+        .wfp-alert-box { background:var(--nabati-red-soft); border:1px solid var(--nabati-red-pale); border-radius:var(--r-lg); padding:14px 16px; }
+        .wfp-alert-box h4 { font-size:11.5px; font-weight:700; color:var(--nabati-red); text-transform:uppercase; letter-spacing:.05em; margin-bottom:8px; }
+        .wfp-alert-box li { font-size:12.5px; color:var(--nabati-text-secondary); margin-bottom:5px; line-height:1.5; list-style:disc; margin-left:14px; }
+
+        .prog-bar { width:100%; height:7px; background:var(--nabati-border); border-radius:4px; overflow:hidden; margin-top:5px; }
+        .prog-fill { height:100%; border-radius:4px; background:var(--nabati-red); transition:width .4s; }
+        .prog-fill.green { background:#059669; }
+
+        .grade-slider-row { background:#fff; border:1px solid var(--nabati-border); border-radius:var(--r-md); padding:10px 12px; }
+        .grade-sliders-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }
+
+        .dl-btn { display:inline-flex; align-items:center; gap:6px; padding:7px 14px; background:#fff; border:1.5px solid var(--nabati-border); border-radius:var(--r-md); font-size:12px; font-weight:600; color:var(--nabati-text-secondary); cursor:pointer; transition:all .13s; }
+        .dl-btn:hover { border-color:var(--nabati-red-pale); color:var(--nabati-red); background:var(--nabati-red-soft); }
+        .up-zone { border:2px dashed var(--nabati-border); border-radius:var(--r-md); padding:20px; text-align:center; cursor:pointer; transition:all .13s; }
+        .up-zone:hover { border-color:var(--nabati-red-pale); background:var(--nabati-red-soft); }
+
+        @media(max-width:1200px) { .wfp-kpi-row { grid-template-columns:repeat(3,1fr); } }
+        @media(max-width:900px) { .wfp-grid2,.wfp-grid3 { grid-template-columns:1fr; } .wfp-reduction-grid { grid-template-columns:1fr; } .wfp-kpi-row { grid-template-columns:repeat(2,1fr); } }
+        </style>
+
+        <div class="wfp-scope">
+
+          <!-- ── Sub-tab navigation ── -->
+          <div class="wfp-subtabs">
+            <button class="wfp-subtab active" onclick="wfpSub('dashboard',this)">📊 Dashboard</button>
+            <button class="wfp-subtab" onclick="wfpSub('planning',this)">✂️ Reduction Planning</button>
+            <button class="wfp-subtab" onclick="wfpSub('scenario',this)">💡 Cost Scenario</button>
+            <button class="wfp-subtab" onclick="wfpSub('report',this)">📈 Report &amp; Trend</button>
+            <button class="wfp-subtab" onclick="wfpSub('compare',this)">⚖️ Before vs After</button>
+            <button class="wfp-subtab" onclick="wfpSub('exec',this)">👔 Executive View</button>
+            <button class="wfp-subtab" onclick="wfpSub('dataio',this)">📁 Data Management</button>
+          </div>
+
+          <!-- ════ SUB-TAB 1 : DASHBOARD ════ -->
+          <div class="wfp-subpanel active" id="wfp-dashboard">
+
+            <div class="wfp-filter-bar">
+              <span class="wfp-filter-label">Entitas:</span>
+              <div class="wfp-chip active" onclick="wfpFilter('ALL',this)">All Group</div>
+              <div class="wfp-chip" onclick="wfpFilter('KSNI',this)">KSNI</div>
+              <div class="wfp-chip" onclick="wfpFilter('PMA',this)">PMA</div>
+              <div class="wfp-chip" onclick="wfpFilter('RKI',this)">RKI</div>
+              <div class="wfp-chip" onclick="wfpFilter('EL-CN',this)">EL-CN</div>
+              <div class="wfp-chip" onclick="wfpFilter('EL-IN',this)">EL-IN</div>
+              <div class="wfp-chip" onclick="wfpFilter('EL-MY',this)">EL-MY</div>
+              <div class="wfp-chip" onclick="wfpFilter('EL-VN',this)">EL-VN</div>
+              <div class="wfp-chip" onclick="wfpFilter('EL-MM',this)">EL-MM</div>
+              <div class="wfp-chip" onclick="wfpFilter('EL-TH',this)">EL-TH</div>
+              <div class="wfp-chip" onclick="wfpFilter('EL-PH',this)">EL-PH</div>
+              <div class="wfp-chip" onclick="wfpFilter('EL-KH',this)">EL-KH</div>
+            </div>
+
+            <div class="wfp-kpi-row" id="wfp-kpi-row"></div>
+
+            <div class="wfp-grid2">
+              <div class="wfp-chart-card">
+                <div class="wfp-chart-title">Headcount Trend — Jan to Jun 2026</div>
+                <div class="wfp-chart-sub">Per entitas, hover untuk detail</div>
+                <div style="position:relative;height:200px"><canvas id="wfp-c-trend"></canvas></div>
+              </div>
+              <div class="wfp-chart-card">
+                <div class="wfp-chart-title">Distribusi Grade Band</div>
+                <div class="wfp-chart-sub">Executive → Operator</div>
+                <div style="position:relative;height:200px"><canvas id="wfp-c-band"></canvas></div>
+              </div>
+            </div>
+
+            <div class="wfp-grid3">
+              <div class="wfp-chart-card">
+                <div class="wfp-chart-title">Labor Cost per Entitas</div>
+                <div class="wfp-chart-sub">IDR Miliar / bulan</div>
+                <div style="position:relative;height:190px"><canvas id="wfp-c-lc"></canvas></div>
+              </div>
+              <div class="wfp-chart-card">
+                <div class="wfp-chart-title">Headcount per Entitas</div>
+                <div class="wfp-chart-sub">Klik bar untuk filter</div>
+                <div style="position:relative;height:190px"><canvas id="wfp-c-hc"></canvas></div>
+              </div>
+              <div class="wfp-chart-card">
+                <div class="wfp-chart-title">Revenue per Karyawan</div>
+                <div class="wfp-chart-sub">IDR Juta / tahun</div>
+                <div style="position:relative;height:190px"><canvas id="wfp-c-rpe"></canvas></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-head"><span class="t-section" style="font-size:14px">Headcount per Direktorat</span><span class="t-caption" id="wfp-dir-sub">Semua entitas</span></div>
+              <div class="table-wrap" id="wfp-dir-table"></div>
+            </div>
+          </div>
+
+          <!-- ════ SUB-TAB 2 : REDUCTION PLANNING ════ -->
+          <div class="wfp-subpanel" id="wfp-planning">
+            <div class="wfp-reduction-grid">
+
+              <div class="card">
+                <div class="card-head"><span class="t-section" style="font-size:14px">✂️ Tambah Rencana Pengurangan</span></div>
+                <div class="card-body">
+                  <div class="kv" style="align-items:flex-start;flex-direction:column;gap:4px;margin-bottom:10px">
+                    <span class="t-label">Entitas</span>
+                    <select class="input" id="wfp-inp-ent" style="width:100%" onchange="wfpUpdateDirs()">
+                      <option value="">-- Pilih Entitas --</option>
+                      <option value="KSNI">KSNI — Kaldu Sari Nabati Indonesia</option>
+                      <option value="PMA">PMA — Pinus Merah Abadi</option>
+                      <option value="RKI">RKI — Richeese Kuliner Indonesia</option>
+                      <option value="EL-CN">EL-CN — Enerlife China</option>
+                      <option value="EL-IN">EL-IN — Enerlife India</option>
+                      <option value="EL-MY">EL-MY — Enerlife Malaysia</option>
+                      <option value="EL-VN">EL-VN — Enerlife Vietnam</option>
+                      <option value="EL-MM">EL-MM — Enerlife Myanmar</option>
+                      <option value="EL-TH">EL-TH — Enerlife Thailand</option>
+                      <option value="EL-PH">EL-PH — Enerlife Philippines</option>
+                      <option value="EL-KH">EL-KH — Enerlife Cambodia</option>
+                    </select>
+                  </div>
+                  <div class="kv" style="align-items:flex-start;flex-direction:column;gap:4px;margin-bottom:10px">
+                    <span class="t-label">Direktorat</span>
+                    <select class="input" id="wfp-inp-dir" style="width:100%"><option value="">-- Semua Direktorat --</option></select>
+                  </div>
+                  <div class="kv" style="align-items:flex-start;flex-direction:column;gap:4px;margin-bottom:10px">
+                    <span class="t-label">Grade</span>
+                    <select class="input" id="wfp-inp-grade" style="width:100%">
+                      <option value="">-- Semua Grade --</option>
+                      <option value="6B">6B — C-Level</option><option value="5C">5C — VP</option>
+                      <option value="5B">5B — Senior Manager</option><option value="5A">5A — Manager</option>
+                      <option value="4C">4C — Asst. Manager</option><option value="4B">4B — Supervisor</option>
+                      <option value="4A">4A — Officer</option><option value="3C">3C — Senior Staff</option>
+                      <option value="3B">3B — Staff/Foreman</option><option value="3A">3A — Junior Staff</option>
+                      <option value="2C">2C — Contract Sr.</option><option value="2B">2B — Contract Mid</option>
+                      <option value="2A">2A — Contract Jr.</option><option value="1C">1C — Operator Sr.</option>
+                      <option value="1B">1B — Operator</option><option value="1A">1A — General Worker</option>
+                    </select>
+                  </div>
+                  <div class="kv" style="align-items:flex-start;flex-direction:column;gap:4px;margin-bottom:10px">
+                    <span class="t-label">Jumlah Pengurangan</span>
+                    <div style="display:flex;align-items:center;gap:8px;width:100%">
+                      <input type="range" class="wfp-slider" id="wfp-slider" min="1" max="500" value="20" oninput="wfpSliderSync(this.value)">
+                      <b id="wfp-slider-val" style="min-width:28px;color:var(--nabati-red);font-size:14px">20</b>
+                    </div>
+                    <input type="number" class="input" id="wfp-inp-count" value="20" min="1" style="width:100%" oninput="wfpCountSync(this.value)">
+                  </div>
+                  <div class="kv" style="align-items:flex-start;flex-direction:column;gap:4px;margin-bottom:10px">
+                    <span class="t-label">Tanggal Efektif</span>
+                    <select class="input" id="wfp-inp-date" style="width:100%">
+                      <option>Juli 2026</option><option>Agustus 2026</option>
+                    </select>
+                  </div>
+                  <div class="kv" style="align-items:flex-start;flex-direction:column;gap:4px;margin-bottom:14px">
+                    <span class="t-label">Tipe Separation</span>
+                    <select class="input" id="wfp-inp-type" style="width:100%">
+                      <option>PHK</option><option>Resign Sukarela</option>
+                      <option>Contract End</option><option>Early Retirement</option><option>Mutual Separation</option>
+                    </select>
+                  </div>
+                  <div style="display:flex;gap:8px">
+                    <button class="btn btn--red" onclick="wfpAddReduction()">+ Tambah</button>
+                    <button class="btn btn--ghost" onclick="wfpClearForm()">Reset</button>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <!-- Progress summary -->
+                <div class="card">
+                  <div class="card-body">
+                    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px">
+                      <div><div class="t-label">Total Direncanakan</div><div style="font-size:20px;font-weight:800;color:var(--nabati-red)" id="wfp-ps-total">0</div></div>
+                      <div><div class="t-label">Target (20%)</div><div style="font-size:20px;font-weight:800">1800</div></div>
+                      <div><div class="t-label">Progress</div><div style="font-size:20px;font-weight:800;color:#D97706" id="wfp-ps-pct">0%</div></div>
+                      <div><div class="t-label">Saving/Bulan</div><div style="font-size:16px;font-weight:800;color:#059669" id="wfp-ps-saving">IDR 0 M</div></div>
+                    </div>
+                    <div style="font-size:11px;color:var(--nabati-text-secondary);margin-bottom:3px;display:flex;justify-content:space-between"><span>Progress vs target 20%</span><span id="wfp-ps-bar-pct">0%</span></div>
+                    <div class="prog-bar"><div class="prog-fill" id="wfp-ps-bar" style="width:0%"></div></div>
+                  </div>
+                </div>
+
+                <div class="wfp-chart-card">
+                  <div class="wfp-chart-title">Rencana per Entitas</div>
+                  <div style="position:relative;height:160px"><canvas id="wfp-c-plan"></canvas></div>
+                </div>
+
+                <div class="card" style="overflow:hidden">
+                  <div class="card-head" style="background:var(--nabati-text-primary)">
+                    <span class="t-section" style="font-size:13px;color:#fff">Daftar Rencana</span>
+                    <span class="t-caption" style="color:rgba(255,255,255,.55)" id="wfp-rl-count">0 item</span>
+                  </div>
+                  <div class="wfp-rl-header">
+                    <div>Entitas</div><div>Direktorat</div><div>Grade</div><div>Jumlah</div><div>Tanggal</div><div>Tipe</div><div></div>
+                  </div>
+                  <div id="wfp-rl-body">
+                    <div style="padding:24px;text-align:center;color:var(--nabati-text-secondary);font-size:13px">Belum ada rencana. Tambah di form kiri.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ════ SUB-TAB 3 : COST SCENARIO ════ -->
+          <div class="wfp-subpanel" id="wfp-scenario">
+            <div class="card" style="margin-bottom:16px">
+              <div class="card-head"><span class="t-section" style="font-size:14px">💡 Target Penghematan Biaya → Opsi Pengurangan</span></div>
+              <div class="card-body">
+                <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                  <div>
+                    <div class="t-label" style="margin-bottom:4px">Target Saving/Bulan</div>
+                    <div style="display:flex;align-items:center;gap:8px">
+                      <input type="number" class="input" id="wfp-sc-amt" value="500" style="width:130px" placeholder="Jumlah">
+                      <select class="input" id="wfp-sc-unit" style="width:130px">
+                        <option value="juta">Juta IDR</option>
+                        <option value="miliar">Miliar IDR</option>
+                        <option value="usd-k">Ribu USD</option>
+                      </select>
+                      <button class="btn btn--red" onclick="wfpCalcScenario()">Hitung Opsi</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="wfp-scenario-grid" id="wfp-sc-grid">
+                  <div style="grid-column:1/-1;padding:20px;text-align:center;color:var(--nabati-text-secondary);font-size:13px">Klik "Hitung Opsi" untuk melihat skenario.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-head"><span class="t-section" style="font-size:14px">🎛️ Simulator — Geser per Grade</span></div>
+              <div class="card-body">
+                <div class="t-caption" style="margin-bottom:10px">Atur jumlah pengurangan per grade, lihat total cost saving real-time.</div>
+                <div class="grade-sliders-grid" id="wfp-grade-sliders"></div>
+                <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--nabati-border);display:flex;gap:20px;flex-wrap:wrap">
+                  <div><div class="t-label">Total Dikurangi</div><div style="font-size:20px;font-weight:800;color:var(--nabati-red)" id="wfp-sim-total">0</div></div>
+                  <div><div class="t-label">Saving/Bulan</div><div style="font-size:18px;font-weight:800;color:#059669" id="wfp-sim-saving">IDR 0 M</div></div>
+                  <div><div class="t-label">Saving/Tahun</div><div style="font-size:18px;font-weight:800;color:#059669" id="wfp-sim-yr">IDR 0 M</div></div>
+                  <div><div class="t-label">% dari Total LC</div><div style="font-size:18px;font-weight:800;color:#D97706" id="wfp-sim-pct">0%</div></div>
+                </div>
+                <div style="position:relative;height:170px;margin-top:12px"><canvas id="wfp-c-sim"></canvas></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ════ SUB-TAB 4 : REPORT ════ -->
+          <div class="wfp-subpanel" id="wfp-report">
+            <div class="wfp-filter-bar">
+              <span class="wfp-filter-label">Tampilkan:</span>
+              <div class="wfp-chip active" onclick="wfpSetReport('hc',this)">Headcount</div>
+              <div class="wfp-chip" onclick="wfpSetReport('lc',this)">Labor Cost</div>
+              <div class="wfp-chip" onclick="wfpSetReport('rpe',this)">Revenue/Emp</div>
+              <div style="margin-left:auto">
+                <button class="dl-btn" onclick="wfpDownload('report')">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  CSV
+                </button>
+              </div>
+            </div>
+            <div class="wfp-chart-card" style="margin-bottom:14px">
+              <div class="wfp-chart-title" id="wfp-report-title">Headcount Trend — Jan to Jun 2026</div>
+              <div class="wfp-chart-sub">Line per entitas</div>
+              <div style="position:relative;height:260px"><canvas id="wfp-c-report"></canvas></div>
+            </div>
+            <div class="wfp-grid2">
+              <div class="wfp-chart-card">
+                <div class="wfp-chart-title">Grade Distribution per Entitas</div>
+                <div style="position:relative;height:220px"><canvas id="wfp-c-rgrade"></canvas></div>
+              </div>
+              <div class="wfp-chart-card">
+                <div class="wfp-chart-title">Labor Cost per Grade Band</div>
+                <div style="position:relative;height:220px"><canvas id="wfp-c-rband"></canvas></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ════ SUB-TAB 5 : BEFORE vs AFTER ════ -->
+          <div class="wfp-subpanel" id="wfp-compare">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+              <span class="wfp-filter-label">Bandingkan:</span>
+              <select class="input" id="wfp-ba-from" style="width:160px"><option value="jan">Jan 2026</option><option value="mar">Mar 2026</option></select>
+              <span style="color:var(--nabati-text-secondary)">vs</span>
+              <select class="input" id="wfp-ba-to" style="width:200px"><option value="jun" selected>Jun 2026 (aktual)</option><option value="aug">Aug 2026 (simulasi -20%)</option></select>
+              <button class="btn btn--red" onclick="wfpRenderCompare()">Update</button>
+            </div>
+            <div class="wfp-ba-grid" id="wfp-ba-panels"></div>
+            <div class="wfp-chart-card">
+              <div class="wfp-chart-title">Before vs After — Headcount per Entitas</div>
+              <div style="position:relative;height:260px"><canvas id="wfp-c-ba"></canvas></div>
+            </div>
+          </div>
+
+          <!-- ════ SUB-TAB 6 : EXECUTIVE VIEW ════ -->
+          <div class="wfp-subpanel" id="wfp-exec">
+            <div class="wfp-exec-banner">
+              <div class="wfp-exec-metric"><div class="wfp-exec-label">Total Headcount Group</div><div class="wfp-exec-val">9.000</div><div class="wfp-exec-sub">11 entitas · 9 negara</div></div>
+              <div class="wfp-exec-metric"><div class="wfp-exec-label">Labor Cost / Bulan</div><div class="wfp-exec-val">IDR 105,8 M</div><div class="wfp-exec-sub">≈ USD 6,5 juta/bulan</div></div>
+              <div class="wfp-exec-metric"><div class="wfp-exec-label">Revenue / Employee / Tahun</div><div class="wfp-exec-val">IDR 2.756 M</div><div class="wfp-exec-sub">Total revenue IDR 24,8 T/tahun</div></div>
+              <div class="wfp-exec-metric"><div class="wfp-exec-label">Labor Cost Ratio</div><div class="wfp-exec-val">5,1%</div><div class="wfp-exec-sub">Benchmark industri FMCG: 8-12%</div></div>
+            </div>
+            <div class="wfp-grid3" style="margin-bottom:16px">
+              <div class="wfp-chart-card"><div class="wfp-chart-title">Headcount Distribution</div><div style="position:relative;height:190px"><canvas id="wfp-c-ex-hc"></canvas></div></div>
+              <div class="wfp-chart-card"><div class="wfp-chart-title">Labor Cost Distribution</div><div style="position:relative;height:190px"><canvas id="wfp-c-ex-lc"></canvas></div></div>
+              <div class="wfp-alert-box">
+                <h4>⚡ Alert untuk CPO / CEO</h4>
+                <ul id="wfp-exec-alerts"></ul>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>Entitas</th><th>Negara</th><th>Tipe</th><th style="text-align:right">HC</th><th style="text-align:right">LC/bln (IDR M)</th><th style="text-align:right">Revenue/yr (IDR M)</th><th style="text-align:right">Rev/Emp (IDR M)</th><th style="text-align:right">LC Ratio</th><th style="text-align:right">Target -20%</th></tr></thead>
+                <tbody id="wfp-exec-table"></tbody>
+                <tfoot id="wfp-exec-tfoot"></tfoot>
+              </table>
+            </div>
+          </div>
+
+          <!-- ════ SUB-TAB 7 : DATA MANAGEMENT ════ -->
+          <div class="wfp-subpanel" id="wfp-dataio">
+            <div class="wfp-grid2">
+              <div class="card">
+                <div class="card-head"><span class="t-section" style="font-size:14px">📥 Download Data</span></div>
+                <div class="card-body" style="display:flex;flex-direction:column;gap:8px">
+                  <button class="dl-btn" onclick="wfpDownload('summary')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Summary per Entitas</button>
+                  <button class="dl-btn" onclick="wfpDownload('all')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Semua Entitas (Agregat)</button>
+                  <button class="dl-btn" onclick="wfpDownload('reduction')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Reduction Plan</button>
+                  <button class="dl-btn" onclick="wfpDownload('template')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Template Upload</button>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-head"><span class="t-section" style="font-size:14px">📤 Upload Data Aktual</span></div>
+                <div class="card-body">
+                  <div class="up-zone" onclick="document.getElementById('wfp-csv-input').click()">
+                    <div style="font-size:26px;margin-bottom:8px">📂</div>
+                    <div style="font-size:13px;font-weight:600">Klik untuk pilih file CSV</div>
+                    <div class="t-caption" style="margin-top:4px">Format: entity_code, grade, directorate, division, salary_mid_idr, status</div>
+                  </div>
+                  <input type="file" id="wfp-csv-input" accept=".csv" style="display:none" onchange="wfpHandleUpload(event)">
+                  <div id="wfp-upload-msg" style="margin-top:8px;font-size:12px;color:var(--nabati-text-secondary)"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-head"><span class="t-section" style="font-size:13px">📋 Format CSV yang Diterima</span></div>
+              <div class="card-body">
+                <div style="background:var(--nabati-text-primary);border-radius:6px;padding:12px 14px;font-family:monospace;font-size:11.5px;color:#e2e8f0;line-height:1.8;overflow-x:auto">
+                  entity_code,employee_id,grade,grade_label,directorate,division,salary_mid_idr,country,status,emp_type<br>
+                  KSNI,EMP-001,5A,Manager,"Direktorat Finance & Corporate","Finance & Accounting",40.00,Indonesia,Active,Permanent<br>
+                  PMA,EMP-002,3B,Staff/Foreman,"Direktorat Sales","Regional Sales",5.25,Indonesia,Active,Permanent
+                </div>
+                <div style="margin-top:8px;padding:8px 12px;background:#FFFBEB;border-radius:6px;font-size:12px;color:#78350F;border:1px solid #FDE68A">
+                  ⚠️ <b>Catatan:</b> Salary dalam IDR juta/bulan. Grade harus sesuai kode 1A–6B. Upload menggantikan data simulasi untuk entitas terkait.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /wfp-scope -->
+
+      <!-- ===== TAB 6 : FEATURE CHECKLIST ===== -->
+      <section data-panel="checklist" style="display:none">
+        <div class="card card-soft" style="margin-bottom:20px">
+          <div class="card-body">
+            <b style="font-size:14px">Verifikasi modul warisan Scenario C</b>
+            <p style="font-size:13px;color:var(--nabati-text-secondary);margin-top:6px">
+              Organization Design adalah modul warisan terakhir dalam Scenario C. Checklist ini memetakan sembilan grup fungsi wajib menurut PRD Organization Design &amp; Management v1.5. Status diisi bersama vendor saat walkthrough verifikasi.
+            </p>
+            <div class="flex gap-3" style="margin-top:14px;flex-wrap:wrap">
+              <span class="flex gap-2" style="align-items:center"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><span class="t-caption">Terverifikasi ada</span></span>
+              <span class="flex gap-2" style="align-items:center"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><span class="t-caption">Perlu konfirmasi vendor</span></span>
+              <span class="flex gap-2" style="align-items:center"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><span class="t-caption">Belum terkonfirmasi</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start">
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Hierarki Organisasi Multi-Dimensi</span><span class="fr-chip">-ORG-001</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Lima tipe hierarki standar plus kustom</b><p>Legal, management, cost center, geografis, fungsional</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Versioning dan history hierarki</b><p>Rekonstruksi struktur pada tanggal historis</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Keamanan dan visibilitas hierarki</b><p>Akses berbasis peran dan posisi</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Bulk upload dan deteksi konflik</b><p>Template Excel dengan validasi</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Manajemen Org Chart Visual</span><span class="fr-chip">-ORG-002</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Builder drag-and-drop interaktif</b><p>FR-ORG-002</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Layout, styling, dan analisis span of control</b><p>FR-ORG-002</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Scenario planning dan what-if analysis</b><p>FR-ORG-002</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Org chart self-service karyawan dan export</b><p>FR-ORG-002</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Manajemen Posisi</span><span class="fr-chip">-ORG-003</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Position master data dan konsep posisi vs orang</b><p>FR-ORG-003</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Workflow pembuatan dan modifikasi posisi</b><p>FR-ORG-003</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Manajemen vacancy, abolishment, budgeting</b><p>FR-ORG-003</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Template posisi per job family</b><p>FR-ORG-003</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Manajemen Job Description</span><span class="fr-chip">-ORG-004</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Struktur JD berbasis kompetensi</b><p>FR-ORG-004</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Authoring tools dan integrasi competency library</b><p>FR-ORG-004</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Versioning dan JD multibahasa</b><p>FR-ORG-004</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>JD health score dan periodic review</b><p>FR-ORG-004</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Kerangka Job Evaluation</span><span class="fr-chip">-ORG-005</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Empat metodologi evaluasi</b><p>Point-factor, ranking, classification, market-based</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Konfigurasi compensable factor dan bobot</b><p>FR-ORG-005</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Manajemen evaluation committee</b><p>FR-ORG-005</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Proses appeals dan re-evaluasi</b><p>FR-ORG-005</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Grade-to-Salary Range Mapping</span><span class="fr-chip">-ORG-006</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Struktur salary range min-mid-max</b><p>FR-ORG-006</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Salary range multi-currency</b><p>FR-ORG-006</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Analisis compa-ratio dan pay equity</b><p>FR-ORG-006</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Integrasi market data benchmark</b><p>FR-ORG-006</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Workforce Planning dan Budgeting</span><span class="fr-chip">-ORG-007</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Planning cycle dan headcount budgeting</b><p>FR-ORG-007</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Headcount forecasting dan model prediktif</b><p>FR-ORG-007</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Scenario modeling dan what-if analysis</b><p>FR-ORG-007</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Budget vs actual cost tracking</b><p>FR-ORG-007</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Position Requisition dan Approval</span><span class="fr-chip">-ORG-008</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Lima tipe requisition</b><p>Baru, backfill, upgrade, konversi, ekstensi</p></div></div>
+              <div class="check-row"><span class="check-mark done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span><div class="ctext"><b>Workflow approval multi-level</b><p>FR-ORG-008</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Validasi budget dan deteksi duplikat</b><p>FR-ORG-008</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Trigger otomatis ke modul Talent Acquisition</b><p>FR-ORG-008</p></div></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="t-section">Workload Capture dan Analysis</span><span class="fr-chip">-ORG-009</span></div>
+            <div class="card-body checklist">
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Empat metode capture workload</b><p>Survey, logging, manager assessment, standar</p></div></div>
+              <div class="check-row"><span class="check-mark confirm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 8v5M12 16h.01"/></svg></span><div class="ctext"><b>Metrik utilisasi dan capacity</b><p>FR-ORG-009</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Heatmap dan benchmarking workload</b><p>FR-ORG-009</p></div></div>
+              <div class="check-row"><span class="check-mark miss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></span><div class="ctext"><b>Rekomendasi rebalancing oleh HC AI</b><p>FR-ORG-009</p></div></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- module cover annotation -->
+      <div class="mod-cover">
+        <b>m05 Organization Design</b>  ·  Prototype v5.5  ·  26 Mei 2026  ·  Fidelity: High  ·  Modul warisan Scenario C<br>
+        Prototype mengikat layout, alur navigasi, state, dan copy. Tidak mengikat tech stack, struktur database, maupun arsitektur backend vendor.<br>
+        Acuan: PRD Organization Design &amp; Management v1.5. Penyebutan agen Raya pada PRD telah diharmonkan ke HC AI, dan nama ONE HRMS ke 'ONE' GLOBAL HCMS. Cakupan negara mengikuti 9 negara baku.
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<!-- ============ HC AI FLOATING LAUNCHER ============ -->
+<button class="hcai-fab" id="hcaiFab">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+  Tanya HC AI
+</button>
+
+<div class="hcai-panel" id="hcaiPanel">
+  <div class="hcai-panel-head">
+    <span class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
+    <div style="flex:1"><b>HC AI</b><span>Modul Organization Design</span></div>
+    <button class="icon-btn" id="hcaiPanelClose" aria-label="Tutup">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="messages" id="hcai-messages">
+    <div class="date-label" id="hcai-date-lbl"></div>
+    <div class="msg-row" id="hcai-welcome-msg">
+      <div class="msg-avatar ai-av">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px">
+          <circle cx="12" cy="12" r="9"/><path d="M9 9h.01M15 9h.01"/><path d="M9 13c.5 1 1.5 2 3 2s2.5-1 3-2"/>
+        </svg>
+      </div>
+      <div class="msg-content">
+        <div class="msg-bubble ai">
+          Selamat datang, <b>Rangga</b>! Saya HC AI. Saya bisa bantu seputar cuti, absensi, slip gaji, kebijakan, dan informasi HR lainnya.
+        </div>
+        <div class="btn-grid">
+          <button class="chat-btn" onclick="handleMenu('shift')"><span class="btn-icon">🗓️</span> Jadwal &amp; Shift</button>
+          <button class="chat-btn" onclick="handleMenu('leave')"><span class="btn-icon">🏖️</span> Cuti &amp; Izin</button>
+          <button class="chat-btn" onclick="handleMenu('payslip')"><span class="btn-icon">💰</span> Slip Gaji</button>
+          <button class="chat-btn" onclick="handleMenu('bpjs')"><span class="btn-icon">🏥</span> BPJS &amp; Benefits</button>
+          <button class="chat-btn" onclick="handleMenu('policy')"><span class="btn-icon">📋</span> Kebijakan &amp; FAQ</button>
+          <button class="chat-btn" onclick="handleMenu('emergency')"><span class="btn-icon">🚨</span> Bantuan Darurat</button>
+        </div>
+        <div class="msg-time" id="hcai-welcome-time"></div>
+      </div>
+    </div>
+  </div>
+  <div class="input-area">
+    <div class="input-wrap">
+      <input type="text" id="hcai-input" placeholder="Ketik pertanyaan atau pilih menu..." onkeydown="handleHcAiInput(event)">
+      <div class="input-actions">
+        <button class="send-btn" onclick="sendHcAiText()" title="Kirim">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="../assets/js/core.js"></script>
+<script>
+// ══ WFP DATA ══════════════════════════════════════════════════════
+const WFP_ENTITIES = [{"code": "KSNI", "name": "Kaldu Sari Nabati Indonesia", "country": "Indonesia", "type": "FMCG", "mfg": false, "hc_target": 1000}, {"code": "PMA", "name": "Pinus Merah Abadi", "country": "Indonesia", "type": "Distribution", "mfg": false, "hc_target": 4000}, {"code": "RKI", "name": "Richeese Kuliner Indonesia", "country": "Indonesia", "type": "QSR", "mfg": false, "hc_target": 2000}, {"code": "EL-CN", "name": "Enerlife China", "country": "China", "type": "FMCG", "mfg": false, "hc_target": 550}, {"code": "EL-IN", "name": "Enerlife India", "country": "India", "type": "FMCG", "mfg": true, "hc_target": 480}, {"code": "EL-MY", "name": "Enerlife Malaysia", "country": "Malaysia", "type": "FMCG", "mfg": false, "hc_target": 200}, {"code": "EL-VN", "name": "Enerlife Vietnam", "country": "Vietnam", "type": "FMCG", "mfg": false, "hc_target": 180}, {"code": "EL-MM", "name": "Enerlife Myanmar", "country": "Myanmar", "type": "FMCG", "mfg": false, "hc_target": 110}, {"code": "EL-TH", "name": "Enerlife Thailand", "country": "Thailand", "type": "FMCG", "mfg": false, "hc_target": 170}, {"code": "EL-PH", "name": "Enerlife Philippines", "country": "Philippines", "type": "FMCG", "mfg": false, "hc_target": 160}, {"code": "EL-KH", "name": "Enerlife Cambodia", "country": "Cambodia", "type": "FMCG", "mfg": false, "hc_target": 150}];
+const WFP_GRADES   = [{"code": "6B", "label": "C-Level", "band": "Executive", "salary_mid": 115, "salary_min": 80, "salary_max": 150}, {"code": "5C", "label": "Vice President", "band": "Senior Leadership", "salary_mid": 85, "salary_min": 70, "salary_max": 100}, {"code": "5B", "label": "Senior Manager", "band": "Management", "salary_mid": 60, "salary_min": 50, "salary_max": 70}, {"code": "5A", "label": "Manager", "band": "Management", "salary_mid": 40, "salary_min": 25, "salary_max": 55}, {"code": "4C", "label": "Asst. Manager", "band": "Supervisory", "salary_mid": 20, "salary_min": 15, "salary_max": 25}, {"code": "4B", "label": "Supervisor", "band": "Supervisory", "salary_mid": 13.5, "salary_min": 10, "salary_max": 17}, {"code": "4A", "label": "Officer", "band": "Professional", "salary_mid": 9.5, "salary_min": 7, "salary_max": 12}, {"code": "3C", "label": "Senior Staff", "band": "Professional", "salary_mid": 7.25, "salary_min": 5.5, "salary_max": 9}, {"code": "3B", "label": "Staff/Foreman", "band": "Semi-Prof", "salary_mid": 5.25, "salary_min": 4, "salary_max": 6.5}, {"code": "3A", "label": "Junior Staff", "band": "Entry Level", "salary_mid": 4.1, "salary_min": 3.2, "salary_max": 5}, {"code": "2C", "label": "Contract Sr.", "band": "Contract", "salary_mid": 3.5, "salary_min": 3, "salary_max": 4}, {"code": "2B", "label": "Contract Mid", "band": "Contract", "salary_mid": 3.15, "salary_min": 2.8, "salary_max": 3.5}, {"code": "2A", "label": "Contract Jr.", "band": "Contract", "salary_mid": 2.85, "salary_min": 2.5, "salary_max": 3.2}, {"code": "1C", "label": "Operator Sr.", "band": "Operator", "salary_mid": 3.75, "salary_min": 3, "salary_max": 4.5}, {"code": "1B", "label": "Operator", "band": "Operator", "salary_mid": 3.0, "salary_min": 2.5, "salary_max": 3.5}, {"code": "1A", "label": "General Worker", "band": "Operator", "salary_mid": 2.6, "salary_min": 2.2, "salary_max": 3}];
+const WFP_SUMMARY  = {"KSNI": {"name": "Kaldu Sari Nabati Indonesia", "country": "Indonesia", "type": "FMCG", "total_hc": 1000, "labor_cost_monthly": 16710.0, "revenue_annual": 8500000, "revenue_monthly": 708333.0, "revenue_per_emp": 8500.0, "grade_dist": {"6B": 3, "5C": 11, "5B": 44, "5A": 100, "4C": 123, "4B": 173, "4A": 225, "3C": 137, "3B": 110, "3A": 53, "2C": 8, "2B": 13}, "dir_dist": {"Direktorat Finance & Corporate": 167, "Direktorat Human Capital": 167, "Direktorat Supply Chain": 167, "Direktorat Sales & Marketing": 167, "Direktorat IT & Digital": 167, "Direktorat General Affairs": 165}}, "PMA": {"name": "Pinus Merah Abadi", "country": "Indonesia", "type": "Distribution", "total_hc": 4000, "labor_cost_monthly": 46317.0, "revenue_annual": 5200000, "revenue_monthly": 433333.0, "revenue_per_emp": 1300.0, "grade_dist": {"5C": 10, "5B": 60, "5A": 230, "4C": 350, "4B": 580, "4A": 770, "3C": 610, "3B": 640, "3A": 370, "2C": 150, "2B": 130, "2A": 80, "1B": 20}, "dir_dist": {"Direktorat Sales": 1000, "Direktorat Distribution": 1000, "Direktorat Finance": 1000, "Direktorat HC & GA": 1000}}, "RKI": {"name": "Richeese Kuliner Indonesia", "country": "Indonesia", "type": "QSR", "total_hc": 2000, "labor_cost_monthly": 23260.0, "revenue_annual": 3800000, "revenue_monthly": 316667.0, "revenue_per_emp": 1900.0, "grade_dist": {"5B": 35, "5A": 115, "4C": 195, "4B": 295, "4A": 390, "3C": 260, "3B": 315, "3A": 200, "2C": 40, "2B": 100, "2A": 40, "1B": 15}, "dir_dist": {"Direktorat Operations": 500, "Direktorat Supply Chain": 500, "Direktorat Marketing": 500, "Direktorat Finance & HC": 500}}, "EL-CN": {"name": "Enerlife China", "country": "China", "type": "FMCG", "total_hc": 550, "labor_cost_monthly": 9662.0, "revenue_annual": 2200000, "revenue_monthly": 183333.0, "revenue_per_emp": 4000.0, "grade_dist": {"5B": 18, "5A": 51, "4C": 67, "4B": 98, "4A": 119, "3C": 86, "3B": 66, "3A": 32, "2A": 13}, "dir_dist": {"Sales & Distribution": 183, "Finance & HC": 183, "Supply Chain": 184}}, "EL-IN": {"name": "Enerlife India", "country": "India", "type": "FMCG", "total_hc": 480, "labor_cost_monthly": 2653.0, "revenue_annual": 1800000, "revenue_monthly": 150000.0, "revenue_per_emp": 3750.0, "grade_dist": {"5B": 16, "5A": 40, "4C": 54, "4B": 78, "4A": 92, "3C": 69, "3B": 58, "3A": 32, "2C": 10, "2B": 7, "2A": 8, "1C": 6, "1B": 6, "1A": 4}, "dir_dist": {"Sales & Distribution": 120, "Finance & HC": 120, "Supply Chain": 120, "Manufacturing": 120}}, "EL-MY": {"name": "Enerlife Malaysia", "country": "Malaysia", "type": "FMCG", "total_hc": 200, "labor_cost_monthly": 2483.0, "revenue_annual": 800000, "revenue_monthly": 66667.0, "revenue_per_emp": 4000.0, "grade_dist": {"5B": 6, "5A": 19, "4C": 25, "4B": 35, "4A": 44, "3C": 31, "3B": 24, "3A": 12, "2A": 4}, "dir_dist": {"Sales & Distribution": 67, "Finance & HC": 67, "Supply Chain": 66}}, "EL-VN": {"name": "Enerlife Vietnam", "country": "Vietnam", "type": "FMCG", "total_hc": 180, "labor_cost_monthly": 928.0, "revenue_annual": 650000, "revenue_monthly": 54167.0, "revenue_per_emp": 3611.11, "grade_dist": {"5B": 6, "5A": 17, "4C": 22, "4B": 32, "4A": 39, "3C": 28, "3B": 22, "3A": 10, "2A": 4}, "dir_dist": {"Sales & Distribution": 60, "Finance & HC": 60, "Supply Chain": 60}}, "EL-MM": {"name": "Enerlife Myanmar", "country": "Myanmar", "type": "FMCG", "total_hc": 110, "labor_cost_monthly": 455.0, "revenue_annual": 350000, "revenue_monthly": 29167.0, "revenue_per_emp": 3181.82, "grade_dist": {"5B": 4, "5A": 10, "4C": 14, "4B": 19, "4A": 23, "3C": 18, "3B": 13, "3A": 5, "2A": 4}, "dir_dist": {"Sales & Distribution": 37, "Finance & HC": 37, "Supply Chain": 36}}, "EL-TH": {"name": "Enerlife Thailand", "country": "Thailand", "type": "FMCG", "total_hc": 170, "labor_cost_monthly": 1646.0, "revenue_annual": 580000, "revenue_monthly": 48333.0, "revenue_per_emp": 3411.76, "grade_dist": {"5B": 6, "5A": 16, "4C": 22, "4B": 29, "4A": 37, "3C": 27, "3B": 21, "3A": 8, "2A": 4}, "dir_dist": {"Sales & Distribution": 57, "Finance & HC": 57, "Supply Chain": 56}}, "EL-PH": {"name": "Enerlife Philippines", "country": "Philippines", "type": "FMCG", "total_hc": 160, "labor_cost_monthly": 1061.0, "revenue_annual": 520000, "revenue_monthly": 43333.0, "revenue_per_emp": 3250.0, "grade_dist": {"5B": 6, "5A": 14, "4C": 19, "4B": 29, "4A": 35, "3C": 26, "3B": 19, "3A": 8, "2A": 4}, "dir_dist": {"Sales & Distribution": 53, "Finance & HC": 53, "Supply Chain": 54}}, "EL-KH": {"name": "Enerlife Cambodia", "country": "Cambodia", "type": "FMCG", "total_hc": 150, "labor_cost_monthly": 649.0, "revenue_annual": 400000, "revenue_monthly": 33333.0, "revenue_per_emp": 2666.67, "grade_dist": {"5B": 4, "5A": 14, "4C": 19, "4B": 27, "4A": 32, "3C": 24, "3B": 18, "3A": 9, "2A": 3}, "dir_dist": {"Sales & Distribution": 50, "Finance & HC": 50, "Supply Chain": 50}}};
+const WFP_TRENDS   = {"KSNI": [966, 962, 962, 961, 970, 978, 1000], "PMA": [3903, 3890, 3903, 3886, 3884, 3904, 4000], "RKI": [1882, 1880, 1895, 1906, 1905, 1918, 2000], "EL-CN": [535, 532, 538, 543, 544, 543, 550], "EL-IN": [470, 471, 470, 469, 475, 478, 480], "EL-MY": [194, 196, 197, 200, 201, 202, 200], "EL-VN": [175, 176, 178, 179, 181, 180, 180], "EL-MM": [104, 104, 104, 104, 104, 104, 110], "EL-TH": [164, 164, 164, 164, 164, 166, 170], "EL-PH": [155, 156, 156, 157, 157, 157, 160], "EL-KH": [147, 148, 149, 150, 152, 154, 150]};
+const WFP_MONTHS   = ['Jan','Feb','Mar','Apr','May','Jun'];
+const WFP_CODES    = WFP_ENTITIES.map(e=>e.code);
+const WFP_COLORS   = {'KSNI':'#E8001D','PMA':'#2563EB','RKI':'#D97706','EL-CN':'#059669','EL-IN':'#7C3AED','EL-MY':'#0891B2','EL-VN':'#DB2777','EL-MM':'#EA580C','EL-TH':'#16A34A','EL-PH':'#9333EA','EL-KH':'#0D9488'};
+const WFP_TOTAL_HC = 9000;
+const WFP_TOTAL_LC = 105824;
+const WFP_TARGET   = 1800;
+const WFP_REV_TOTAL = 24800000;
+const WFP_USD_RATE  = 16200;
+
+// ── State ──
+let wfpEntityFilter = 'ALL';
+let wfpReductionList = [];
+let wfpSimVals = {};
+let wfpReportMode = 'hc';
+const wfpCharts = {};
+
+function wfpKillChart(id) { if(wfpCharts[id]) { wfpCharts[id].destroy(); delete wfpCharts[id]; } }
+function wfpFmt(n,d=0){ return Number(n).toLocaleString('id-ID',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+
+// ── Sub-tab routing ──
+function wfpSub(id, el) {
+  document.querySelectorAll('.wfp-subtab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.wfp-subpanel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('wfp-'+id).classList.add('active');
+  if(id==='dashboard') wfpRenderDashboard();
+  if(id==='report')    wfpRenderReport();
+  if(id==='compare')   wfpRenderCompare();
+  if(id==='exec')      wfpRenderExec();
+  if(id==='scenario')  wfpInitSliders();
+}
+
+// ── Entity filter ──
+function wfpFilter(code, el) {
+  wfpEntityFilter = code;
+  document.querySelectorAll('.wfp-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  wfpRenderDashboard();
+}
+function wfpGetCodes() { return wfpEntityFilter==='ALL' ? WFP_CODES : [wfpEntityFilter]; }
+function wfpGetAgg() {
+  const codes = wfpGetCodes();
+  const r = {total_hc:0,labor_cost_monthly:0,revenue_annual:0};
+  codes.forEach(c=>{ r.total_hc+=WFP_SUMMARY[c].total_hc; r.labor_cost_monthly+=WFP_SUMMARY[c].labor_cost_monthly; r.revenue_annual+=WFP_SUMMARY[c].revenue_annual; });
+  r.lc_ratio = r.revenue_annual ? r.labor_cost_monthly*12/r.revenue_annual*100 : 0;
+  r.rpe = r.total_hc ? r.revenue_annual/r.total_hc : 0;
+  return r;
+}
+
+// ══ DASHBOARD ═════════════════════════════════════════════════════
+function wfpRenderDashboard() {
+  const s = wfpGetAgg();
+  const codes = wfpGetCodes();
+  const janHC = codes.reduce((a,c)=>a+WFP_TRENDS[c][0],0);
+  const delta = s.total_hc - janHC;
+  const lcr = s.lc_ratio.toFixed(1);
+
+  document.getElementById('wfp-kpi-row').innerHTML = `
+    <div class="wfp-kpi"><div class="wfp-kpi-label">Total Headcount</div><div class="wfp-kpi-val">${wfpFmt(s.total_hc)}</div><div class="wfp-kpi-delta ${delta>=0?'up':'down'}">${delta>=0?'↑':'↓'} ${Math.abs(delta)} vs Jan 2026</div></div>
+    <div class="wfp-kpi"><div class="wfp-kpi-label">Labor Cost/Bulan</div><div class="wfp-kpi-val amber">${wfpFmt(s.labor_cost_monthly,0)}</div><div class="wfp-kpi-delta">IDR Juta · ~USD ${wfpFmt(s.labor_cost_monthly*1000000/WFP_USD_RATE/1000000,1)}M</div></div>
+    <div class="wfp-kpi"><div class="wfp-kpi-label">Revenue/Tahun</div><div class="wfp-kpi-val green">${wfpFmt(s.revenue_annual/1000000,1)} T IDR</div><div class="wfp-kpi-delta">Triliun Rupiah</div></div>
+    <div class="wfp-kpi"><div class="wfp-kpi-label">Rev/Employee</div><div class="wfp-kpi-val">${wfpFmt(s.rpe,1)}</div><div class="wfp-kpi-delta">IDR Juta/tahun</div></div>
+    <div class="wfp-kpi"><div class="wfp-kpi-label">LC Ratio</div><div class="wfp-kpi-val ${lcr<8?'green':lcr<12?'amber':'red'}">${lcr}%</div><div class="wfp-kpi-delta">Benchmark FMCG 8-12%</div></div>
+    <div class="wfp-kpi"><div class="wfp-kpi-label">Target Reduksi 20%</div><div class="wfp-kpi-val red">${wfpFmt(Math.round(s.total_hc*.2))}</div><div class="wfp-kpi-delta">Jul–Agt 2026</div></div>
+  `;
+
+  // Trend chart
+  wfpKillChart('trend');
+  const tCtx = document.getElementById('wfp-c-trend').getContext('2d');
+  wfpCharts['trend'] = new Chart(tCtx,{type:'line',data:{labels:WFP_MONTHS,datasets:codes.slice(0,8).map(c=>({
+    label:c,data:WFP_TRENDS[c],borderColor:WFP_COLORS[c],backgroundColor:WFP_COLORS[c]+'22',borderWidth:2,pointRadius:3,fill:false,tension:.35
+  }))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:9,font:{size:10}}}},scales:{y:{grid:{color:'#f1f5f9'}},x:{grid:{display:false}}}}});
+
+  // Band donut
+  wfpKillChart('band');
+  const bandMap={};
+  WFP_GRADES.forEach(g=>{ codes.forEach(c=>{ bandMap[g.band]=(bandMap[g.band]||0)+(WFP_SUMMARY[c].grade_dist[g.code]||0); }); });
+  const bLabels=Object.keys(bandMap).filter(b=>bandMap[b]>0);
+  wfpCharts['band'] = new Chart(document.getElementById('wfp-c-band').getContext('2d'),{type:'doughnut',data:{labels:bLabels,datasets:[{data:bLabels.map(b=>bandMap[b]),backgroundColor:['#7C3AED','#2563EB','#0891B2','#059669','#D97706','#EA580C','#DB2777','#64748B','#374151'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{boxWidth:9,font:{size:10}}}}}});
+
+  // LC bar
+  wfpKillChart('lc');
+  wfpCharts['lc'] = new Chart(document.getElementById('wfp-c-lc').getContext('2d'),{type:'bar',data:{labels:codes,datasets:[{data:codes.map(c=>WFP_SUMMARY[c].labor_cost_monthly),backgroundColor:codes.map(c=>WFP_COLORS[c]),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#f1f5f9'}},x:{grid:{display:false}}}}});
+
+  // HC bar
+  wfpKillChart('hc');
+  wfpCharts['hc'] = new Chart(document.getElementById('wfp-c-hc').getContext('2d'),{type:'bar',data:{labels:codes,datasets:[{data:codes.map(c=>WFP_SUMMARY[c].total_hc),backgroundColor:codes.map(c=>WFP_COLORS[c]),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#f1f5f9'}},x:{grid:{display:false}}},onClick:(e,els)=>{if(els.length){const c=codes[els[0].index];const chip=document.querySelector(`.wfp-chip[onclick*="${c}"]`);if(chip)wfpFilter(c,chip);}}}});
+
+  // Rev/emp bar
+  wfpKillChart('rpe');
+  wfpCharts['rpe'] = new Chart(document.getElementById('wfp-c-rpe').getContext('2d'),{type:'bar',data:{labels:codes,datasets:[{data:codes.map(c=>+(WFP_SUMMARY[c].revenue_annual/WFP_SUMMARY[c].total_hc).toFixed(1)),backgroundColor:codes.map(c=>WFP_COLORS[c]+'bb'),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{grid:{color:'#f1f5f9'}},x:{grid:{display:false}}}}});
+
+  // Dir table
+  const dirMap={};
+  codes.forEach(c=>{ Object.entries(WFP_SUMMARY[c].dir_dist||{}).forEach(([d,n])=>{ if(!dirMap[d])dirMap[d]={n:0,ents:[]}; dirMap[d].n+=n; dirMap[d].ents.push(c); }); });
+  const total=Object.values(dirMap).reduce((a,b)=>a+b.n,0);
+  const sorted=Object.entries(dirMap).sort((a,b)=>b[1].n-a[1].n);
+  let tbl='<table class="data"><thead><tr><th>Direktorat</th><th>Entitas</th><th style="text-align:right">HC</th><th style="text-align:right">%</th></tr></thead><tbody>';
+  sorted.forEach(([d,v])=>{ const pct=(v.n/total*100).toFixed(1); tbl+=`<tr><td>${d}</td><td style="font-size:11px">${v.ents.join(', ')}</td><td style="text-align:right;font-weight:600">${wfpFmt(v.n)}</td><td style="text-align:right">${pct}%</td></tr>`; });
+  tbl+=`<tr><td colspan="2"><b>Total</b></td><td style="text-align:right;font-weight:700">${wfpFmt(total)}</td><td></td></tr></tbody></table>`;
+  document.getElementById('wfp-dir-table').innerHTML=tbl;
+  document.getElementById('wfp-dir-sub').textContent=codes.length===WFP_CODES.length?'Semua entitas':codes.join(', ');
+}
+
+// ══ REDUCTION PLANNING ════════════════════════════════════════════
+function wfpUpdateDirs() {
+  const ent=document.getElementById('wfp-inp-ent').value;
+  const sel=document.getElementById('wfp-inp-dir');
+  sel.innerHTML='<option value="">-- Semua Direktorat --</option>';
+  if(!ent)return;
+  Object.keys(WFP_SUMMARY[ent]?.dir_dist||{}).forEach(d=>{ const o=document.createElement('option');o.value=d;o.textContent=d;sel.appendChild(o); });
+}
+function wfpSliderSync(v){ document.getElementById('wfp-inp-count').value=v; document.getElementById('wfp-slider-val').textContent=v; }
+function wfpCountSync(v){ document.getElementById('wfp-slider').value=Math.min(v,500); document.getElementById('wfp-slider-val').textContent=v; }
+
+function wfpAddReduction() {
+  const ent=document.getElementById('wfp-inp-ent').value;
+  if(!ent){alert('Pilih entitas.');return;}
+  const count=parseInt(document.getElementById('wfp-inp-count').value)||0;
+  if(count<=0){alert('Jumlah harus > 0.');return;}
+  const grade=document.getElementById('wfp-inp-grade').value;
+  const gd=grade?WFP_GRADES.find(g=>g.code===grade):null;
+  wfpReductionList.push({ent,dir:document.getElementById('wfp-inp-dir').value||'Semua',grade:grade||'Mixed',count,date:document.getElementById('wfp-inp-date').value,type:document.getElementById('wfp-inp-type').value,salary:gd?gd.salary_mid:10});
+  wfpRenderRL(); wfpUpdatePlanSummary();
+}
+function wfpDelReduction(i){ wfpReductionList.splice(i,1); wfpRenderRL(); wfpUpdatePlanSummary(); }
+function wfpClearForm(){ ['wfp-inp-ent','wfp-inp-dir','wfp-inp-grade','wfp-inp-date','wfp-inp-type'].forEach(id=>document.getElementById(id).value=''); document.getElementById('wfp-inp-count').value='20'; document.getElementById('wfp-slider').value='20'; document.getElementById('wfp-slider-val').textContent='20'; }
+
+function wfpRenderRL() {
+  const body=document.getElementById('wfp-rl-body');
+  document.getElementById('wfp-rl-count').textContent=wfpReductionList.length+' item';
+  if(!wfpReductionList.length){ body.innerHTML='<div style="padding:20px;text-align:center;color:var(--nabati-text-secondary);font-size:13px">Belum ada rencana.</div>'; return; }
+  body.innerHTML=wfpReductionList.map((r,i)=>`<div class="wfp-rl-row"><span class="badge badge--neutral">${r.ent}</span><span style="font-size:11.5px">${r.dir.replace('Direktorat ','')}</span><span class="badge badge--neutral">${r.grade}</span><b style="color:var(--nabati-red)">-${wfpFmt(r.count)}</b><span style="font-size:11px">${r.date}</span><span style="font-size:11px">${r.type}</span><span class="wfp-rl-del" onclick="wfpDelReduction(${i})">✕</span></div>`).join('');
+  // Plan chart
+  wfpKillChart('plan');
+  const grp={};WFP_CODES.forEach(c=>grp[c]=0);wfpReductionList.forEach(r=>grp[r.ent]=(grp[r.ent]||0)+r.count);
+  const ac=WFP_CODES.filter(c=>grp[c]>0);
+  if(ac.length){ wfpCharts['plan']=new Chart(document.getElementById('wfp-c-plan').getContext('2d'),{type:'bar',data:{labels:ac,datasets:[{label:'Reduksi',data:ac.map(c=>grp[c]),backgroundColor:ac.map(c=>WFP_COLORS[c]),borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'#f1f5f9'}},y:{grid:{display:false}}}}}); }
+}
+
+function wfpUpdatePlanSummary() {
+  const total=wfpReductionList.reduce((a,b)=>a+b.count,0);
+  const saving=wfpReductionList.reduce((a,b)=>a+b.count*b.salary,0);
+  const pct=Math.min(100,total/WFP_TARGET*100).toFixed(1);
+  document.getElementById('wfp-ps-total').textContent=wfpFmt(total);
+  document.getElementById('wfp-ps-pct').textContent=pct+'%';
+  document.getElementById('wfp-ps-saving').textContent='IDR '+wfpFmt(saving,0)+' M';
+  const bar=document.getElementById('wfp-ps-bar');
+  bar.style.width=pct+'%'; bar.className='prog-fill'+(pct>=100?' green':'');
+  document.getElementById('wfp-ps-bar-pct').textContent=pct+'%';
+}
+
+// ══ COST SCENARIO ═════════════════════════════════════════════════
+function wfpCalcScenario() {
+  let amt=parseFloat(document.getElementById('wfp-sc-amt').value)||500;
+  const unit=document.getElementById('wfp-sc-unit').value;
+  if(unit==='miliar') amt*=1000;
+  if(unit==='usd-k') amt=amt*1000*WFP_USD_RATE/1000000;
+  const scenarios=[
+    {label:'Opsi A: Level Atas',grades:['6B','5C','5B'],desc:'C-Level, VP, Sr.Manager'},
+    {label:'Opsi B: Level Menengah',grades:['5A','4C','4B'],desc:'Manager, Asst.Mgr, SPV'},
+    {label:'Opsi C: Level Bawah',grades:['3B','3A','2C','2B'],desc:'Staff, Jr.Staff, Contract'},
+    {label:'Opsi D: Mix Optimal',grades:['5B','5A','4B','3C'],desc:'Sr.Mgr + Mgr + SPV + Sr.Staff'},
+  ];
+  document.getElementById('wfp-sc-grid').innerHTML=scenarios.map((sc,i)=>{
+    const avg=sc.grades.reduce((a,g)=>{ const gd=WFP_GRADES.find(gr=>gr.code===g); return a+(gd?gd.salary_mid:5); },0)/sc.grades.length;
+    const n=Math.ceil(amt/avg);
+    return `<div class="wfp-scenario-card" onclick="document.querySelectorAll('.wfp-scenario-card').forEach(c=>c.classList.remove('selected'));this.classList.add('selected')">
+      <div class="t-label">${sc.label}</div>
+      <div class="sc-people">-${wfpFmt(n)}</div>
+      <div class="t-caption">${sc.desc}</div>
+      <div class="t-caption">Avg salary: IDR ${avg.toFixed(1)} M</div>
+      <div class="sc-saving">Saving: IDR ${wfpFmt(n*avg,0)} M/bln</div>
+    </div>`;
+  }).join('');
+}
+
+function wfpInitSliders() {
+  const cont=document.getElementById('wfp-grade-sliders');
+  if(cont.children.length>0){wfpUpdateSimTotals();return;}
+  WFP_GRADES.forEach(g=>{
+    wfpSimVals[g.code]=0;
+    const d=document.createElement('div');d.className='grade-slider-row';
+    d.innerHTML=`<div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:11.5px;font-weight:700">${g.code} — ${g.label}</span><span class="t-caption">IDR ${g.salary_mid} M</span></div><div style="display:flex;align-items:center;gap:8px"><input type="range" class="wfp-slider" min="0" max="50" value="0" oninput="wfpSimSlider('${g.code}',this.value)"><b id="wfp-gsv-${g.code}" style="min-width:24px;color:var(--nabati-red);font-size:13px">0</b></div>`;
+    cont.appendChild(d);
+  });
+  wfpUpdateSimChart();
+}
+function wfpSimSlider(g,v){ wfpSimVals[g]=parseInt(v); document.getElementById('wfp-gsv-'+g).textContent=v; wfpUpdateSimTotals(); wfpUpdateSimChart(); }
+function wfpUpdateSimTotals(){
+  const total=Object.values(wfpSimVals).reduce((a,b)=>a+b,0);
+  const saving=WFP_GRADES.reduce((a,g)=>a+(wfpSimVals[g.code]||0)*g.salary_mid,0);
+  document.getElementById('wfp-sim-total').textContent=wfpFmt(total);
+  document.getElementById('wfp-sim-saving').textContent='IDR '+wfpFmt(saving,0)+' M';
+  document.getElementById('wfp-sim-yr').textContent='IDR '+wfpFmt(saving*12,0)+' M';
+  document.getElementById('wfp-sim-pct').textContent=(saving/WFP_TOTAL_LC*100).toFixed(1)+'%';
+}
+function wfpUpdateSimChart(){
+  wfpKillChart('sim');
+  const gs=WFP_GRADES.filter(g=>wfpSimVals[g.code]>0);
+  if(!gs.length)return;
+  wfpCharts['sim']=new Chart(document.getElementById('wfp-c-sim').getContext('2d'),{type:'bar',data:{labels:gs.map(g=>g.code+' '+g.label),datasets:[{label:'Orang',data:gs.map(g=>wfpSimVals[g.code]),backgroundColor:'#E8001D',borderRadius:4},{label:'Saving IDR M',data:gs.map(g=>+(wfpSimVals[g.code]*g.salary_mid).toFixed(0)),backgroundColor:'#2563EB22',borderColor:'#2563EB',borderWidth:1.5,borderRadius:4,yAxisID:'y2'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:9,font:{size:10}}}},scales:{y:{grid:{color:'#f1f5f9'}},y2:{position:'right',grid:{display:false}},x:{grid:{display:false}}}}});
+}
+
+// ══ REPORT ════════════════════════════════════════════════════════
+function wfpSetReport(view,el){ wfpReportMode=view; document.querySelectorAll('#wfp-report .wfp-chip').forEach(c=>c.classList.remove('active'));el.classList.add('active'); wfpRenderReport(); }
+function wfpRenderReport(){
+  const titles={hc:'Headcount Trend — Jan to Jun 2026',lc:'Labor Cost Trend — IDR M/bulan',rpe:'Revenue per Employee — IDR Juta/tahun'};
+  document.getElementById('wfp-report-title').textContent=titles[wfpReportMode];
+  wfpKillChart('report');
+  wfpCharts['report']=new Chart(document.getElementById('wfp-c-report').getContext('2d'),{type:'line',data:{labels:WFP_MONTHS,datasets:WFP_CODES.map(c=>({label:c,data:wfpReportMode==='hc'?WFP_TRENDS[c]:wfpReportMode==='lc'?WFP_MONTHS.map((_,i)=>+(WFP_SUMMARY[c].labor_cost_monthly*(0.97+i*.006)).toFixed(0)):WFP_MONTHS.map(()=>+(WFP_SUMMARY[c].revenue_annual/WFP_SUMMARY[c].total_hc).toFixed(1)),borderColor:WFP_COLORS[c],backgroundColor:WFP_COLORS[c]+'22',borderWidth:2,pointRadius:3,fill:false,tension:.35}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:9,font:{size:10}}}},scales:{y:{grid:{color:'#f1f5f9'}},x:{grid:{display:false}}}}});
+  // Grade stacked
+  wfpKillChart('rgrade');
+  const tg=WFP_GRADES.slice(0,8);
+  wfpCharts['rgrade']=new Chart(document.getElementById('wfp-c-rgrade').getContext('2d'),{type:'bar',data:{labels:WFP_CODES,datasets:tg.map((g,i)=>({label:g.code,data:WFP_CODES.map(c=>WFP_SUMMARY[c].grade_dist[g.code]||0),backgroundColor:['#E8001D','#2563EB','#D97706','#059669','#7C3AED','#0891B2','#DB2777','#EA580C'][i%8],stack:'s'}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:8,font:{size:9}}}},scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,grid:{color:'#f1f5f9'}}}}});
+  // Band donut
+  wfpKillChart('rband');
+  const bm={};WFP_GRADES.forEach(g=>{ WFP_CODES.forEach(c=>{ bm[g.band]=(bm[g.band]||0)+(WFP_SUMMARY[c].grade_dist[g.code]||0)*g.salary_mid; }); });
+  const bl=Object.keys(bm).filter(b=>bm[b]>0);
+  wfpCharts['rband']=new Chart(document.getElementById('wfp-c-rband').getContext('2d'),{type:'doughnut',data:{labels:bl,datasets:[{data:bl.map(b=>+bm[b].toFixed(0)),backgroundColor:['#7C3AED','#2563EB','#0891B2','#059669','#D97706','#EA580C','#DB2777','#64748B','#374151'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{boxWidth:9,font:{size:10}}}}}});
+}
+
+// ══ BEFORE vs AFTER ═══════════════════════════════════════════════
+function wfpRenderCompare(){
+  const fi=document.getElementById('wfp-ba-from').value==='jan'?0:2;
+  const toSim=document.getElementById('wfp-ba-to').value==='aug';
+  const fHC=WFP_CODES.reduce((a,c)=>a+(WFP_TRENDS[c][fi]||WFP_TRENDS[c][0]),0);
+  const tHC=toSim?Math.round(WFP_TOTAL_HC*.80):WFP_TOTAL_HC;
+  const fLC=WFP_TOTAL_LC*.97, tLC=toSim?WFP_TOTAL_LC*.80:WFP_TOTAL_LC;
+  document.getElementById('wfp-ba-panels').innerHTML=`
+    <div class="wfp-ba-panel"><div class="wfp-ba-head before">📅 ${document.getElementById('wfp-ba-from').options[document.getElementById('wfp-ba-from').selectedIndex].text} — SEBELUM</div>
+      <div class="wfp-ba-row"><span style="color:var(--nabati-text-secondary)">Total Headcount</span><b>${wfpFmt(fHC)}</b></div>
+      <div class="wfp-ba-row"><span style="color:var(--nabati-text-secondary)">Labor Cost/bulan</span><b>IDR ${wfpFmt(fLC,0)} M</b></div>
+      <div class="wfp-ba-row"><span style="color:var(--nabati-text-secondary)">Rev/Employee</span><b>IDR ${(WFP_REV_TOTAL/fHC).toFixed(1)} M/yr</b></div>
+      <div class="wfp-ba-row"><span style="color:var(--nabati-text-secondary)">LC Ratio</span><b>${(fLC*12/WFP_REV_TOTAL*100).toFixed(1)}%</b></div>
+    </div>
+    <div class="wfp-ba-panel"><div class="wfp-ba-head after">🎯 ${document.getElementById('wfp-ba-to').options[document.getElementById('wfp-ba-to').selectedIndex].text} — SESUDAH</div>
+      <div class="wfp-ba-row"><span style="color:var(--nabati-text-secondary)">Total Headcount</span><b>${wfpFmt(tHC)} <span style="color:var(--nabati-red);font-size:11px">-${wfpFmt(fHC-tHC)}</span></b></div>
+      <div class="wfp-ba-row"><span style="color:var(--nabati-text-secondary)">Labor Cost/bulan</span><b>IDR ${wfpFmt(tLC,0)} M <span style="color:#059669;font-size:11px">-${wfpFmt(fLC-tLC,0)}</span></b></div>
+      <div class="wfp-ba-row"><span style="color:var(--nabati-text-secondary)">Rev/Employee</span><b>IDR ${(WFP_REV_TOTAL/tHC).toFixed(1)} M/yr <span style="color:#059669;font-size:11px">+${((WFP_REV_TOTAL/tHC)-(WFP_REV_TOTAL/fHC)).toFixed(1)}</span></b></div>
+      <div class="wfp-ba-row"><span style="color:var(--nabati-text-secondary)">LC Ratio</span><b>${(tLC*12/WFP_REV_TOTAL*100).toFixed(1)}%</b></div>
+    </div>`;
+  wfpKillChart('ba');
+  wfpCharts['ba']=new Chart(document.getElementById('wfp-c-ba').getContext('2d'),{type:'bar',data:{labels:WFP_CODES,datasets:[{label:'Before',data:WFP_CODES.map(c=>WFP_TRENDS[c][fi]||WFP_TRENDS[c][0]),backgroundColor:'#94A3B8',borderRadius:3},{label:'After (Sim)',data:WFP_CODES.map(c=>toSim?Math.round(WFP_SUMMARY[c].total_hc*.80):WFP_SUMMARY[c].total_hc),backgroundColor:'#E8001D',borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:9,font:{size:10}}}},scales:{x:{grid:{display:false}},y:{grid:{color:'#f1f5f9'}}}}});
+}
+
+// ══ EXECUTIVE ═════════════════════════════════════════════════════
+function wfpRenderExec(){
+  wfpKillChart('ex-hc');wfpKillChart('ex-lc');
+  wfpCharts['ex-hc']=new Chart(document.getElementById('wfp-c-ex-hc').getContext('2d'),{type:'pie',data:{labels:WFP_CODES,datasets:[{data:WFP_CODES.map(c=>WFP_SUMMARY[c].total_hc),backgroundColor:WFP_CODES.map(c=>WFP_COLORS[c]),borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{boxWidth:9,font:{size:9}}}}}});
+  wfpCharts['ex-lc']=new Chart(document.getElementById('wfp-c-ex-lc').getContext('2d'),{type:'pie',data:{labels:WFP_CODES,datasets:[{data:WFP_CODES.map(c=>WFP_SUMMARY[c].labor_cost_monthly),backgroundColor:WFP_CODES.map(c=>WFP_COLORS[c]),borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{boxWidth:9,font:{size:9}}}}}});
+  document.getElementById('wfp-exec-alerts').innerHTML=[
+    'PMA menyumbang 44% total HC Group — risiko konsentrasi tinggi.',
+    'EL-CN memiliki labor cost tertinggi overseas — review efisiensi.',
+    'Target reduksi 1.800 orang Juli-Agustus membutuhkan legal clearance per negara.',
+    'LC Ratio Group 5,1% — di bawah benchmark FMCG 8-12%, ruang optimasi terbatas.',
+    'Revenue/employee KSNI tertinggi — lindungi posisi kritis sebelum reduksi.',
+  ].map(a=>`<li>${a}</li>`).join('');
+  document.getElementById('wfp-exec-table').innerHTML=WFP_CODES.map(c=>{
+    const s=WFP_SUMMARY[c];
+    const rpe=(s.revenue_annual/s.total_hc).toFixed(1);
+    const lcr=(s.labor_cost_monthly*12/s.revenue_annual*100).toFixed(1);
+    return `<tr><td><b>${c}</b></td><td>${WFP_ENTITIES.find(e=>e.code===c)?.country||''}</td><td>${s.type}</td><td style="text-align:right;font-weight:600">${wfpFmt(s.total_hc)}</td><td style="text-align:right">${wfpFmt(s.labor_cost_monthly,0)}</td><td style="text-align:right">${wfpFmt(s.revenue_annual,0)}</td><td style="text-align:right">${rpe}</td><td style="text-align:right;color:${lcr>12?'var(--nabati-red)':lcr>8?'#D97706':'#059669'}">${lcr}%</td><td style="text-align:right;color:var(--nabati-red);font-weight:700">-${wfpFmt(Math.round(s.total_hc*.2))}</td></tr>`;
+  }).join('');
+  document.getElementById('wfp-exec-tfoot').innerHTML=`<tr><td colspan="3"><b>TOTAL GROUP</b></td><td style="text-align:right;font-weight:700">${wfpFmt(WFP_TOTAL_HC)}</td><td style="text-align:right;font-weight:700">${wfpFmt(WFP_TOTAL_LC,0)}</td><td style="text-align:right;font-weight:700">${wfpFmt(WFP_REV_TOTAL,0)}</td><td style="text-align:right;font-weight:700">${(WFP_REV_TOTAL/WFP_TOTAL_HC).toFixed(1)}</td><td style="text-align:right;font-weight:700">${(WFP_TOTAL_LC*12/WFP_REV_TOTAL*100).toFixed(1)}%</td><td style="text-align:right;color:var(--nabati-red);font-weight:700">-${wfpFmt(WFP_TARGET)}</td></tr>`;
+}
+
+// ══ DATA IO ════════════════════════════════════════════════════════
+function wfpDownload(type){
+  var csv="",fn="";
+  if(type==="summary"){
+    csv="entity_code,entity_name,country,type,total_hc,lc_monthly_idrm,revenue_annual_idrm,rpe_idrm,lc_ratio_pct\n";
+    WFP_CODES.forEach(function(c){
+      var s=WFP_SUMMARY[c];
+      csv+=c+","+s.name+","+WFP_ENTITIES.find(function(e){return e.code===c;}).country+","+s.type+","+s.total_hc+","+s.labor_cost_monthly+","+s.revenue_annual+","+(s.revenue_annual/s.total_hc).toFixed(1)+","+(s.labor_cost_monthly*12/s.revenue_annual*100).toFixed(1)+"\n";
+    }); fn="wfp_summary.csv";
+  } else if(type==="all"){
+    csv="entity_code,grade,grade_label,band,count,salary_mid_idrm\n";
+    WFP_CODES.forEach(function(c){
+      Object.entries(WFP_SUMMARY[c].grade_dist).forEach(function(kv){
+        var g=kv[0],n=kv[1],gd=WFP_GRADES.find(function(x){return x.code===g;});
+        csv+=c+","+g+","+(gd?gd.label:g)+","+(gd?gd.band:"")+","+n+","+(gd?gd.salary_mid:0)+"\n";
+      });
+    }); fn="wfp_all_entities.csv";
+  } else if(type==="reduction"){
+    csv="entity,directorate,grade,count,effective_date,separation_type\n";
+    wfpReductionList.forEach(function(r){
+      csv+=r.ent+","+r.dir+","+r.grade+","+r.count+","+r.date+","+r.type+"\n";
+    }); fn="wfp_reduction_plan.csv";
+  } else if(type==="template"){
+    csv="entity_code,employee_id,grade,grade_label,directorate,division,salary_mid_idr,country,status,emp_type\n";
+    csv+="KSNI,EMP-001,5A,Manager,Direktorat Finance,Finance Accounting,40.00,Indonesia,Active,Permanent\n";
+    fn="wfp_upload_template.csv";
+  } else {
+    csv="month,"+WFP_CODES.join(",")+",total\n";
+    WFP_MONTHS.forEach(function(m,i){
+      var total=WFP_CODES.reduce(function(a,c){return a+(WFP_TRENDS[c][i]||0);},0);
+      csv+=m+","+WFP_CODES.map(function(c){return WFP_TRENDS[c][i]||0;}).join(",")+","+total+"\n";
+    }); fn="wfp_trend.csv";
+  }
+  var a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));
+  a.download=fn; a.click();
+}
+
+function wfpHandleUpload(e){
+  const file=e.target.files[0];if(!file)return;
+  const msg=document.getElementById('wfp-upload-msg');
+  msg.textContent='Memproses '+file.name+'...';
+  const reader=new FileReader();
+  reader.onload=ev=>{ const n=Math.max(0,ev.target.result.split("\n").length-1); msg.innerHTML=`<span style="color:#059669;font-weight:600">✓ ${file.name}: ${n} baris diproses. (Prototype mode — data simulasi tidak diubah.)</span>`; };
+  reader.readAsText(file);
+}
+
+// ── Init on tab open ──
+// ── Safe render: wait for Chart.js then render ─────────────────
+function wfpSafeRender(){
+  if(typeof Chart === 'undefined'){
+    setTimeout(wfpSafeRender, 80);
+    return;
+  }
+  // Activate dashboard sub-panel
+  var dp = document.getElementById('wfp-dashboard');
+  if(dp) dp.classList.add('active');
+  wfpRenderDashboard();
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  // Hook tab click
+  document.querySelectorAll('.tab').forEach(function(t){
+    if(t.dataset.tab === 'workforce'){
+      t.addEventListener('click', function(){ setTimeout(wfpSafeRender, 60); });
+    }
+  });
+  // Hook wfp-subtab for dashboard
+  document.addEventListener('click', function(e){
+    if(e.target && e.target.classList.contains('wfp-subtab')){
+      var oc = e.target.getAttribute('onclick') || '';
+      if(oc.includes('dashboard')) setTimeout(wfpRenderDashboard, 60);
+    }
+  });
+});
+</script>
+
+
+<style id="wm-style">
+.sim-watermark {
+  position: fixed; bottom: 14px; left: 14px; z-index: 9999;
+  background: rgba(15,23,42,.82); color: rgba(255,255,255,.85);
+  font-size: 10.5px; font-weight: 600; letter-spacing: .04em;
+  padding: 5px 11px; border-radius: 999px;
+  pointer-events: none; user-select: none;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.12);
+  font-family: system-ui, sans-serif;
+}
+</style>
+<div class="sim-watermark">⚠ DATA SIMULASI — Bukan data aktual Nabati</div>
+
+</body>
+</html>
