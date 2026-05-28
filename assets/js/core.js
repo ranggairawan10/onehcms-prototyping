@@ -52,13 +52,27 @@
     if (!form) return;
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var btn = form.querySelector("[type=submit]");
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = "Memuat sistem ...";
+      var uid = (document.getElementById("empid") || {}).value || "";
+      var pwd = (document.getElementById("password") || {}).value || "";
+      var errEl = document.getElementById("login-error");
+      if (uid === "OneHCMSHi-Fi" && pwd === "Nbt-!0hcms$+") {
+        var btn = form.querySelector("[type=submit]");
+        if (btn) { btn.disabled = true; btn.textContent = "Memuat sistem ..."; }
+        if (errEl) errEl.style.display = "none";
+        setTimeout(function () { window.location.href = "dashboard.html"; }, 600);
+      } else {
+        if (errEl) {
+          errEl.textContent = "Employee ID atau kata sandi salah.";
+          errEl.style.display = "block";
+        }
+        // Shake the card
+        var card = document.querySelector(".auth-card");
+        if (card) {
+          card.style.animation = "none";
+          card.offsetHeight;
+          card.style.animation = "shake .35s ease";
+        }
       }
-      /* Prototype: tidak ada autentikasi nyata, langsung ke shell. */
-      setTimeout(function () { window.location.href = "dashboard.html"; }, 600);
     });
     var eye = document.getElementById("pwToggle");
     if (eye) {
