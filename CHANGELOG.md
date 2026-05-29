@@ -1,3 +1,29 @@
+## [v1.5] — 2026-05-27 (GitHub Release)
+
+### Added
+- WLA (Workload Analysis) tab di m05-org — FTE calculator dengan formula intact
+  - Manual entry + JD Upload via AI generation (Claude API)
+  - Color & font disesuaikan ke design system Nabati
+- HC AI chat: modul Talent Acquisition (Lowongan Internal, Status Lamaran, Referral, Onboarding, Career Path)
+- Sidebar pin/unpin toggle (ChatGPT-style) dengan tooltip Open/Close
+- Semua 12 modul sidebar dengan hover tooltip
+- Login credential: OneHCMSHi-Fi / Nbt-!0hcms$+
+- Error message + shake animation jika login salah
+
+### Fixed
+- Chart.js dipindah ke <head> — semua chart di m05-org, m06-cnb, m07-pms, m11-ir, m12-pa tidak lagi kosong
+- Welcome screen kembali ke tengah setelah newChat()
+- Leave type buttons tidak lagi raksasa (flex-direction:column dihapus)
+- Sidebar hover expand dihapus — sidebar hanya expand saat di-pin
+- Chip menu welcome screen dapat diklik dan trigger flow yang benar
+- Placeholder teks & posisi centered di input box
+- "P" label bocor dari tombol + Percakapan Baru
+
+### Data
+- /data/ folder distrukturisasi per modul (shared, m05-org, m06-cnb, m07-pms, m11-ir, templates)
+- WFP_08 Master Employee Full 9000.csv: 9.000 baris × 53 kolom (terpisah)
+- Watermark DATA SIMULASI di semua 14 halaman HTML
+
 ## [v1.5.1] - 2026-05-27
 ### Fixed
 - Watermark "⚠ DATA SIMULASI — Bukan data aktual Nabati" ditambahkan ke semua 14 halaman HTML
