@@ -23,7 +23,7 @@
   padding:18px 0;
   align-items:start;
 }
-#wla-embed .sidebar {
+#wla-embed .wla-sidebar {
   height:auto !important;
   overflow:visible !important;
   display:flex !important;
@@ -39,7 +39,7 @@
   flex-direction:column;
   gap:14px;
 }
-#wla-embed .card { width:100%; height:auto !important; }
+#wla-embed .wla-card { width:100%; height:auto !important; }
 #wla-embed .tab-panel { width:100%; }
 #wla-embed .tab-panel:not(.active) { display:none !important; }
 #wla-embed .tab-panel.active { display:flex !important; flex-direction:column; gap:14px; }
@@ -123,7 +123,7 @@
   /* ── LAYOUT ── */
   .app-#wla-embed-inner-noop { }
   
-  .sidebar {
+  .wla-sidebar {
     width: 280px;
     background: var(--white);
     border-right: 1px solid var(--border);
@@ -195,7 +195,7 @@
   }
 
   /* ── TABS ── */
-  .tabs { display: flex; gap: 2px; background: var(--border); border-radius: 8px; padding: 3px; width: fit-content; }
+  .wla-tabs { display: flex; gap: 2px; background: var(--border); border-radius: 8px; padding: 3px; width: fit-content; }
   .tab-btn {
     padding: 8px 20px;
     border: none;
@@ -215,7 +215,7 @@
   .tab-panel.active { display: flex; flex-direction: column; gap: 20px; }
 
   /* ── CARDS ── */
-  .card {
+  .wla-card {
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: var(--r);
@@ -232,7 +232,7 @@
   .card-#wla-embed { padding: 20px; }
 
   /* ── BUTTONS ── */
-  .btn {
+  .wlabtn {
     padding: 8px 16px;
     border: none;
     border-radius: 5px;
@@ -246,7 +246,7 @@
     transition: all 0.18s;
     white-space: nowrap;
   }
-  .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+  .wlabtn:disabled { opacity: 0.45; cursor: not-allowed; }
   .btn-primary { background: #0F172A; color: var(--white); }
   .btn-primary:hover:not(:disabled) { background: var(--navy2); }
   .btn-gold { background: #E8001D; color: var(--white); }
@@ -449,7 +449,7 @@
   .info-note svg { flex-shrink: 0; opacity: 0.6; margin-top: 1px; }
 
   @media (max-width: 900px) {
-    .sidebar { display: none; }
+    .wla-sidebar { display: none; }
     .main-area { padding: 16px; }
     .quick-add-bar { grid-template-columns: 1fr 1fr; }
   }
@@ -467,7 +467,7 @@
   min-height:auto !important;
   padding:18px 0 !important;
 }
-#wla-embed .sidebar {
+#wla-embed .wla-sidebar {
   width:280px !important;
   flex-shrink:0 !important;
   flex-grow:0 !important;
@@ -486,15 +486,17 @@
 }
 #wla-embed .tab-panel:not(.active){ display:none !important; }
 #wla-embed .tab-panel.active{ display:flex !important; flex-direction:column; gap:14px; }
-#wla-embed .card{ width:100% !important; box-sizing:border-box; }
+#wla-embed .wla-card{ width:100% !important; box-sizing:border-box; }
 #wla-embed .activity-table-wrap{ overflow-x:auto; width:100%; }
 @media(max-width:900px){
   #wla-embed .app-body{ flex-direction:column !important; }
-  #wla-embed .sidebar{ width:100% !important; }
+  #wla-embed .wla-sidebar{ width:100% !important; }
 }
-#wla-embed .tabs{ display:flex !important; gap:4px; background:transparent !important; border:none !important; margin-bottom:4px; }
+#wla-embed .wla-tabs{ display:flex !important; gap:4px; background:transparent !important; border:none !important; margin-bottom:4px; }
 #wla-embed .tab-btn{ display:inline-flex !important; align-items:center; gap:6px; padding:8px 16px !important; font-size:13px !important; font-weight:600; color:#64748B; background:#fff !important; border:1px solid #E2E8F0 !important; border-radius:8px !important; cursor:pointer; white-space:nowrap; width:auto !important; }
 #wla-embed .tab-btn.active{ color:#fff !important; background:#E8001D !important; border-color:#E8001D !important; }
+#wla-embed .wlabtn-danger{ background:transparent; color:#94A3B8; border:1px solid #E2E8F0; padding:4px 8px; border-radius:5px; cursor:pointer; font-size:11px; }
+#wla-embed .wlabtn-danger:hover{ border-color:#E8001D; color:#E8001D; }
 /* === END FINAL LOCK === */
 
 </style>
@@ -1285,11 +1287,11 @@
 <div class="app-body">
 
   <!-- ─── SIDEBAR ─────────────────────────────────── -->
-  <aside class="sidebar">
+  <aside class="wla-sidebar">
     <!-- Parameters -->
-    <div class="sidebar-section">
-      <div class="sidebar-section-title">📐 WLA Parameters</div>
-      <div class="sidebar-fields">
+    <div class="wla-sidebar-section">
+      <div class="wla-sidebar-section-title">📐 WLA Parameters</div>
+      <div class="wla-sidebar-fields">
         <div class="field-group">
           <label>Work Hours / Day</label>
           <input type="number" id="p_hours_day" value="8" min="1" max="24" step="0.5">
@@ -1357,7 +1359,7 @@
   <main class="main-area">
 
     <!-- Tabs -->
-    <div class="tabs">
+    <div class="wla-tabs">
       <button class="tab-btn active" onclick="switchTab('manual')" id="tab-manual">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         Manual Entry
@@ -1370,14 +1372,14 @@
 
     <!-- ── TAB: MANUAL ── -->
     <div class="tab-panel active" id="panel-manual">
-      <div class="card">
+      <div class="wla-card">
         <div class="card-header">
           <span class="card-title">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
             Activity List
             <span class="count-badge" id="actCount">0</span>
           </span>
-          <button class="btn btn-primary btn-sm" onclick="clearAll()">
+          <button class="wlabtn btn-primary btn-sm" onclick="clearAll()">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
             Clear All
           </button>
@@ -1461,7 +1463,7 @@
             <input type="number" id="qa_instances" value="1" min="0.1" step="0.1">
           </div>
           <div style="display:flex; align-items:flex-end;">
-            <button type="submit" class="btn btn-gold">
+            <button type="submit" class="wlabtn btn-gold">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
               Add
             </button>
@@ -1479,14 +1481,14 @@
 
     <!-- ── TAB: JD UPLOAD ── -->
     <div class="tab-panel" id="panel-jd">
-      <div class="card">
+      <div class="wla-card">
         <div class="card-header">
           <span class="card-title">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
             Upload Job Description
           </span>
         </div>
-        <div class="card-body" style="display:flex; flex-direction:column; gap:16px;">
+        <div class="wla-card-body" style="display:flex; flex-direction:column; gap:16px;">
           <div class="upload-zone" id="uploadZone" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
             <input type="file" id="jdFileInput" accept=".txt,.docx,.xlsx,.csv" onchange="handleFileSelect(event)">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
@@ -1509,11 +1511,11 @@
           </div>
 
           <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-            <button class="btn btn-primary" id="generateBtn" onclick="generateFromJD()" disabled>
+            <button class="wlabtn btn-primary" id="generateBtn" onclick="generateFromJD()" disabled>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               Generate Activities with AI
             </button>
-            <button class="btn btn-outline" onclick="clearJDFile()" id="clearFileBtn" style="display:none;">
+            <button class="wlabtn btn-outline" onclick="clearJDFile()" id="clearFileBtn" style="display:none;">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
               Remove File
             </button>
@@ -1523,7 +1525,7 @@
       </div>
 
       <!-- Activity table (same as manual, shared) -->
-      <div class="card" id="jdActivityCard">
+      <div class="wla-card" id="jdActivityCard">
         <div class="card-header">
           <span class="card-title">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
@@ -1531,11 +1533,11 @@
             <span class="count-badge" id="actCount2">0</span>
           </span>
           <div style="display:flex; gap:8px;">
-            <button class="btn btn-outline btn-sm" onclick="addBlankActivity()">
+            <button class="wlabtn btn-outline btn-sm" onclick="addBlankActivity()">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
               Add Manual
             </button>
-            <button class="btn btn-primary btn-sm" onclick="clearAll()">
+            <button class="wlabtn btn-primary btn-sm" onclick="clearAll()">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
               Clear All
             </button>
@@ -1619,7 +1621,7 @@
               <input type="number" id="qa2_instances" value="1" min="0.1" step="0.1">
             </div>
             <div style="display:flex; align-items:flex-end;">
-              <button type="submit" class="btn btn-gold">
+              <button type="submit" class="wlabtn btn-gold">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 Add
               </button>
@@ -2332,7 +2334,7 @@ function renderActivities() {
       <td class="fte-cell">${adjustedHours.toFixed(2)}</td>
       <td class="fte-cell" style="color:var(--gold);">${fte.toFixed(4)}</td>
       <td style="text-align:center;">
-        <button class="btn btn-danger" onclick="deleteActivity(${act.id})">✕</button>
+        <button class="wlabtn wlabtn-danger" onclick="deleteActivity(${act.id})">✕</button>
       </td>
     </tr>`;
   }).join('');
