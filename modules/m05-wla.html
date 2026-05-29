@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WLA · Workload Analysis</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #0F172A;
+    --navy2:  #1E293B;
+    --navy3:  #334155;
+    --gold:   #E8001D;
+    --gold2:  #FF3D56;
+    --paper:  #F8FAFC;
+    --white:  #ffffff;
+    --ink:    #0F172A;
+    --muted:  #64748B;
+    --border: #E2E8F0;
+    --red:    #c0392b;
+    --green:  #1a7a4a;
+    --row-even: #F8FAFC;
+    --row-hover: #EFF6FF;
+    --shadow: 0 4px 24px rgba(15,31,61,0.12);
+    --r: 6px;
+    --font: system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono: 'SFMono-Regular',Consolas,'Liberation Mono',monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: #0F172A;
+    color: var(--white);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+  }
+  .logo-badge {
+    width: 38px; height: 38px;
+    background: #E8001D;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-weight: 600; font-size: 13px;
+    letter-spacing: -0.5px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .header-title { font-size: 17px; font-weight: 600; letter-spacing: 0.3px; }
+  .header-sub { font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 300; letter-spacing: 0.5px; text-transform: uppercase; }
+  .header-spacer { flex: 1; }
+  .header-fte-pill {
+    background: rgba(200,146,42,0.18);
+    border: 1px solid rgba(200,146,42,0.4);
+    border-radius: 100px;
+    padding: 6px 18px;
+    display: flex; align-items: center; gap: 10px;
+    transition: all 0.3s;
+  }
+  .header-fte-pill .label { font-size: 11px; color: #E8001D; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+  .header-fte-pill .value { font-family: var(--mono); font-size: 20px; font-weight: 600; color: #E8001D; }
+
+  /* ── LAYOUT ── */
+  .app-body { display: flex; flex: 1; overflow: hidden; }
+  
+  .sidebar {
+    width: 280px;
+    background: var(--white);
+    border-right: 1px solid var(--border);
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+
+  .main-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 28px 32px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* ── SIDEBAR SECTIONS ── */
+  .sidebar-section { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; }
+  .sidebar-section-title {
+    font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted); padding: 10px 14px; background: #f9f8f5;
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar-fields { padding: 14px; display: flex; flex-direction: column; gap: 12px; }
+  .field-group { display: flex; flex-direction: column; gap: 5px; }
+  .field-group label { font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: 0.3px; }
+  .field-group input, .field-group select {
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 7px 10px;
+    font-family: var(--font);
+    font-size: 13px;
+    color: var(--ink);
+    background: var(--white);
+    width: 100%;
+    transition: border-color 0.15s;
+  }
+  .field-group input:focus, .field-group select:focus { outline: none; border-color: var(--navy3); box-shadow: 0 0 0 3px rgba(36,67,128,0.08); }
+
+  /* FTE Summary sidebar */
+  .fte-summary {
+    background: #0F172A;
+    border-radius: var(--r);
+    padding: 18px;
+    color: var(--white);
+  }
+  .fte-summary-title { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 600; margin-bottom: 14px; }
+  .fte-row { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .fte-row:last-child { border: none; }
+  .fte-row .label { font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 400; }
+  .fte-row .val { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--white); }
+  .fte-big { margin-top: 14px; text-align: center; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .fte-big .fte-number { font-family: var(--mono); font-size: 42px; font-weight: 600; color: #E8001D; line-height: 1; }
+  .fte-big .fte-unit { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; letter-spacing: 0.5px; }
+  .fte-recommendation {
+    margin-top: 10px;
+    background: rgba(200,146,42,0.15);
+    border: 1px solid rgba(200,146,42,0.3);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 11px;
+    color: #E8001D;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  /* ── TABS ── */
+  .tabs { display: flex; gap: 2px; background: var(--border); border-radius: 8px; padding: 3px; width: fit-content; }
+  .tab-btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 6px;
+    font-family: var(--font);
+    font-size: 13px; font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--muted);
+    background: transparent;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .tab-btn.active { background: var(--white); color: #fff; box-shadow: 0 1px 6px rgba(0,0,0,0.1); }
+  .tab-btn svg { opacity: 0.7; }
+  .tab-btn.active svg { opacity: 1; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: flex; flex-direction: column; gap: 20px; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    background: #fafaf8;
+  }
+  .card-title { font-size: 13px; font-weight: 600; color: #fff; letter-spacing: 0.2px; display: flex; align-items: center; gap: 8px; }
+  .card-body { padding: 20px; }
+
+  /* ── BUTTONS ── */
+  .btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.18s;
+    white-space: nowrap;
+  }
+  .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+  .btn-primary { background: #0F172A; color: var(--white); }
+  .btn-primary:hover:not(:disabled) { background: var(--navy2); }
+  .btn-gold { background: #E8001D; color: var(--white); }
+  .btn-gold:hover:not(:disabled) { background: var(--gold2); }
+  .btn-outline { background: transparent; color: #fff; border: 1px solid var(--border); }
+  .btn-outline:hover:not(:disabled) { background: #f5f3ee; border-color: var(--navy3); }
+  .btn-danger { background: transparent; color: var(--red); border: 1px solid rgba(192,57,43,0.25); font-size: 12px; padding: 4px 10px; }
+  .btn-danger:hover:not(:disabled) { background: rgba(192,57,43,0.06); }
+  .btn-sm { padding: 5px 12px; font-size: 12px; }
+  .btn-ghost { background: transparent; color: var(--muted); border: 1px solid transparent; }
+  .btn-ghost:hover { background: #f0eee9; }
+
+  /* ── ACTIVITY TABLE ── */
+  .activity-table-wrap { overflow-x: auto; }
+  .activity-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .activity-table thead tr {
+    background: #0F172A;
+    color: rgba(255,255,255,0.85);
+  }
+  .activity-table th {
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .activity-table th:last-child { border-right: none; }
+  .activity-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
+  .activity-table tbody tr:nth-child(even) { background: var(--row-even); }
+  .activity-table tbody tr:hover { background: var(--row-hover); }
+  .activity-table td { padding: 8px 10px; vertical-align: middle; }
+  .activity-table td input, .activity-table td select {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-family: var(--font);
+    font-size: 12px;
+    width: 100%;
+    background: transparent;
+    color: var(--ink);
+    transition: all 0.15s;
+  }
+  .activity-table td input:hover, .activity-table td select:hover { border-color: var(--border); background: var(--white); }
+  .activity-table td input:focus, .activity-table td select:focus {
+    outline: none; border-color: var(--navy3); background: var(--white);
+    box-shadow: 0 0 0 3px rgba(36,67,128,0.08);
+  }
+  .activity-table td input[readonly] { color: var(--muted); cursor: default; font-family: var(--mono); }
+  .activity-table td.fte-cell { font-family: var(--mono); font-size: 12px; color: var(--navy2); text-align: right; padding-right: 14px; }
+  .activity-table tfoot tr { background: #0F172A; color: var(--white); }
+  .activity-table tfoot td { padding: 10px 12px; font-size: 12px; font-weight: 600; font-family: var(--mono); }
+  .activity-table tfoot td.footer-label { font-family: var(--font); font-size: 12px; text-align: right; color: rgba(255,255,255,0.7); font-weight: 500; letter-spacing: 0.3px; }
+  .act-num { font-family: var(--mono); font-size: 11px; color: var(--muted); text-align: center; width: 30px; }
+  .act-source-badge {
+    display: inline-block;
+    font-size: 9px; font-weight: 600; letter-spacing: 0.8px;
+    padding: 2px 6px; border-radius: 3px; text-transform: uppercase;
+  }
+  .badge-ai { background: rgba(36,67,128,0.1); color: var(--navy3); }
+  .badge-manual { background: rgba(200,146,42,0.12); color: #E8001D; }
+  .empty-state {
+    text-align: center; padding: 48px 20px;
+    color: var(--muted);
+  }
+  .empty-state svg { opacity: 0.25; margin-bottom: 12px; }
+  .empty-state p { font-size: 13px; }
+
+  /* ── JD UPLOAD AREA ── */
+  .upload-zone {
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 36px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #faf9f6;
+    position: relative;
+  }
+  .upload-zone:hover, .upload-zone.drag-over {
+    border-color: var(--navy3);
+    background: #edf0f8;
+  }
+  .upload-zone input[type="file"] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+  .upload-zone svg { color: var(--muted); margin-bottom: 10px; opacity: 0.5; }
+  .upload-zone .upload-text { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 6px; }
+  .upload-zone .upload-sub { font-size: 12px; color: var(--muted); }
+  .upload-zone .file-chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #0F172A; color: var(--white);
+    padding: 6px 14px; border-radius: 100px;
+    font-size: 12px; font-weight: 500;
+    margin-top: 10px;
+  }
+  .format-pills { display: flex; gap: 6px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
+  .format-pill {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.5px;
+    padding: 3px 9px; border-radius: 100px;
+    background: var(--border); color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── AI STATUS ── */
+  .ai-status {
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    display: flex; align-items: center; gap: 10px;
+    display: none;
+  }
+  .ai-status.loading { background: rgba(36,67,128,0.07); color: var(--navy2); border: 1px solid rgba(36,67,128,0.15); display: flex; }
+  .ai-status.success { background: rgba(26,122,74,0.07); color: var(--green); border: 1px solid rgba(26,122,74,0.2); display: flex; }
+  .ai-status.error { background: rgba(192,57,43,0.07); color: var(--red); border: 1px solid rgba(192,57,43,0.15); display: flex; }
+
+  /* Spinner */
+  .spinner {
+    width: 16px; height: 16px;
+    border: 2px solid rgba(36,67,128,0.2);
+    border-top-color: var(--navy2);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── INLINE FORM ── */
+  .quick-add-bar {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr auto;
+    gap: 8px;
+    align-items: end;
+    padding: 14px 20px;
+    background: #f9f8f5;
+    border-top: 1px solid var(--border);
+  }
+  .quick-add-bar .qf-group { display: flex; flex-direction: column; gap: 4px; }
+  .quick-add-bar .qf-group label { font-size: 10px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
+  .quick-add-bar .qf-group input,
+  .quick-add-bar .qf-group select {
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-family: var(--font);
+    font-size: 12px;
+    background: var(--white);
+    color: var(--ink);
+    transition: border-color 0.15s;
+  }
+  .quick-add-bar .qf-group input:focus,
+  .quick-add-bar .qf-group select:focus { outline: none; border-color: var(--navy3); box-shadow: 0 0 0 3px rgba(36,67,128,0.08); }
+
+  /* ── PROGRESS BAR ── */
+  .fte-progress { 
+    height: 6px; background: rgba(255,255,255,0.1); 
+    border-radius: 3px; margin-top: 12px; overflow: hidden;
+  }
+  .fte-progress-bar { 
+    height: 100%; background: var(--gold2); 
+    border-radius: 3px; 
+    transition: width 0.5s cubic-bezier(0.22,0.68,0,1.2);
+    max-width: 100%;
+  }
+
+  /* ── TOOLTIP ── */
+  .tooltip-wrap { position: relative; display: inline-flex; }
+  .tooltip-wrap:hover .tooltip-box { opacity: 1; pointer-events: auto; }
+  .tooltip-box {
+    position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+    background: #1c2437; color: #fff; font-size: 11px; padding: 5px 10px;
+    border-radius: 4px; white-space: nowrap; pointer-events: none; opacity: 0;
+    transition: opacity 0.15s; z-index: 200;
+  }
+
+  /* ── MISC ── */
+  .section-top { display: flex; align-items: center; justify-content: space-between; }
+  .section-title { font-size: 15px; font-weight: 600; color: #fff; }
+  .section-sub { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  hr.divider { border: none; border-top: 1px solid var(--border); }
+  .count-badge {
+    background: #0F172A; color: var(--white);
+    font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 100px;
+    font-family: var(--mono);
+  }
+  .info-note {
+    background: rgba(36,67,128,0.05); border: 1px solid rgba(36,67,128,0.12);
+    border-radius: 5px; padding: 10px 14px;
+    font-size: 12px; color: var(--navy2);
+    display: flex; gap: 8px; align-items: flex-start;
+    line-height: 1.5;
+  }
+  .info-note svg { flex-shrink: 0; opacity: 0.6; margin-top: 1px; }
+
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .main-area { padding: 16px; }
+    .quick-add-bar { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─────────────────────────────────────── -->
+<header style="background:#0F172A;color:#fff;padding:0 24px;display:flex;align-items:center;gap:14px;height:52px;flex-shrink:0">
+  <div style="width:32px;height:32px;background:#E8001D;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#fff;flex-shrink:0">WLA</div>
+  <div>
+    <div style="font-size:14px;font-weight:600">Workload Analysis — FTE Calculator</div>
+    <div style="font-size:11px;color:rgba(255,255,255,.45)">HC &amp; OD · 'ONE' GLOBAL HCMS</div>
+  </div>
+  <div style="flex:1"></div>
+  <div style="background:rgba(232,0,29,.15);border:1px solid rgba(232,0,29,.3);border-radius:999px;padding:5px 16px;display:flex;align-items:center;gap:8px">
+    <span style="font-size:10px;color:#FF6B7A;font-weight:600;text-transform:uppercase;letter-spacing:.06em">FTE Required</span>
+    <span style="font-size:16px;font-weight:800;font-family:monospace;color:#fff" id="headerFTE">0.00</span>
+  </div>
+</header>
+
+<div class="app-body">
+
+  <!-- ─── SIDEBAR ─────────────────────────────────── -->
+  <aside class="sidebar">
+    <!-- Parameters -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">📐 WLA Parameters</div>
+      <div class="sidebar-fields">
+        <div class="field-group">
+          <label>Work Hours / Day</label>
+          <input type="number" id="p_hours_day" value="8" min="1" max="24" step="0.5">
+        </div>
+        <div class="field-group">
+          <label>Work Days / Week</label>
+          <input type="number" id="p_days_week" value="5" min="1" max="7">
+        </div>
+        <div class="field-group">
+          <label>Work Weeks / Year</label>
+          <input type="number" id="p_weeks_year" value="48" min="1" max="52">
+        </div>
+        <div class="field-group">
+          <label>Allowance Factor (%)</label>
+          <input type="number" id="p_allowance" value="10" min="0" max="50" step="1">
+        </div>
+        <div class="field-group">
+          <label>Measurement Period</label>
+          <select id="p_period">
+            <option value="annual">Annual (per year)</option>
+            <option value="monthly">Monthly (per month)</option>
+            <option value="weekly">Weekly (per week)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- FTE Summary -->
+    <div class="fte-summary">
+      <div class="fte-summary-title">📊 FTE Summary</div>
+      <div class="fte-row">
+        <span class="label">Activities</span>
+        <span class="val" id="sumActivities">0</span>
+      </div>
+      <div class="fte-row">
+        <span class="label">Total Hours / Year</span>
+        <span class="val" id="sumHoursYear">0.0</span>
+      </div>
+      <div class="fte-row">
+        <span class="label">Std. Hours / FTE</span>
+        <span class="val" id="sumStdHours">1,920</span>
+      </div>
+      <div class="fte-row">
+        <span class="label">Raw FTE</span>
+        <span class="val" id="sumRawFTE">0.00</span>
+      </div>
+      <div class="fte-big">
+        <div class="fte-number" id="sumFTE">0.00</div>
+        <div class="fte-unit">FTE REQUIRED</div>
+        <div class="fte-progress">
+          <div class="fte-progress-bar" id="fteProgressBar" style="width:0%"></div>
+        </div>
+      </div>
+      <div class="fte-recommendation" id="fteRecommendation">Add activities to begin analysis</div>
+    </div>
+
+    <!-- Info -->
+    <div class="info-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span>FTE = (Total Annual Hours with Allowance) ÷ Standard Hours per FTE per Year</span>
+    </div>
+  </aside>
+
+  <!-- ─── MAIN AREA ────────────────────────────────── -->
+  <main class="main-area">
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('manual')" id="tab-manual">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Manual Entry
+      </button>
+      <button class="tab-btn" onclick="switchTab('jd')" id="tab-jd">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
+        From Job Description
+      </button>
+    </div>
+
+    <!-- ── TAB: MANUAL ── -->
+    <div class="tab-panel active" id="panel-manual">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+            Activity List
+            <span class="count-badge" id="actCount">0</span>
+          </span>
+          <button class="btn btn-primary btn-sm" onclick="clearAll()">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+            Clear All
+          </button>
+        </div>
+
+        <div class="activity-table-wrap">
+          <table class="activity-table">
+            <thead>
+              <tr>
+                <th style="width:34px;">#</th>
+                <th style="min-width:220px;">Activity Name</th>
+                <th style="width:80px;">Category</th>
+                <th style="width:130px;">Time / Instance</th>
+                <th style="width:80px;">Unit</th>
+                <th style="width:140px;">Frequency</th>
+                <th style="width:80px;">Instances</th>
+                <th style="width:100px;">Annual Hrs</th>
+                <th style="width:90px;">FTE</th>
+                <th style="width:60px;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="activityBody">
+              <tr id="emptyRow">
+                <td colspan="10">
+                  <div class="empty-state">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                    <p>No activities yet. Use the form below or upload a Job Description.</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot id="activityFoot" style="display:none;">
+              <tr>
+                <td colspan="7" class="footer-label">TOTAL</td>
+                <td id="footTotalHrs">0.00</td>
+                <td id="footTotalFTE">0.00</td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- Quick Add Bar -->
+        <form class="quick-add-bar" onsubmit="addActivityFromForm(event)" id="quickAddForm">
+          <div class="qf-group">
+            <label>Activity Name *</label>
+            <input type="text" id="qa_name" placeholder="e.g. Weekly team meeting" required>
+          </div>
+          <div class="qf-group">
+            <label>Category</label>
+            <select id="qa_category">
+              <option value="Main">Main</option>
+              <option value="Supporting">Supporting</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="qf-group">
+            <label>Time / Instance *</label>
+            <input type="number" id="qa_time" placeholder="e.g. 60" min="0.1" step="0.1" required>
+          </div>
+          <div class="qf-group">
+            <label>Unit</label>
+            <select id="qa_unit">
+              <option value="minutes">Minutes</option>
+              <option value="hours">Hours</option>
+            </select>
+          </div>
+          <div class="qf-group">
+            <label>Frequency</label>
+            <select id="qa_freq" onchange="toggleCustomFreq()">
+              <option value="daily">Daily</option>
+              <option value="weekly" selected>Weekly</option>
+              <option value="monthly">Monthly</option>
+              <option value="quarterly">Quarterly</option>
+              <option value="annually">Annually</option>
+              <option value="custom">Custom / period</option>
+            </select>
+          </div>
+          <div class="qf-group">
+            <label>Instances</label>
+            <input type="number" id="qa_instances" value="1" min="0.1" step="0.1">
+          </div>
+          <div style="display:flex; align-items:flex-end;">
+            <button type="submit" class="btn btn-gold">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add
+            </button>
+          </div>
+        </form>
+        <!-- Custom frequency row (hidden by default) -->
+        <div id="customFreqRow" style="display:none; padding:0 20px 14px; background:#f9f8f5; border-top:1px solid var(--border);">
+          <div class="qf-group" style="max-width:200px;">
+            <label>Custom: N times per year</label>
+            <input type="number" id="qa_custom_freq" placeholder="e.g. 26" min="1" step="1">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TAB: JD UPLOAD ── -->
+    <div class="tab-panel" id="panel-jd">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Upload Job Description
+          </span>
+        </div>
+        <div class="card-body" style="display:flex; flex-direction:column; gap:16px;">
+          <div class="upload-zone" id="uploadZone" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+            <input type="file" id="jdFileInput" accept=".txt,.docx,.xlsx,.csv" onchange="handleFileSelect(event)">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <div class="upload-text">Drop your Job Description here, or click to browse</div>
+            <div class="upload-sub" id="uploadSub">Drag &amp; drop or click to select a file</div>
+            <div class="format-pills">
+              <span class="format-pill">.txt ✓</span>
+              <span class="format-pill">.docx ✓</span>
+              <span class="format-pill">.xlsx ✓</span>
+              <span class="format-pill">.csv ✓</span>
+              <span class="format-pill" style="opacity:0.5;">.pdf (limited)</span>
+            </div>
+          </div>
+
+          <div id="aiStatus" class="ai-status"></div>
+
+          <div class="info-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>The AI will read your Job Description and automatically generate a list of activities with estimated time and frequency. You can then edit or delete any activity before calculating FTE.</span>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <button class="btn btn-primary" id="generateBtn" onclick="generateFromJD()" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              Generate Activities with AI
+            </button>
+            <button class="btn btn-outline" onclick="clearJDFile()" id="clearFileBtn" style="display:none;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Remove File
+            </button>
+            <span id="jdFileLabel" style="font-size:12px; color:var(--muted);"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity table (same as manual, shared) -->
+      <div class="card" id="jdActivityCard">
+        <div class="card-header">
+          <span class="card-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+            Generated Activities
+            <span class="count-badge" id="actCount2">0</span>
+          </span>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-outline btn-sm" onclick="addBlankActivity()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Manual
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="clearAll()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+              Clear All
+            </button>
+          </div>
+        </div>
+        <div class="activity-table-wrap">
+          <table class="activity-table">
+            <thead>
+              <tr>
+                <th style="width:34px;">#</th>
+                <th style="min-width:220px;">Activity Name</th>
+                <th style="width:80px;">Category</th>
+                <th style="width:130px;">Time / Instance</th>
+                <th style="width:80px;">Unit</th>
+                <th style="width:140px;">Frequency</th>
+                <th style="width:80px;">Instances</th>
+                <th style="width:100px;">Annual Hrs</th>
+                <th style="width:90px;">FTE</th>
+                <th style="width:60px;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="activityBody2">
+              <tr id="emptyRow2">
+                <td colspan="10">
+                  <div class="empty-state">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/></svg>
+                    <p>Upload a JD file and click "Generate Activities with AI" to auto-populate this list.</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot id="activityFoot2" style="display:none;">
+              <tr>
+                <td colspan="7" class="footer-label">TOTAL</td>
+                <td id="footTotalHrs2">0.00</td>
+                <td id="footTotalFTE2">0.00</td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <!-- Inline add (for JD tab) -->
+        <div id="jdQuickAdd" style="display:none;">
+          <form class="quick-add-bar" onsubmit="addActivityFromForm2(event)">
+            <div class="qf-group">
+              <label>Activity Name *</label>
+              <input type="text" id="qa2_name" placeholder="e.g. Weekly team meeting" required>
+            </div>
+            <div class="qf-group">
+              <label>Category</label>
+              <select id="qa2_category">
+                <option value="Main">Main</option>
+                <option value="Supporting">Supporting</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="qf-group">
+              <label>Time / Instance *</label>
+              <input type="number" id="qa2_time" placeholder="e.g. 60" min="0.1" step="0.1" required>
+            </div>
+            <div class="qf-group">
+              <label>Unit</label>
+              <select id="qa2_unit">
+                <option value="minutes">Minutes</option>
+                <option value="hours">Hours</option>
+              </select>
+            </div>
+            <div class="qf-group">
+              <label>Frequency</label>
+              <select id="qa2_freq">
+                <option value="daily">Daily</option>
+                <option value="weekly" selected>Weekly</option>
+                <option value="monthly">Monthly</option>
+                <option value="quarterly">Quarterly</option>
+                <option value="annually">Annually</option>
+                <option value="custom">Custom / period</option>
+              </select>
+            </div>
+            <div class="qf-group">
+              <label>Instances</label>
+              <input type="number" id="qa2_instances" value="1" min="0.1" step="0.1">
+            </div>
+            <div style="display:flex; align-items:flex-end;">
+              <button type="submit" class="btn btn-gold">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Add
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════════════
+let activities = [];    // shared array for BOTH tabs
+let actIdCounter = 0;
+let jdText = '';
+let currentTab = 'manual';
+
+// ═══════════════════════════════════════════════════════════
+//  TAB SWITCHING
+// ═══════════════════════════════════════════════════════════
+function switchTab(tab) {
+  currentTab = tab;
+  ['manual','jd'].forEach(t => {
+    document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+    document.getElementById('panel-' + t).classList.toggle('active', t === tab);
+  });
+  renderActivities();
+}
+
+// ═══════════════════════════════════════════════════════════
+//  PARAMETERS
+// ═══════════════════════════════════════════════════════════
+function getParams() {
+  const hoursDay   = parseFloat(document.getElementById('p_hours_day').value)  || 8;
+  const daysWeek   = parseFloat(document.getElementById('p_days_week').value)  || 5;
+  const weeksYear  = parseFloat(document.getElementById('p_weeks_year').value) || 48;
+  const allowance  = parseFloat(document.getElementById('p_allowance').value)  || 10;
+  const period     = document.getElementById('p_period').value;
+  const stdHours   = hoursDay * daysWeek * weeksYear;   // annual working hours per FTE
+  const workDays   = daysWeek * weeksYear;
+  return { hoursDay, daysWeek, weeksYear, allowance: allowance / 100, stdHours, workDays, period };
+}
+
+// Bind parameter change events
+['p_hours_day','p_days_week','p_weeks_year','p_allowance','p_period'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => { renderActivities(); updateSummary(); });
+});
+
+// ═══════════════════════════════════════════════════════════
+//  FTE CALCULATIONS
+// ═══════════════════════════════════════════════════════════
+const FREQ_ANNUAL = {
+  daily:     p => p.workDays,
+  weekly:    p => p.weeksYear,
+  monthly:   p => 12,
+  quarterly: p => 4,
+  annually:  p => 1,
+  custom:    (p, n) => n || 1
+};
+
+function getAnnualMultiplier(freq, customVal) {
+  const p = getParams();
+  const fn = FREQ_ANNUAL[freq] || FREQ_ANNUAL.annually;
+  return fn(p, customVal);
+}
+
+function calcActivityFTE(act) {
+  const p = getParams();
+  const timeHours = act.unit === 'minutes' ? act.time / 60 : act.time;
+  const annualMult = getAnnualMultiplier(act.freq, act.customFreq);
+  const rawAnnualHours = timeHours * annualMult * act.instances;
+  const adjustedHours = rawAnnualHours * (1 + p.allowance);
+  const fte = p.stdHours > 0 ? adjustedHours / p.stdHours : 0;
+  return { rawAnnualHours, adjustedHours, fte };
+}
+
+// ═══════════════════════════════════════════════════════════
+//  RENDER
+// ═══════════════════════════════════════════════════════════
+const FREQ_LABELS = {
+  daily:'Daily', weekly:'Weekly', monthly:'Monthly',
+  quarterly:'Quarterly', annually:'Annually', custom:'Custom'
+};
+
+function renderActivities() {
+  const tab = currentTab;
+  const bodyId   = tab === 'manual' ? 'activityBody'  : 'activityBody2';
+  const emptyId  = tab === 'manual' ? 'emptyRow'      : 'emptyRow2';
+  const footId   = tab === 'manual' ? 'activityFoot'  : 'activityFoot2';
+  const footHId  = tab === 'manual' ? 'footTotalHrs'  : 'footTotalHrs2';
+  const footFId  = tab === 'manual' ? 'footTotalFTE'  : 'footTotalFTE2';
+  const countId  = tab === 'manual' ? 'actCount'      : 'actCount2';
+
+  const body  = document.getElementById(bodyId);
+  const empty = document.getElementById(emptyId);
+  const foot  = document.getElementById(footId);
+
+  const rows = activities;
+
+  document.getElementById(countId).textContent = rows.length;
+
+  if (rows.length === 0) {
+    empty.style.display = '';
+    foot.style.display = 'none';
+    body.innerHTML = '';
+    body.appendChild(empty);
+    updateSummary();
+    return;
+  }
+
+  empty.style.display = 'none';
+  foot.style.display = '';
+
+  let totalHrs = 0, totalFTE = 0;
+  const html = rows.map((act, i) => {
+    const { adjustedHours, fte } = calcActivityFTE(act);
+    totalHrs += adjustedHours;
+    totalFTE += fte;
+    const srcBadge = act.source === 'ai'
+      ? '<span class="act-source-badge badge-ai">AI</span>'
+      : '<span class="act-source-badge badge-manual">+</span>';
+
+    return `<tr data-id="${act.id}">
+      <td class="act-num">${i+1}</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:8px;">
+          ${srcBadge}
+          <input type="text" value="${escHtml(act.name)}" onchange="updateAct(${act.id},'name',this.value)" style="min-width:150px;">
+        </div>
+      </td>
+      <td>
+        <select onchange="updateAct(${act.id},'category',this.value)">
+          ${['Main','Supporting','Other'].map(c => `<option${act.category===c?' selected':''}>${c}</option>`).join('')}
+        </select>
+      </td>
+      <td>
+        <input type="number" value="${act.time}" min="0.01" step="0.1" onchange="updateAct(${act.id},'time',parseFloat(this.value)||0)" style="width:80px;">
+      </td>
+      <td>
+        <select onchange="updateAct(${act.id},'unit',this.value)">
+          <option value="minutes"${act.unit==='minutes'?' selected':''}>Min</option>
+          <option value="hours"${act.unit==='hours'?' selected':''}>Hrs</option>
+        </select>
+      </td>
+      <td>
+        <select onchange="updateAct(${act.id},'freq',this.value)">
+          ${Object.entries(FREQ_LABELS).map(([v,l])=>`<option value="${v}"${act.freq===v?' selected':''}>${l}</option>`).join('')}
+        </select>
+        ${act.freq==='custom' ? `<input type="number" value="${act.customFreq||1}" min="1" style="width:60px;margin-top:4px;" placeholder="N/year" onchange="updateAct(${act.id},'customFreq',parseInt(this.value)||1)">` : ''}
+      </td>
+      <td>
+        <input type="number" value="${act.instances}" min="0.1" step="0.1" onchange="updateAct(${act.id},'instances',parseFloat(this.value)||1)" style="width:60px;">
+      </td>
+      <td class="fte-cell">${adjustedHours.toFixed(2)}</td>
+      <td class="fte-cell" style="color:var(--gold);">${fte.toFixed(4)}</td>
+      <td style="text-align:center;">
+        <button class="btn btn-danger" onclick="deleteActivity(${act.id})">✕</button>
+      </td>
+    </tr>`;
+  }).join('');
+
+  body.innerHTML = html;
+  body.appendChild(empty);
+
+  document.getElementById(footHId).textContent = totalHrs.toFixed(2);
+  document.getElementById(footFId).textContent = totalFTE.toFixed(4);
+
+  // Show inline add for JD tab
+  if (tab === 'jd') {
+    document.getElementById('jdQuickAdd').style.display = '';
+  }
+
+  updateSummary();
+}
+
+function updateSummary() {
+  const p = getParams();
+  let totalHrs = 0, totalFTE = 0;
+  activities.forEach(act => {
+    const { adjustedHours, fte } = calcActivityFTE(act);
+    totalHrs += adjustedHours;
+    totalFTE += fte;
+  });
+
+  document.getElementById('sumActivities').textContent = activities.length;
+  document.getElementById('sumHoursYear').textContent  = totalHrs.toFixed(1);
+  document.getElementById('sumStdHours').textContent   = p.stdHours.toLocaleString();
+  document.getElementById('sumRawFTE').textContent     = totalFTE.toFixed(3);
+  document.getElementById('sumFTE').textContent        = totalFTE.toFixed(2);
+  document.getElementById('headerFTE').textContent     = totalFTE.toFixed(2);
+
+  // Progress bar (relative to 3 FTE as max visual)
+  const maxVis = Math.max(3, Math.ceil(totalFTE));
+  const pct = Math.min((totalFTE / maxVis) * 100, 100);
+  document.getElementById('fteProgressBar').style.width = pct + '%';
+
+  // Recommendation
+  const recEl = document.getElementById('fteRecommendation');
+  if (activities.length === 0) {
+    recEl.textContent = 'Add activities to begin analysis';
+  } else {
+    const rounded = Math.ceil(totalFTE * 10) / 10;
+    recEl.textContent = `Recommended headcount: ${Math.ceil(totalFTE)} person${Math.ceil(totalFTE)!==1?'s':''}`;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+//  ACTIVITY CRUD
+// ═══════════════════════════════════════════════════════════
+function newAct(overrides = {}) {
+  return {
+    id:         ++actIdCounter,
+    name:       '',
+    category:   'Main',
+    time:       60,
+    unit:       'minutes',
+    freq:       'weekly',
+    customFreq: 1,
+    instances:  1,
+    source:     'manual',
+    ...overrides
+  };
+}
+
+function addActivityFromForm(e) {
+  e.preventDefault();
+  const name  = document.getElementById('qa_name').value.trim();
+  const time  = parseFloat(document.getElementById('qa_time').value) || 60;
+  const unit  = document.getElementById('qa_unit').value;
+  const freq  = document.getElementById('qa_freq').value;
+  const cat   = document.getElementById('qa_category').value;
+  const inst  = parseFloat(document.getElementById('qa_instances').value) || 1;
+  const cf    = parseInt(document.getElementById('qa_custom_freq').value) || 1;
+
+  activities.push(newAct({ name, time, unit, freq, customFreq: cf, instances: inst, category: cat, source: 'manual' }));
+  document.getElementById('qa_name').value = '';
+  document.getElementById('qa_time').value = '';
+  renderActivities();
+}
+
+function addActivityFromForm2(e) {
+  e.preventDefault();
+  const name = document.getElementById('qa2_name').value.trim();
+  const time = parseFloat(document.getElementById('qa2_time').value) || 60;
+  const unit = document.getElementById('qa2_unit').value;
+  const freq = document.getElementById('qa2_freq').value;
+  const cat  = document.getElementById('qa2_category').value;
+  const inst = parseFloat(document.getElementById('qa2_instances').value) || 1;
+
+  activities.push(newAct({ name, time, unit, freq, instances: inst, category: cat, source: 'manual' }));
+  document.getElementById('qa2_name').value = '';
+  document.getElementById('qa2_time').value = '';
+  renderActivities();
+}
+
+function addBlankActivity() {
+  activities.push(newAct({ name: 'New Activity', source: 'manual' }));
+  renderActivities();
+}
+
+function updateAct(id, field, val) {
+  const act = activities.find(a => a.id === id);
+  if (act) { act[field] = val; renderActivities(); }
+}
+
+function deleteActivity(id) {
+  activities = activities.filter(a => a.id !== id);
+  renderActivities();
+}
+
+function clearAll() {
+  if (activities.length === 0) return;
+  if (confirm('Clear all activities? This cannot be undone.')) {
+    activities = [];
+    renderActivities();
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+//  FILE HANDLING
+// ═══════════════════════════════════════════════════════════
+function handleDragOver(e) {
+  e.preventDefault();
+  document.getElementById('uploadZone').classList.add('drag-over');
+}
+function handleDragLeave(e) {
+  document.getElementById('uploadZone').classList.remove('drag-over');
+}
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('uploadZone').classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file) processFile(file);
+}
+function handleFileSelect(e) {
+  const file = e.target.files[0];
+  if (file) processFile(file);
+}
+
+function processFile(file) {
+  const ext = file.name.split('.').pop().toLowerCase();
+  setAIStatus('loading', `Reading ${file.name}…`);
+  document.getElementById('jdFileLabel').textContent = file.name;
+  document.getElementById('clearFileBtn').style.display = '';
+
+  if (ext === 'txt' || ext === 'csv') {
+    const reader = new FileReader();
+    reader.onload = e => { jdText = e.target.result; onFileReady(file.name); };
+    reader.readAsText(file);
+  } else if (ext === 'docx') {
+    const reader = new FileReader();
+    reader.onload = async e => {
+      try {
+        const result = await mammoth.extractRawText({ arrayBuffer: e.target.result });
+        jdText = result.value;
+        onFileReady(file.name);
+      } catch(err) {
+        setAIStatus('error', 'Could not read .docx: ' + err.message);
+      }
+    };
+    reader.readAsArrayBuffer(file);
+  } else if (ext === 'xlsx') {
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const wb = XLSX.read(new Uint8Array(e.target.result), { type: 'array' });
+        let text = '';
+        wb.SheetNames.forEach(sn => {
+          const ws = wb.Sheets[sn];
+          text += `\n[Sheet: ${sn}]\n`;
+          text += XLSX.utils.sheet_to_csv(ws);
+        });
+        jdText = text;
+        onFileReady(file.name);
+      } catch(err) {
+        setAIStatus('error', 'Could not read .xlsx: ' + err.message);
+      }
+    };
+    reader.readAsArrayBuffer(file);
+  } else {
+    setAIStatus('error', `Format .${ext} not supported. Please use .txt, .docx, .xlsx, or .csv.`);
+    return;
+  }
+}
+
+function onFileReady(filename) {
+  setAIStatus('success', `✓ File loaded: ${filename} (${jdText.length.toLocaleString()} characters). Click "Generate Activities with AI" to proceed.`);
+  document.getElementById('generateBtn').disabled = false;
+  document.getElementById('uploadSub').textContent = filename;
+}
+
+function clearJDFile() {
+  jdText = '';
+  document.getElementById('jdFileInput').value = '';
+  document.getElementById('jdFileLabel').textContent = '';
+  document.getElementById('generateBtn').disabled = true;
+  document.getElementById('clearFileBtn').style.display = 'none';
+  document.getElementById('uploadSub').textContent = 'Drag & drop or click to select a file';
+  setAIStatus('', '');
+}
+
+// ═══════════════════════════════════════════════════════════
+//  AI GENERATION
+// ═══════════════════════════════════════════════════════════
+async function generateFromJD() {
+  if (!jdText) return;
+  const btn = document.getElementById('generateBtn');
+  btn.disabled = true;
+  setAIStatus('loading', 'AI is analyzing the Job Description and extracting activities…');
+
+  const systemPrompt = `You are a Workload Analysis (WLA) specialist in Human Capital / Organizational Development.
+Given a Job Description, extract all concrete, measurable work activities that can be used in a Workload Analysis.
+For each activity:
+- Estimate realistic time per instance (in minutes)
+- Estimate the most likely frequency from: daily, weekly, monthly, quarterly, annually
+- Assign number of instances per occurrence (default 1)
+- Assign category: Main, Supporting, or Other
+
+Return ONLY a valid JSON array (no markdown, no explanation, no backticks), like:
+[
+  {"name":"Activity name","time":60,"unit":"minutes","freq":"weekly","instances":1,"category":"Main"},
+  ...
+]
+
+Rules:
+- Include 8-20 activities based on the JD complexity
+- Time must be realistic (e.g., email checking: 15-30 min, team meeting: 60 min, report preparation: 120 min)
+- Be specific and action-oriented (verb + object)
+- Do NOT include meta-activities like "attend company events" unless explicitly in the JD
+- Frequency must match the nature of the task`;
+
+  const userMsg = `Extract WLA activities from this Job Description:\n\n${jdText.substring(0, 6000)}`;
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userMsg }]
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error?.message || `API Error ${response.status}`);
+    }
+
+    const rawText = data.content
+      .filter(b => b.type === 'text')
+      .map(b => b.text)
+      .join('');
+
+    // Clean up potential markdown
+    const cleaned = rawText.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(cleaned);
+
+    if (!Array.isArray(parsed) || parsed.length === 0) {
+      throw new Error('AI returned no activities. Please try with a more detailed JD.');
+    }
+
+    // Add to activities
+    const newOnes = parsed.map(a => newAct({
+      name:      a.name       || 'Unnamed Activity',
+      time:      parseFloat(a.time) || 60,
+      unit:      a.unit       || 'minutes',
+      freq:      a.freq       || 'weekly',
+      instances: parseFloat(a.instances) || 1,
+      category:  a.category   || 'Main',
+      source:    'ai'
+    }));
+
+    activities.push(...newOnes);
+    renderActivities();
+    setAIStatus('success', `✓ ${newOnes.length} activities generated successfully. Review, edit, or delete as needed.`);
+  } catch (err) {
+    setAIStatus('error', 'Error: ' + err.message);
+    console.error(err);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+//  UI HELPERS
+// ═══════════════════════════════════════════════════════════
+function setAIStatus(type, msg) {
+  const el = document.getElementById('aiStatus');
+  el.className = 'ai-status' + (type ? ' ' + type : '');
+  el.innerHTML = type === 'loading'
+    ? `<div class="spinner"></div><span>${msg}</span>`
+    : `<span>${msg}</span>`;
+  if (!type) el.style.display = 'none';
+}
+
+function toggleCustomFreq() {
+  const freq = document.getElementById('qa_freq').value;
+  document.getElementById('customFreqRow').style.display = freq === 'custom' ? '' : 'none';
+}
+
+function escHtml(str) {
+  return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ═══════════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════════
+renderActivities();
+updateSummary();
+</script>
+</body>
+</html>
